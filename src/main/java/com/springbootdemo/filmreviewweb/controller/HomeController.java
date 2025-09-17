@@ -9,7 +9,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("title", "电影评论网站");
+        model.addAttribute("title", "南京照相馆观影感悟");
         return "index";
     }
 
