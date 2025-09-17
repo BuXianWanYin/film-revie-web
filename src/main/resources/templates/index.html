@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">电影评论网站</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="nav-logo">🎬 2025暑期大片评论网</h1>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a th:href="@{/}" class="nav-link">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/movie-intro}" class="nav-link">电影介绍</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/actors}" class="nav-link">演员介绍</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/meaning}" class="nav-link">电影内涵</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">观影感悟 ▼</a>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="@{/review/qinguijin}">覃桂锦</a></li>
+                            <li><a th:href="@{/review/zhubinbo}">朱斌博</a></li>
+                            <li><a th:href="@{/review/suzixiang}">苏子翔</a></li>
+                            <li><a th:href="@{/review/qinzhaorui}">覃照睿</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>2025暑期大片深度解析</h1>
+                <p>探索《南京照相馆》《浪浪山小妖怪》《长安的荔枝》等热门影片的魅力</p>
+                <div class="hero-buttons">
+                    <a th:href="@{/movie-intro}" class="btn btn-primary">开始探索</a>
+                    <a th:href="@{/review/qinguijin}" class="btn btn-secondary">观看感悟</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-movies">
+            <div class="container">
+                <h2>热门影片</h2>
+                <div class="movie-grid">
+                    <div class="movie-card">
+                        <div class="movie-poster">
+                            <div class="poster-placeholder">📷</div>
+                        </div>
+                        <h3>南京照相馆</h3>
+                        <p>一部充满怀旧情怀的温情之作，讲述了老照相馆里的人情冷暖。</p>
+                    </div>
+                    <div class="movie-card">
+                        <div class="movie-poster">
+                            <div class="poster-placeholder">🏔️</div>
+                        </div>
+                        <h3>浪浪山小妖怪</h3>
+                        <p>奇幻冒险动画，展现了小妖怪们的成长历程和友情力量。</p>
+                    </div>
+                    <div class="movie-card">
+                        <div class="movie-poster">
+                            <div class="poster-placeholder">🍑</div>
+                        </div>
+                        <h3>长安的荔枝</h3>
+                        <p>古装历史剧，以荔枝为线索展现唐朝的繁华与人文情怀。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-intro">
+            <div class="container">
+                <h2>我们的团队</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">👨</div>
+                        <h3>覃桂锦</h3>
+                        <p>农类职业本科学生</p>
+                        <a th:href="@{/review/qinguijin}" class="btn btn-small">查看感悟</a>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">👨</div>
+                        <h3>朱斌博</h3>
+                        <p>农类职业本科学生</p>
+                        <a th:href="@{/review/zhubinbo}" class="btn btn-small">查看感悟</a>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">👨</div>
+                        <h3>苏子翔</h3>
+                        <p>农类职业本科学生</p>
+                        <a th:href="@{/review/suzixiang}" class="btn btn-small">查看感悟</a>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">👩</div>
+                        <h3>覃照睿</h3>
+                        <p>农类职业本科学生</p>
+                        <a th:href="@{/review/qinzhaorui}" class="btn btn-small">查看感悟</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 电影评论网站 | 农类职业本科学生作品</p>
+        </div>
+    </footer>
+</body>
+</html>

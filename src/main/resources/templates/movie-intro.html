@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">电影介绍</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="nav-logo">🎬 2025暑期大片评论网</h1>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a th:href="@{/}" class="nav-link">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/movie-intro}" class="nav-link">电影介绍</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/actors}" class="nav-link">演员介绍</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/meaning}" class="nav-link">电影内涵</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">观影感悟 ▼</a>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="@{/review/qinguijin}">覃桂锦</a></li>
+                            <li><a th:href="@{/review/zhubinbo}">朱斌博</a></li>
+                            <li><a th:href="@{/review/suzixiang}">苏子翔</a></li>
+                            <li><a th:href="@{/review/qinzhaorui}">覃照睿</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="content-header">
+        <div class="container">
+            <h1>2025暑期热门电影介绍</h1>
+            <p>深度解析三部备受瞩目的暑期大片</p>
+        </div>
+    </div>
+
+    <main>
+        <section class="content-section">
+            <div class="container">
+                <div class="movie-detail">
+                    <h2>📷 南京照相馆</h2>
+                    <div class="movie-info">
+                        <div class="movie-poster-large">
+                            <div class="poster-placeholder">📷</div>
+                        </div>
+                        <div class="movie-description">
+                            <h3>剧情简介</h3>
+                            <p>《南京照相馆》是一部充满怀旧情怀的温情之作，以20世纪80年代的南京为背景，讲述了一家老照相馆里发生的温暖故事。影片通过镜头记录了那个时代人们的生活点滴，展现了普通人的喜怒哀乐。</p>
+                            
+                            <h3>故事情节</h3>
+                            <p>故事围绕着一家三代经营的老照相馆展开。年迈的照相馆老板面临着数字化时代的冲击，传统胶片摄影逐渐被数码相机取代。在这个转折点上，一张张老照片背后的故事被重新发掘，连接起了过去与现在，也连接起了不同世代的人们。</p>
+                            
+                            <h3>艺术特色</h3>
+                            <p>影片采用温暖的色调和怀旧的镜头语言，营造出浓厚的时代氛围。导演巧妙地运用光影效果，让每一帧画面都如同精心冲洗的老照片，充满了岁月的痕迹和情感的温度。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>为什么这部电影如此受欢迎？</h3>
+                    <p>《南京照相馆》之所以能够打动观众，在于它触及了每个人心中最柔软的部分——对过往时光的怀念。在快节奏的现代生活中，这部电影让人们重新思考什么是真正珍贵的东西。</p>
+                </div>
+
+                <div class="movie-detail">
+                    <h2>🏔️ 浪浪山小妖怪</h2>
+                    <div class="movie-info">
+                        <div class="movie-poster-large">
+                            <div class="poster-placeholder">🏔️</div>
+                        </div>
+                        <div class="movie-description">
+                            <h3>剧情简介</h3>
+                            <p>《浪浪山小妖怪》是一部充满想象力的奇幻冒险动画电影。故事发生在神秘的浪浪山中，那里居住着各种可爱的小妖怪。当人类世界的开发威胁到它们的家园时，小妖怪们必须团结起来，保护自己的家园。</p>
+                            
+                            <h3>人物塑造</h3>
+                            <p>主角小妖怪"浪浪"是一个勇敢而善良的角色，它代表着纯真和勇气。配角们各具特色，有胆小但聪明的"山山"，有力大无穷但心地善良的"石石"，每个角色都有自己独特的性格和成长轨迹。</p>
+                            
+                            <h3>视觉效果</h3>
+                            <p>影片采用了先进的3D动画技术，将浪浪山打造成一个色彩斑斓、充满生机的奇幻世界。每一个小妖怪的设计都独具匠心，既保持了传统文化中妖怪的神秘感，又增添了现代动画的可爱元素。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>环保主题的深度表达</h3>
+                    <p>这部电影不仅仅是一部娱乐作品，更是对环境保护的深刻思考。通过小妖怪们保护家园的故事，影片传达了人与自然和谐共处的重要性。</p>
+                </div>
+
+                <div class="movie-detail">
+                    <h2>🍑 长安的荔枝</h2>
+                    <div class="movie-info">
+                        <div class="movie-poster-large">
+                            <div class="poster-placeholder">🍑</div>
+                        </div>
+                        <div class="movie-description">
+                            <h3>剧情简介</h3>
+                            <p>《长安的荔枝》改编自马伯庸的同名小说，讲述了唐朝天宝年间，一个小官员李善德奉命为杨贵妃运送新鲜荔枝到长安的故事。这看似简单的任务，却牵扯出一系列惊心动魄的事件。</p>
+                            
+                            <h3>历史背景</h3>
+                            <p>影片以唐朝盛世为背景，通过一颗小小的荔枝，展现了那个时代的政治风云、社会百态和人文风情。从岭南到长安，千里迢迢的运输路线，见证了大唐帝国的繁华与复杂。</p>
+                            
+                            <h3>人物刻画</h3>
+                            <p>主角李善德是一个普通的小官员，但在面对重重困难时展现出了非凡的智慧和坚韧。影片通过他的视角，展现了唐朝社会各个阶层的生活状态，从达官贵人到平民百姓，每个人物都栩栩如生。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>历史与现实的对话</h3>
+                    <p>《长安的荔枝》通过古装历史剧的形式，实际上在探讨现代社会的问题。影片中的官场生态、人际关系、价值选择等主题，都能在当今社会找到对应，引发观众的深度思考。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 电影评论网站 | 农类职业本科学生作品</p>
+        </div>
+    </footer>
+
+    <style>
+        .movie-detail {
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .movie-info {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .movie-poster-large {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .movie-poster-large .poster-placeholder {
+            font-size: 6rem;
+            opacity: 0.8;
+        }
+        
+        .movie-description h3 {
+            color: #667eea;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .movie-description h3:first-child {
+            margin-top: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .movie-info {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .movie-poster-large {
+                height: 250px;
+            }
+        }
+    </style>
+</body>
+</html>

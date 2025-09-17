@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">覃桂锦的观影感悟</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="nav-logo">🎬 2025暑期大片评论网</h1>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a th:href="@{/}" class="nav-link">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/movie-intro}" class="nav-link">电影介绍</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/actors}" class="nav-link">演员介绍</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/meaning}" class="nav-link">电影内涵</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">观影感悟 ▼</a>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="@{/review/qinguijin}">覃桂锦</a></li>
+                            <li><a th:href="@{/review/zhubinbo}">朱斌博</a></li>
+                            <li><a th:href="@{/review/suzixiang}">苏子翔</a></li>
+                            <li><a th:href="@{/review/qinzhaorui}">覃照睿</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="review-header">
+        <div class="container">
+            <h1 th:text="${title}">覃桂锦的观影感悟</h1>
+            <p>农类职业本科学生的电影思考</p>
+        </div>
+    </div>
+
+    <main>
+        <section class="content-section">
+            <div class="container">
+                <div class="student-info">
+                    <div class="student-avatar">👨</div>
+                    <h2 th:text="${studentName}">覃桂锦</h2>
+                    <p>性别：<span th:text="${gender}">男</span> | 专业：农类职业本科</p>
+                    <p>"电影是生活的镜子，也是梦想的窗口"</p>
+                </div>
+
+                <div class="review-content">
+                    <h2>我选择的电影：《南京照相馆》</h2>
+                    
+                    <div class="review-section">
+                        <h3>🎬 为什么选择这部电影</h3>
+                        <p>作为一名农类职业本科的学生，我对《南京照相馆》这部电影特别有感触。这部电影讲述的不仅仅是一个照相馆的故事，更是关于传统与现代、坚持与变化的深刻思考。就像我们农业领域一样，也在经历着从传统向现代化的转变。</p>
+                    </div>
+
+                    <div class="review-section">
+                        <h3>📖 故事情节分析</h3>
+                        <p>影片的故事情节看似简单，但层次丰富。老照相馆主人面临着数字化时代的冲击，这让我想到了现代农业中传统种植方式与现代农业技术的碰撞。故事通过一张张老照片，串联起了不同时代的人和事，展现了时间的流逝和情感的永恒。</p>
+                        
+                        <p>最打动我的是影片中那些细腻的情感描写。每一张照片背后都有一个故事，每一个故事都承载着人们的记忆和情感。这种对细节的关注和对情感的珍视，正是我们在快节奏生活中容易忽略的东西。</p>
+                    </div>
+
+                    <div class="review-section">
+                        <h3>👥 人物塑造的精彩之处</h3>
+                        <p>张国立饰演的老照相馆主人是一个非常立体的角色。他既有对传统技艺的坚持，也有面对现实压力的无奈。这种复杂的内心世界通过张国立精湛的演技得到了完美的诠释。</p>
+                        
+                        <p>易烊千玺饰演的年轻摄影师代表了新一代的思维方式，他对摄影的理解更多来自于技术和创新，但在与老一辈的交流中，他也逐渐理解了传统的价值。这种代际之间的理解和传承，让我想到了我们在学习农业知识时，既要掌握现代技术，也要尊重传统智慧。</p>
+                    </div>
+
+                    <div class="review-section">
+                        <h3>💭 内涵表达的深度思考</h3>
+                        <p>这部电影的内涵非常丰富，主要体现在以下几个方面：</p>
+                        <ul>
+                            <li><strong>时间与记忆：</strong>照片定格了时间，保存了记忆。在数字化时代，我们是否还需要这种"慢"的艺术？</li>
+                            <li><strong>传统与现代：</strong>如何在现代化进程中保持传统的精髓？这不仅是照相馆面临的问题，也是我们农业发展面临的挑战。</li>
+                            <li><strong>人情与商业：</strong>在商业化的浪潮中，如何保持人与人之间的温情？</li>
+                        </ul>
+                    </div>
+
+                    <div class="quote-box">
+                        <h3>🌟 最令我感触的一幕</h3>
+                        <p>最令我深受感触的是影片结尾的那一幕：老照相馆主人在整理老照片时，发现了自己年轻时的照片。那一刻，时间仿佛静止了，过去与现在在这一瞬间重叠。他轻抚着照片，眼中含着泪水，那种对逝去时光的眷恋和对美好回忆的珍惜，深深地打动了我。</p>
+                        
+                        <p>这一幕让我想到了我的爷爷，他是一位老农民，一生都在田地里劳作。每当他看着那些老旧的农具时，眼中也会流露出同样的神情。那些农具见证了他的青春岁月，也承载着他对土地的深情。</p>
+                    </div>
+
+                    <div class="review-section">
+                        <h3>🌱 结合专业的思考</h3>
+                        <p>作为农类职业本科的学生，这部电影给了我很多启发：</p>
+                        
+                        <p><strong>传承与创新的平衡：</strong>就像照相馆需要在传统胶片摄影和数字摄影之间找到平衡一样，现代农业也需要在传统农业智慧和现代农业技术之间找到最佳结合点。我们不能因为追求效率而完全抛弃传统，也不能因为固守传统而拒绝创新。</p>
+                        
+                        <p><strong>工匠精神的价值：</strong>老照相馆主人对每一张照片的精心制作，体现了工匠精神的可贵。在农业生产中，我们也需要这种精益求精的态度，无论是种植、养殖还是农产品加工，都需要用心去做。</p>
+                        
+                        <p><strong>情感连接的重要性：</strong>照片连接的不仅是时间，更是人与人之间的情感。在农业工作中，我们也要重视与农民、与土地、与自然的情感连接，这样才能做出真正有意义的工作。</p>
+                    </div>
+
+                    <div class="review-section">
+                        <h3>💡 个人感悟</h3>
+                        <p>看完《南京照相馆》，我对自己的专业和未来有了更深的思考。农业是一个古老的行业，但也是一个充满希望的行业。我们这一代农类专业的学生，肩负着传承农业文明和推动农业现代化的双重使命。</p>
+                        
+                        <p>就像电影中的年轻摄影师最终理解了传统摄影的价值一样，我也要在学习现代农业技术的同时，深入了解传统农业的智慧。只有这样，我们才能在未来的工作中，既保持对土地的敬畏，又能运用科技的力量，为农业发展贡献自己的力量。</p>
+                        
+                        <p>这部电影让我明白，无论时代如何变迁，有些东西是永远不会过时的：对工作的热爱、对品质的追求、对他人的关怀。这些品质，将是我在未来农业道路上最宝贵的财富。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 电影评论网站 | 农类职业本科学生作品</p>
+        </div>
+    </footer>
+
+    <style>
+        .review-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .review-section {
+            background: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .review-section h3 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .review-section p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        
+        .review-section ul {
+            padding-left: 1.5rem;
+        }
+        
+        .review-section li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .review-section strong {
+            color: #333;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">演员介绍</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="nav-logo">🎬 2025暑期大片评论网</h1>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a th:href="@{/}" class="nav-link">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/movie-intro}" class="nav-link">电影介绍</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/actors}" class="nav-link">演员介绍</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/meaning}" class="nav-link">电影内涵</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">观影感悟 ▼</a>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="@{/review/qinguijin}">覃桂锦</a></li>
+                            <li><a th:href="@{/review/zhubinbo}">朱斌博</a></li>
+                            <li><a th:href="@{/review/suzixiang}">苏子翔</a></li>
+                            <li><a th:href="@{/review/qinzhaorui}">覃照睿</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="content-header">
+        <div class="container">
+            <h1>演员阵容介绍</h1>
+            <p>了解三部热门电影背后的精彩演员</p>
+        </div>
+    </div>
+
+    <main>
+        <section class="content-section">
+            <div class="container">
+                <div class="movie-cast">
+                    <h2>📷 《南京照相馆》演员阵容</h2>
+                    <div class="cast-grid">
+                        <div class="actor-card">
+                            <div class="actor-photo">
+                                <div class="photo-placeholder">👨‍🦳</div>
+                            </div>
+                            <div class="actor-info">
+                                <h3>张国立</h3>
+                                <p class="role">饰演：老照相馆店主</p>
+                                <p class="description">资深演员张国立在片中饰演经营照相馆三十多年的老店主。他用深厚的演技诠释了一个在时代变迁中坚守传统的老人形象，每一个眼神都充满了对往昔岁月的眷恋。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="actor-card">
+                            <div class="actor-photo">
+                                <div class="photo-placeholder">👩</div>
+                            </div>
+                            <div class="actor-info">
+                                <h3>陈数</h3>
+                                <p class="role">饰演：照相馆老板娘</p>
+                                <p class="description">陈数饰演的照相馆老板娘是一个温柔而坚强的女性。她不仅要照顾家庭，还要协助丈夫经营照相馆。陈数用细腻的表演展现了女性在家庭和事业中的平衡与坚持。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="actor-card">
+                            <div class="actor-photo">
+                                <div class="photo-placeholder">👨</div>
+                            </div>
+                            <div class="actor-info">
+                                <h3>易烊千玺</h3>
+                                <p class="role">饰演：年轻摄影师</p>
+                                <p class="description">易烊千玺在片中饰演一位充满理想的年轻摄影师，他代表着新一代对摄影艺术的理解和追求。通过与老一辈的交流，展现了传统与现代的碰撞与融合。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="movie-cast">
+                    <h2>🏔️ 《浪浪山小妖怪》配音演员</h2>
+                    <div class="cast-grid">
+                        <div class="actor-card">
+                            <div class="actor-photo">
+                                <div class="photo-placeholder">🎭</div>
+                            </div>
+                            <div class="actor-info">
+                                <h3>沈腾</h3>
+                                <p class="role">配音：小妖怪"浪浪"</p>
+                                <p class="description">沈腾为主角小妖怪"浪浪"配音，他用独特的声音魅力为这个勇敢善良的角色注入了生命力。沈腾的幽默感让"浪浪"这个角色更加生动可爱，深受观众喜爱。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="actor-card">
+                            <div class="actor-photo">
+                                <div class="photo-placeholder">🎪</div>
+                            </div>
+                            <div class="actor-info">
+                                <h3>马丽</h3>
+                                <p class="role">配音：小妖怪"花花"</p>
+                                <p class="description">马丽为女主角小妖怪"花花"配音，她用温柔而有力的声音塑造了一个聪明勇敢的女性角色。马丽的配音让"花花"既有女性的柔美，又有战士的坚强。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="actor-card">
+                            <div class="actor-photo">
+                                <div class="photo-placeholder">🎨</div>
+                            </div>
+                            <div class="actor-info">
+                                <h3>黄渤</h3>
+                                <p class="role">配音：长老"山山"</p>
+                                <p class="description">黄渤为智慧长老"山山"配音，他用沉稳而富有磁性的声音诠释了一个充满智慧的长者形象。黄渤的配音为角色增添了深度和权威感。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="movie-cast">
+                    <h2>🍑 《长安的荔枝》演员阵容</h2>
+                    <div class="cast-grid">
+                        <div class="actor-card">
+                            <div class="actor-photo">
+                                <div class="photo-placeholder">👨‍💼</div>
+                            </div>
+                            <div class="actor-info">
+                                <h3>雷佳音</h3>
+                                <p class="role">饰演：李善德</p>
+                                <p class="description">雷佳音饰演主角李善德，一个普通的小官员。他用朴实而真诚的表演展现了一个在困境中坚持原则、机智应对的小人物形象。雷佳音的表演让观众看到了普通人的不平凡。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="actor-card">
+                            <div class="actor-photo">
+                                <div class="photo-placeholder">👸</div>
+                            </div>
+                            <div class="actor-info">
+                                <h3>范冰冰</h3>
+                                <p class="role">饰演：杨贵妃</p>
+                                <p class="description">范冰冰饰演历史上著名的杨贵妃，她用优雅的气质和精湛的演技重现了这位传奇女性的风采。虽然戏份不多，但每一次出场都令人印象深刻。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="actor-card">
+                            <div class="actor-photo">
+                                <div class="photo-placeholder">👑</div>
+                            </div>
+                            <div class="actor-info">
+                                <h3>于和伟</h3>
+                                <p class="role">饰演：唐玄宗</p>
+                                <p class="description">于和伟饰演唐玄宗李隆基，他用威严而复杂的表演展现了这位帝王的多面性格。既有帝王的威严，又有对爱妃的深情，层次丰富。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="actor-card">
+                            <div class="actor-photo">
+                                <div class="photo-placeholder">🗡️</div>
+                            </div>
+                            <div class="actor-info">
+                                <h3>张译</h3>
+                                <p class="role">饰演：护卫队长</p>
+                                <p class="description">张译饰演负责保护荔枝运输的护卫队长，他用硬朗的形象和精湛的武打动作展现了一个忠诚勇敢的军人形象。张译的表演为影片增添了紧张刺激的元素。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>演员们的精彩表现</h3>
+                    <p>这三部电影的成功离不开演员们的精彩表现。无论是资深演员的深厚功底，还是年轻演员的青春活力，每一位演员都为角色注入了独特的魅力。他们用专业的演技和敬业的态度，为观众呈现了一场场视觉盛宴。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 电影评论网站 | 农类职业本科学生作品</p>
+        </div>
+    </footer>
+
+    <style>
+        .movie-cast {
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .actor-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .actor-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .actor-photo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .photo-placeholder {
+            font-size: 2rem;
+            opacity: 0.8;
+        }
+        
+        .actor-info {
+            flex: 1;
+        }
+        
+        .actor-info h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .role {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .description {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 768px) {
+            .cast-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .actor-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .actor-photo {
+                width: 100px;
+                height: 100px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</body>
+</html>

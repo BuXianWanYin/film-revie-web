@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">朱斌博的观影感悟</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="nav-logo">🎬 2025暑期大片评论网</h1>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a th:href="@{/}" class="nav-link">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/movie-intro}" class="nav-link">电影介绍</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/actors}" class="nav-link">演员介绍</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/meaning}" class="nav-link">电影内涵</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">观影感悟 ▼</a>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="@{/review/qinguijin}">覃桂锦</a></li>
+                            <li><a th:href="@{/review/zhubinbo}">朱斌博</a></li>
+                            <li><a th:href="@{/review/suzixiang}">苏子翔</a></li>
+                            <li><a th:href="@{/review/qinzhaorui}">覃照睿</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="review-header">
+        <div class="container">
+            <h1 th:text="${title}">朱斌博的观影感悟</h1>
+            <p>农类职业本科学生的电影思考</p>
+        </div>
+    </div>
+
+    <main>
+        <section class="content-section">
+            <div class="container">
+                <div class="student-info">
+                    <div class="student-avatar">👨</div>
+                    <h2 th:text="${studentName}">朱斌博</h2>
+                    <p>性别：<span th:text="${gender}">男</span> | 专业：农类职业本科</p>
+                    <p>"每一部好电影都是一次心灵的成长"</p>
+                </div>
+
+                <div class="review-content">
+                    <h2>我选择的电影：《浪浪山小妖怪》</h2>
+                    
+                    <div class="review-section">
+                        <h3>🎯 选择这部电影的原因</h3>
+                        <p>《浪浪山小妖怪》是一部看似简单的动画电影，但它所传达的环保理念和成长主题深深吸引了我。作为农类职业本科的学生，我对环境保护有着特殊的敏感性。农业与环境息息相关，这部电影让我从一个全新的角度思考人与自然的关系。</p>
+                        
+                        <p>虽然这是一部动画片，但它并不幼稚。相反，它用童真的方式探讨了非常严肃的话题：环境破坏、生态保护、成长责任等。这种寓教于乐的方式，让深刻的道理变得更容易理解和接受。</p>
+                    </div>
+
+                    <div class="review-section">
+                        <h3>📚 故事情节的深度解析</h3>
+                        <p>影片的故事结构非常巧妙。开始时，浪浪山是一个和谐美丽的世界，小妖怪们过着无忧无虑的生活。但随着人类开发活动的入侵，这个平衡被打破了。小妖怪们从最初的恐慌、逃避，到最后的团结、抗争，这个过程不仅是剧情的发展，更是一个关于成长和觉醒的寓言。</p>
+                        
+                        <p>特别值得注意的是，影片并没有简单地将人类描绘成"坏人"，而是展现了开发与保护之间的复杂关系。这种客观的态度让故事更加真实可信，也更有教育意义。</p>
+                        
+                        <p>影片的高潮部分，小妖怪们联合起来保护家园的场面非常震撼。每个小妖怪都发挥了自己的特长，这让我想到了生态系统中每个物种都有其独特的作用，缺一不可。</p>
+                    </div>
+
+                    <div class="review-section">
+                        <h3>🎭 人物塑造的精彩表现</h3>
+                        <p>主角"浪浪"是一个非常立体的角色。他从一个贪玩、有些自私的小妖怪，逐渐成长为有责任感的领导者。这个转变过程非常自然，没有突兀感。沈腾的配音为这个角色增添了很多魅力，既有幽默感，又不失深度。</p>
+                        
+                        <p>"花花"这个角色代表了智慧和勇气。马丽的配音让这个角色既温柔又坚强，体现了女性在环保事业中的重要作用。她经常在关键时刻提出解决方案，展现了女性的智慧和洞察力。</p>
+                        
+                        <p>长老"山山"虽然年迈，但充满智慧。黄渤的配音让这个角色既有权威感，又很亲切。他代表了传统智慧和经验的价值，在现代化进程中，这些往往被忽视，但实际上非常重要。</p>
+                    </div>
+
+                    <div class="review-section">
+                        <h3>🌍 内涵表达的多重层次</h3>
+                        <p>这部电影的内涵非常丰富，可以从多个层面来理解：</p>
+                        
+                        <p><strong>环保层面：</strong>最直观的主题就是环境保护。浪浪山面临的威胁直接映射了现实中的环境问题。作为农类专业的学生，我深知环境恶化对农业的影响。气候变化、土壤污染、水资源短缺等问题，都在威胁着农业的可持续发展。</p>
+                        
+                        <p><strong>成长层面：</strong>小妖怪们的成长历程反映了每个人都要经历的心理成熟过程。从依赖到独立，从自私到无私，从恐惧到勇敢，这些都是成长的必经之路。</p>
+                        
+                        <p><strong>社会层面：</strong>影片中小妖怪们的团结合作，体现了集体力量的重要性。在面对共同威胁时，个体的力量是有限的，只有团结起来才能战胜困难。</p>
+                    </div>
+
+                    <div class="quote-box">
+                        <h3>💫 最触动我的一段情节</h3>
+                        <p>最令我深受感触的是影片中段的一个情节：当小妖怪们发现自己的家园被破坏后，"浪浪"独自坐在山顶上，看着远处被挖掘机破坏的森林，眼中含着泪水。那一刻，他不再是那个贪玩的小妖怪，而是一个真正意识到责任重大的守护者。</p>
+                        
+                        <p>这个场景让我想起了我第一次看到家乡农田被污染的情景。那是一片我从小玩耍的稻田，因为附近工厂的污水排放，原本绿油油的稻苗变得枯黄。那一刻，我真正理解了什么叫"心痛"。就像"浪浪"一样，我也从那时开始思考自己能为环境保护做些什么。</p>
+                        
+                        <p>这个情节的力量在于它的真实性。虽然是动画，但那种失去家园的痛苦是如此真实，让人感同身受。</p>
+                    </div>
+
+                    <div class="review-section">
+                        <h3>🌱 与农类专业的深度联系</h3>
+                        <p>作为农类职业本科的学生，这部电影给了我很多专业层面的思考：</p>
+                        
+                        <p><strong>生态农业的重要性：</strong>影片中浪浪山的生态平衡被破坏，让我想到了现代农业中化肥、农药过度使用对生态环境的影响。我们需要发展生态农业，实现农业生产与环境保护的和谐统一。</p>
+                        
+                        <p><strong>生物多样性的价值：</strong>每个小妖怪都有自己独特的能力，这让我想到了生物多样性的重要性。在农业生态系统中，每种生物都有其独特的作用，我们要保护这种多样性。</p>
+                        
+                        <p><strong>可持续发展的理念：</strong>影片最终找到了开发与保护的平衡点，这正是可持续发展理念的体现。在农业发展中，我们也要寻找这样的平衡点。</p>
+                    </div>
+
+                    <div class="review-section">
+                        <h3>🎨 视觉效果与艺术价值</h3>
+                        <p>这部电影的视觉效果非常出色。浪浪山被描绘成一个色彩斑斓、充满生机的世界，每一帧画面都像是精心绘制的艺术品。特别是那些自然景观的描绘，让人感受到大自然的美丽和神奇。</p>
+                        
+                        <p>小妖怪们的设计也很有特色，既保持了传统文化中妖怪的神秘感，又增添了现代动画的可爱元素。这种传统与现代的结合，正如我们在农业发展中需要做的：既要保持传统农业的智慧，又要融入现代技术。</p>
+                    </div>
+
+                    <div class="review-section">
+                        <h3>💭 个人感悟与未来思考</h3>
+                        <p>看完《浪浪山小妖怪》，我对自己的专业和未来有了更清晰的认识。这部电影让我明白，环境保护不是某个人或某个行业的责任，而是我们每个人都应该承担的使命。</p>
+                        
+                        <p>作为未来的农业工作者，我要像小妖怪们一样，勇敢地承担起保护环境的责任。在学习现代农业技术的同时，我要始终牢记环保的重要性，努力发展绿色农业、生态农业。</p>
+                        
+                        <p>这部电影还让我认识到团队合作的重要性。在未来的工作中，我要学会与不同专业背景的人合作，发挥每个人的特长，共同为农业的可持续发展贡献力量。</p>
+                        
+                        <p>最重要的是，这部电影让我保持了对美好未来的希望。虽然环境问题很严重，但只要我们每个人都行动起来，就一定能够创造一个更美好的世界。就像小妖怪们最终保护了浪浪山一样，我们也能保护好我们的地球家园。</p>
+                    </div>
+
+                    <div class="review-section">
+                        <h3>🌟 给同龄人的建议</h3>
+                        <p>我想对同龄的朋友们说：不要因为这是一部动画片就小看它。好的电影不分类型，只要能触动人心、启发思考，就是好电影。《浪浪山小妖怪》用简单的故事讲述了深刻的道理，这正是它的价值所在。</p>
+                        
+                        <p>我们这一代人面临着前所未有的环境挑战，但我们也有前所未有的机会去改变现状。让我们像小妖怪们一样，勇敢地承担起自己的责任，为创造一个更美好的世界而努力！</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 电影评论网站 | 农类职业本科学生作品</p>
+        </div>
+    </footer>
+
+    <style>
+        .review-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .review-section {
+            background: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .review-section h3 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .review-section p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        
+        .review-section strong {
+            color: #333;
+        }
+    </style>
+</body>
+</html>
