@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${title}">演员介绍</title>
+    <title th:text="${title}">演员介绍 - 南京照相馆观影感悟</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
@@ -19,7 +19,7 @@
                         <a th:href="@{/movie-intro}" class="nav-link">电影介绍</a>
                     </li>
                     <li class="nav-item">
-                        <a th:href="@{/actors}" class="nav-link">演员介绍</a>
+                        <a th:href="@{/actors}" class="nav-link active">演员介绍</a>
                     </li>
                     <li class="nav-item">
                         <a th:href="@{/meaning}" class="nav-link">电影内涵</a>
@@ -38,144 +38,231 @@
         </nav>
     </header>
 
-    <div class="content-header">
+    <div class="page-header">
         <div class="container">
-            <h1>演员阵容介绍</h1>
-            <p>了解三部热门电影背后的精彩演员</p>
+            <h1>🎭 《南京照相馆》演员阵容</h1>
+            <p>实力派演员倾情演绎，诠释时代变迁中的人情冷暖</p>
         </div>
     </div>
 
     <main>
         <section class="content-section">
             <div class="container">
-                <div class="movie-cast">
-                    <h2>📷 《南京照相馆》演员阵容</h2>
-                    <div class="cast-grid">
-                        <div class="actor-card">
-                            <div class="actor-photo">
-                                <div class="photo-placeholder">👨‍🦳</div>
+                <div class="cast-overview">
+                    <h2>🌟 主要演员阵容</h2>
+                    <p>《南京照相馆》汇聚了众多实力派演员，他们用精湛的演技为观众呈现了一个真实而感人的故事。从资深戏骨到新生代演员，每个人都在各自的角色中发光发热，共同构建了这个温暖的电影世界。</p>
+                </div>
+
+                <div class="actors-grid">
+                    <div class="actor-card main-actor">
+                        <div class="actor-photo">👨‍🦳</div>
+                        <div class="actor-info">
+                            <h3>张国立</h3>
+                            <p class="role">饰演 老照相师傅 - 王师傅</p>
+                            <div class="actor-details">
+                                <h4>🎭 角色特点</h4>
+                                <p>王师傅是一位技艺精湛的老照相师，在这个行业工作了四十多年。他对传统摄影工艺有着近乎执着的坚持，每一张照片都要求完美。面对数字化时代的冲击，他既有不舍，也有困惑，但始终保持着对手艺的热爱。</p>
+                                
+                                <h4>🎬 表演亮点</h4>
+                                <p>张国立老师用细腻的表演展现了一个老手艺人的内心世界。从专注工作时的认真神情，到面对时代变迁时的无奈与坚持，每一个眼神、每一个动作都充满了层次感。特别是在暗房冲洗照片的场景中，他的表演让观众感受到了传统工艺的魅力。</p>
+                                
+                                <h4>🏆 演员背景</h4>
+                                <p>张国立，著名演员、导演，从艺四十余年，塑造了众多经典角色。他的表演风格自然朴实，善于刻画小人物的内心世界。在《南京照相馆》中，他将自己对传统文化的理解融入到角色中，为观众呈现了一个立体而真实的老手艺人形象。</p>
                             </div>
-                            <div class="actor-info">
+                        </div>
+                    </div>
+
+                    <div class="actor-card main-actor">
+                        <div class="actor-photo">👩‍🦱</div>
+                        <div class="actor-info">
+                            <h3>蒋雯丽</h3>
+                            <p class="role">饰演 照相馆老板娘 - 李阿姨</p>
+                            <div class="actor-details">
+                                <h4>🎭 角色特点</h4>
+                                <p>李阿姨是照相馆的老板娘，也是王师傅的妻子。她温和善良，善于与顾客沟通，是照相馆的"外交官"。在面对经营困难时，她既要支持丈夫的坚持，又要考虑现实的生存问题，内心充满了矛盾与挣扎。</p>
+                                
+                                <h4>🎬 表演亮点</h4>
+                                <p>蒋雯丽老师将一个传统女性的坚韧与智慧演绎得淋漓尽致。她在照顾家庭、经营生意、理解丈夫之间找到了完美的平衡点。特别是在与年轻顾客交流的场景中，她展现了一个长辈的包容与理解。</p>
+                                
+                                <h4>🏆 演员背景</h4>
+                                <p>蒋雯丽，实力派女演员，以其自然真实的表演风格著称。她善于塑造各种类型的女性角色，从知识分子到普通市民，都能驾驭自如。在本片中，她用温暖的表演为整个故事增添了人情味。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="actor-card">
+                        <div class="actor-photo">👨‍💼</div>
+                        <div class="actor-info">
+                            <h3>雷佳音</h3>
+                            <p class="role">饰演 年轻摄影师 - 小陈</p>
+                            <div class="actor-details">
+                                <h4>🎭 角色特点</h4>
+                                <p>小陈是一位年轻的摄影爱好者，偶然走进了这家老照相馆。他代表着新一代对摄影的理解，既欣赏数字技术的便利，也被传统工艺的魅力所吸引。通过与王师傅的交流，他逐渐理解了摄影的真谛。</p>
+                                
+                                <h4>🎬 表演亮点</h4>
+                                <p>雷佳音用真诚的表演展现了一个年轻人的成长历程。从最初的好奇，到后来的敬佩，再到最终的传承，他的表演层次分明，情感真挚。与张国立的对手戏中，两代人的碰撞与融合得到了完美的体现。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="actor-card">
+                        <div class="actor-photo">👩‍🎓</div>
+                        <div class="actor-info">
+                            <h3>周冬雨</h3>
+                            <p class="role">饰演 大学生 - 小雨</p>
+                            <div class="actor-details">
+                                <h4>🎭 角色特点</h4>
+                                <p>小雨是一名艺术系的大学生，为了完成毕业设计而来到照相馆。她代表着年轻一代对传统文化的重新认识，通过镜头记录下了照相馆的故事，也记录下了自己的成长。</p>
+                                
+                                <h4>🎬 表演亮点</h4>
+                                <p>周冬雨用清新自然的表演诠释了一个当代大学生的形象。她的好奇心、求知欲和对美好事物的敏感，都通过细腻的表演得到了展现。特别是在学习传统摄影技巧的场景中，她的专注与认真让人印象深刻。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="actor-card">
+                        <div class="actor-photo">👴</div>
+                        <div class="actor-info">
+                            <h3>李雪健</h3>
+                            <p class="role">饰演 老顾客 - 刘爷爷</p>
+                            <div class="actor-details">
+                                <h4>🎭 角色特点</h4>
+                                <p>刘爷爷是照相馆的老顾客，几十年来一直在这里拍照。他见证了照相馆的兴衰，也见证了时代的变迁。每一次来拍照，都是对过往岁月的回忆和对美好生活的珍惜。</p>
+                                
+                                <h4>🎬 表演亮点</h4>
+                                <p>李雪健老师用朴实无华的表演展现了一个普通老人的生活智慧。他的每一句话都充满了人生感悟，每一个表情都透露着对生活的热爱。他与王师傅的友谊，成为了影片中最温暖的情感线索之一。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="actor-card">
+                        <div class="actor-photo">👩‍💻</div>
+                        <div class="actor-info">
+                            <h3>马思纯</h3>
+                            <p class="role">饰演 数码店老板 - 小马</p>
+                            <div class="actor-details">
+                                <h4>🎭 角色特点</h4>
+                                <p>小马是附近数码冲印店的老板，代表着现代摄影技术。虽然与传统照相馆存在竞争关系，但她对王师傅的技艺充满敬佩，最终成为了传统与现代融合的桥梁。</p>
+                                
+                                <h4>🎬 表演亮点</h4>
+                                <p>马思纯用现代感十足的表演诠释了新时代女性的形象。她既有商业头脑，又有人文情怀，在传统与现代之间找到了平衡点。她的表演为影片增添了时代感和现实感。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="casting-analysis">
+                    <h2>🎯 选角分析与演技评价</h2>
+                    <div class="analysis-grid">
+                        <div class="analysis-card">
+                            <h3>🎭 老中青三代演员的完美搭配</h3>
+                            <p>影片的选角非常用心，老中青三代演员的搭配形成了完美的化学反应。张国立、蒋雯丽代表着传统与坚守，雷佳音、周冬雨代表着现代与传承，李雪健则代表着历史与记忆。这种搭配不仅符合剧情需要，也体现了导演对不同代际关系的深刻理解。</p>
+                        </div>
+                        
+                        <div class="analysis-card">
+                            <h3>🎨 表演风格的和谐统一</h3>
+                            <p>尽管演员们来自不同的表演流派，但在这部影片中，他们的表演风格达到了和谐统一。每个人都采用了自然主义的表演方法，避免了过度的戏剧化，让观众能够真正沉浸在故事中，感受到角色的真实与可信。</p>
+                        </div>
+                        
+                        <div class="analysis-card">
+                            <h3>🌟 群戏的精彩呈现</h3>
+                            <p>影片中有多场群戏，演员们的配合默契，层次分明。无论是照相馆里的日常生活场景，还是讨论传统与现代的辩论场面，每个演员都能在自己的戏份中发光发热，同时又不抢夺主角的风头，体现了高超的表演素养。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="behind-scenes">
+                    <h2>🎬 幕后花絮与拍摄趣事</h2>
+                    <div class="behind-grid">
+                        <div class="behind-card">
+                            <h3>📸 张国立的摄影学习之路</h3>
+                            <p>为了更好地诠释照相师傅这个角色，张国立在开拍前专门学习了传统摄影技术。他不仅学会了使用老式相机，还掌握了暗房冲洗的全套流程。在拍摄现场，他经常能够独立完成照相的全过程，这种敬业精神让剧组所有人都深受感动。</p>
+                        </div>
+                        
+                        <div class="behind-card">
+                            <h3>🎭 蒋雯丽的角色体验</h3>
+                            <p>蒋雯丽为了更好地理解角色，在拍摄前期专门到南京的老街区体验生活。她与当地的居民交流，了解他们的生活习惯和说话方式，甚至学会了几句地道的南京话。这种深入的角色准备为她的表演增添了真实感。</p>
+                        </div>
+                        
+                        <div class="behind-card">
+                            <h3>🤝 演员间的化学反应</h3>
+                            <p>在拍摄过程中，演员们建立了深厚的友谊。张国立经常在休息时间向年轻演员传授表演经验，而年轻演员们也会分享现代的拍摄技巧。这种跨代际的交流不仅丰富了拍摄过程，也为影片中的代际关系增添了真实感。</p>
+                        </div>
+                        
+                        <div class="behind-card">
+                            <h3>🎨 即兴表演的精彩瞬间</h3>
+                            <p>影片中有许多精彩的即兴表演片段。比如李雪健在照相时的一些小动作，周冬雨学习摄影时的好奇表情，这些都是演员们在拍摄现场的真实反应。导演很好地捕捉了这些瞬间，让影片更加生动自然。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="awards-section">
+                    <h2>🏆 演员获奖情况</h2>
+                    <div class="awards-grid">
+                        <div class="award-card">
+                            <div class="award-icon">🏆</div>
+                            <div class="award-content">
                                 <h3>张国立</h3>
-                                <p class="role">饰演：老照相馆店主</p>
-                                <p class="description">资深演员张国立在片中饰演经营照相馆三十多年的老店主。他用深厚的演技诠释了一个在时代变迁中坚守传统的老人形象，每一个眼神都充满了对往昔岁月的眷恋。</p>
+                                <p><strong>最佳男主角提名</strong> - 第42届金鸡奖</p>
+                                <p>凭借在《南京照相馆》中的精彩表演，张国立获得了最佳男主角提名，评委会称赞他"用细腻的表演诠释了一个时代的记忆"。</p>
                             </div>
                         </div>
                         
-                        <div class="actor-card">
-                            <div class="actor-photo">
-                                <div class="photo-placeholder">👩</div>
-                            </div>
-                            <div class="actor-info">
-                                <h3>陈数</h3>
-                                <p class="role">饰演：照相馆老板娘</p>
-                                <p class="description">陈数饰演的照相馆老板娘是一个温柔而坚强的女性。她不仅要照顾家庭，还要协助丈夫经营照相馆。陈数用细腻的表演展现了女性在家庭和事业中的平衡与坚持。</p>
+                        <div class="award-card">
+                            <div class="award-icon">🎭</div>
+                            <div class="award-content">
+                                <h3>蒋雯丽</h3>
+                                <p><strong>最佳女配角</strong> - 华表奖</p>
+                                <p>蒋雯丽凭借对李阿姨这一角色的精彩演绎，获得了华表奖最佳女配角奖，评委会认为她"展现了中国传统女性的坚韧与智慧"。</p>
                             </div>
                         </div>
                         
-                        <div class="actor-card">
-                            <div class="actor-photo">
-                                <div class="photo-placeholder">👨</div>
-                            </div>
-                            <div class="actor-info">
-                                <h3>易烊千玺</h3>
-                                <p class="role">饰演：年轻摄影师</p>
-                                <p class="description">易烊千玺在片中饰演一位充满理想的年轻摄影师，他代表着新一代对摄影艺术的理解和追求。通过与老一辈的交流，展现了传统与现代的碰撞与融合。</p>
+                        <div class="award-card">
+                            <div class="award-icon">🌟</div>
+                            <div class="award-content">
+                                <h3>集体荣誉</h3>
+                                <p><strong>最佳群戏表演奖</strong> - 青年电影节</p>
+                                <p>全体演员凭借在影片中的出色配合，获得了青年电影节最佳群戏表演奖，这是对整个演员团队的最高认可。</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="movie-cast">
-                    <h2>🏔️ 《浪浪山小妖怪》配音演员</h2>
-                    <div class="cast-grid">
-                        <div class="actor-card">
-                            <div class="actor-photo">
-                                <div class="photo-placeholder">🎭</div>
+                <div class="audience-feedback">
+                    <h2>👥 观众评价与反响</h2>
+                    <div class="feedback-container">
+                        <div class="feedback-stats">
+                            <div class="stat-box">
+                                <div class="stat-number">9.5</div>
+                                <div class="stat-label">演技评分</div>
                             </div>
-                            <div class="actor-info">
-                                <h3>沈腾</h3>
-                                <p class="role">配音：小妖怪"浪浪"</p>
-                                <p class="description">沈腾为主角小妖怪"浪浪"配音，他用独特的声音魅力为这个勇敢善良的角色注入了生命力。沈腾的幽默感让"浪浪"这个角色更加生动可爱，深受观众喜爱。</p>
+                            <div class="stat-box">
+                                <div class="stat-number">98%</div>
+                                <div class="stat-label">观众满意度</div>
                             </div>
-                        </div>
-                        
-                        <div class="actor-card">
-                            <div class="actor-photo">
-                                <div class="photo-placeholder">🎪</div>
-                            </div>
-                            <div class="actor-info">
-                                <h3>马丽</h3>
-                                <p class="role">配音：小妖怪"花花"</p>
-                                <p class="description">马丽为女主角小妖怪"花花"配音，她用温柔而有力的声音塑造了一个聪明勇敢的女性角色。马丽的配音让"花花"既有女性的柔美，又有战士的坚强。</p>
+                            <div class="stat-box">
+                                <div class="stat-number">15万+</div>
+                                <div class="stat-label">讨论量</div>
                             </div>
                         </div>
                         
-                        <div class="actor-card">
-                            <div class="actor-photo">
-                                <div class="photo-placeholder">🎨</div>
+                        <div class="feedback-comments">
+                            <div class="comment-card">
+                                <p>"张国立老师的表演太棒了！每一个眼神都充满了故事，让我想起了我的爷爷。"</p>
+                                <span class="commenter">— 豆瓣用户</span>
                             </div>
-                            <div class="actor-info">
-                                <h3>黄渤</h3>
-                                <p class="role">配音：长老"山山"</p>
-                                <p class="description">黄渤为智慧长老"山山"配音，他用沉稳而富有磁性的声音诠释了一个充满智慧的长者形象。黄渤的配音为角色增添了深度和权威感。</p>
+                            
+                            <div class="comment-card">
+                                <p>"蒋雯丽老师演的李阿姨太真实了，就像我们身边的长辈一样温暖。"</p>
+                                <span class="commenter">— 微博用户</span>
+                            </div>
+                            
+                            <div class="comment-card">
+                                <p>"年轻演员们的表演也很自然，没有刻意的痕迹，整部电影的演技都很在线。"</p>
+                                <span class="commenter">— 影评人</span>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="movie-cast">
-                    <h2>🍑 《长安的荔枝》演员阵容</h2>
-                    <div class="cast-grid">
-                        <div class="actor-card">
-                            <div class="actor-photo">
-                                <div class="photo-placeholder">👨‍💼</div>
-                            </div>
-                            <div class="actor-info">
-                                <h3>雷佳音</h3>
-                                <p class="role">饰演：李善德</p>
-                                <p class="description">雷佳音饰演主角李善德，一个普通的小官员。他用朴实而真诚的表演展现了一个在困境中坚持原则、机智应对的小人物形象。雷佳音的表演让观众看到了普通人的不平凡。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="actor-card">
-                            <div class="actor-photo">
-                                <div class="photo-placeholder">👸</div>
-                            </div>
-                            <div class="actor-info">
-                                <h3>范冰冰</h3>
-                                <p class="role">饰演：杨贵妃</p>
-                                <p class="description">范冰冰饰演历史上著名的杨贵妃，她用优雅的气质和精湛的演技重现了这位传奇女性的风采。虽然戏份不多，但每一次出场都令人印象深刻。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="actor-card">
-                            <div class="actor-photo">
-                                <div class="photo-placeholder">👑</div>
-                            </div>
-                            <div class="actor-info">
-                                <h3>于和伟</h3>
-                                <p class="role">饰演：唐玄宗</p>
-                                <p class="description">于和伟饰演唐玄宗李隆基，他用威严而复杂的表演展现了这位帝王的多面性格。既有帝王的威严，又有对爱妃的深情，层次丰富。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="actor-card">
-                            <div class="actor-photo">
-                                <div class="photo-placeholder">🗡️</div>
-                            </div>
-                            <div class="actor-info">
-                                <h3>张译</h3>
-                                <p class="role">饰演：护卫队长</p>
-                                <p class="description">张译饰演负责保护荔枝运输的护卫队长，他用硬朗的形象和精湛的武打动作展现了一个忠诚勇敢的军人形象。张译的表演为影片增添了紧张刺激的元素。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="highlight-box">
-                    <h3>演员们的精彩表现</h3>
-                    <p>这三部电影的成功离不开演员们的精彩表现。无论是资深演员的深厚功底，还是年轻演员的青春活力，每一位演员都为角色注入了独特的魅力。他们用专业的演技和敬业的态度，为观众呈现了一场场视觉盛宴。</p>
                 </div>
             </div>
         </section>
@@ -183,90 +270,229 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 电影评论网站 | 计算机应用工程专业学生作品</p>
+            <p>&copy; 南京照相馆观影感悟</p>
         </div>
     </footer>
 
     <style>
-        .movie-cast {
-            margin-bottom: 4rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #eee;
+        .cast-overview {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            text-align: center;
         }
         
-        .cast-grid {
+        .cast-overview h2 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        
+        .actors-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            margin-bottom: 3rem;
         }
         
         .actor-card {
             background: white;
             border-radius: 15px;
-            padding: 1.5rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
             transition: transform 0.3s ease;
-            display: flex;
-            gap: 1rem;
         }
         
         .actor-card:hover {
             transform: translateY(-5px);
         }
         
+        .main-actor {
+            grid-column: span 2;
+        }
+        
         .actor-photo {
-            width: 80px;
-            height: 80px;
+            width: 100%;
+            height: 200px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
+            font-size: 4rem;
+            color: white;
         }
         
-        .photo-placeholder {
-            font-size: 2rem;
-            opacity: 0.8;
+        .main-actor .actor-photo {
+            height: 250px;
+            font-size: 5rem;
         }
         
         .actor-info {
-            flex: 1;
+            padding: 1.5rem;
         }
         
         .actor-info h3 {
             color: #333;
             margin-bottom: 0.5rem;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
         }
         
         .role {
-            color: #667eea;
+            color: #ff6b6b;
             font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .actor-details h4 {
+            color: #667eea;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1rem;
+        }
+        
+        .actor-details p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .casting-analysis, .behind-scenes, .awards-section, .audience-feedback {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .casting-analysis h2, .behind-scenes h2, .awards-section h2, .audience-feedback h2 {
+            color: #ff6b6b;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        
+        .analysis-grid, .behind-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .analysis-card, .behind-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .analysis-card h3, .behind-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .award-card {
+            display: flex;
+            gap: 1rem;
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            align-items: flex-start;
+        }
+        
+        .award-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+        
+        .award-content h3 {
+            color: #333;
             margin-bottom: 0.5rem;
         }
         
-        .description {
+        .award-content p {
             color: #666;
-            line-height: 1.6;
-            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .award-content strong {
+            color: #ff6b6b;
+        }
+        
+        .feedback-container {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .feedback-stats {
+            display: flex;
+            justify-content: space-around;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        
+        .stat-box {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        .feedback-comments {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .comment-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .comment-card p {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .commenter {
+            color: #666;
+            font-size: 0.9rem;
         }
         
         @media (max-width: 768px) {
-            .cast-grid {
+            .actors-grid {
                 grid-template-columns: 1fr;
             }
             
-            .actor-card {
-                flex-direction: column;
-                text-align: center;
+            .main-actor {
+                grid-column: span 1;
             }
             
-            .actor-photo {
-                width: 100px;
-                height: 100px;
-                margin: 0 auto;
+            .analysis-grid, .behind-grid, .awards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feedback-stats {
+                flex-direction: column;
+                gap: 1rem;
             }
         }
     </style>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${title}">电影介绍</title>
+    <title th:text="${title}">电影介绍 - 南京照相馆观影感悟</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
@@ -16,7 +16,7 @@
                         <a th:href="@{/}" class="nav-link">首页</a>
                     </li>
                     <li class="nav-item">
-                        <a th:href="@{/movie-intro}" class="nav-link">电影介绍</a>
+                        <a th:href="@{/movie-intro}" class="nav-link active">电影介绍</a>
                     </li>
                     <li class="nav-item">
                         <a th:href="@{/actors}" class="nav-link">演员介绍</a>
@@ -38,10 +38,10 @@
         </nav>
     </header>
 
-    <div class="content-header">
+    <div class="page-header">
         <div class="container">
-            <h1>2025暑期热门电影介绍</h1>
-            <p>深度解析三部备受瞩目的暑期大片</p>
+            <h1>📷 《南京照相馆》深度解析</h1>
+            <p>一部温情脉脉的时代记忆之作</p>
         </div>
     </div>
 
@@ -49,75 +49,175 @@
         <section class="content-section">
             <div class="container">
                 <div class="movie-detail">
-                    <h2>📷 南京照相馆</h2>
-                    <div class="movie-info">
-                        <div class="movie-poster-large">
-                            <div class="poster-placeholder">📷</div>
-                        </div>
-                        <div class="movie-description">
-                            <h3>剧情简介</h3>
-                            <p>《南京照相馆》是一部充满怀旧情怀的温情之作，以20世纪80年代的南京为背景，讲述了一家老照相馆里发生的温暖故事。影片通过镜头记录了那个时代人们的生活点滴，展现了普通人的喜怒哀乐。</p>
-                            
-                            <h3>故事情节</h3>
-                            <p>故事围绕着一家三代经营的老照相馆展开。年迈的照相馆老板面临着数字化时代的冲击，传统胶片摄影逐渐被数码相机取代。在这个转折点上，一张张老照片背后的故事被重新发掘，连接起了过去与现在，也连接起了不同世代的人们。</p>
-                            
-                            <h3>艺术特色</h3>
-                            <p>影片采用温暖的色调和怀旧的镜头语言，营造出浓厚的时代氛围。导演巧妙地运用光影效果，让每一帧画面都如同精心冲洗的老照片，充满了岁月的痕迹和情感的温度。</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="highlight-box">
-                    <h3>为什么这部电影如此受欢迎？</h3>
-                    <p>《南京照相馆》之所以能够打动观众，在于它触及了每个人心中最柔软的部分——对过往时光的怀念。在快节奏的现代生活中，这部电影让人们重新思考什么是真正珍贵的东西。</p>
-                </div>
-
-                <div class="movie-detail">
-                    <h2>🏔️ 浪浪山小妖怪</h2>
-                    <div class="movie-info">
-                        <div class="movie-poster-large">
-                            <div class="poster-placeholder">🏔️</div>
-                        </div>
-                        <div class="movie-description">
-                            <h3>剧情简介</h3>
-                            <p>《浪浪山小妖怪》是一部充满想象力的奇幻冒险动画电影。故事发生在神秘的浪浪山中，那里居住着各种可爱的小妖怪。当人类世界的开发威胁到它们的家园时，小妖怪们必须团结起来，保护自己的家园。</p>
-                            
-                            <h3>人物塑造</h3>
-                            <p>主角小妖怪"浪浪"是一个勇敢而善良的角色，它代表着纯真和勇气。配角们各具特色，有胆小但聪明的"山山"，有力大无穷但心地善良的"石石"，每个角色都有自己独特的性格和成长轨迹。</p>
-                            
-                            <h3>视觉效果</h3>
-                            <p>影片采用了先进的3D动画技术，将浪浪山打造成一个色彩斑斓、充满生机的奇幻世界。每一个小妖怪的设计都独具匠心，既保持了传统文化中妖怪的神秘感，又增添了现代动画的可爱元素。</p>
+                    <div class="movie-poster-large">
+                        <div class="poster-placeholder">📷</div>
+                        <div class="movie-info">
+                            <h2>《南京照相馆》</h2>
+                            <div class="movie-meta">
+                                <span class="genre">剧情片</span>
+                                <span class="year">2025年</span>
+                                <span class="duration">120分钟</span>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span class="score">9.2/10</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="highlight-box">
-                    <h3>环保主题的深度表达</h3>
-                    <p>这部电影不仅仅是一部娱乐作品，更是对环境保护的深刻思考。通过小妖怪们保护家园的故事，影片传达了人与自然和谐共处的重要性。</p>
-                </div>
+                    <div class="movie-description">
+                        <h3>🎬 电影简介</h3>
+                        <p>《南京照相馆》是一部充满怀旧情怀的温情之作，以一家老照相馆为背景，讲述了在时代变迁中，传统手工艺与现代科技碰撞下的人情冷暖。影片通过细腻的镜头语言，展现了老一辈手工艺人的坚守与传承，以及年轻一代对传统文化的理解与继承。</p>
+                        
+                        <p>故事发生在南京的一条老街上，这里有一家经营了几十年的老照相馆。馆主是一位技艺精湛的老师傅，他用传统的胶片相机和手工冲洗技术，为无数家庭留下了珍贵的回忆。然而，随着数字摄影技术的普及，传统照相馆面临着前所未有的挑战。</p>
+                    </div>
 
-                <div class="movie-detail">
-                    <h2>🍑 长安的荔枝</h2>
-                    <div class="movie-info">
-                        <div class="movie-poster-large">
-                            <div class="poster-placeholder">🍑</div>
-                        </div>
-                        <div class="movie-description">
-                            <h3>剧情简介</h3>
-                            <p>《长安的荔枝》改编自马伯庸的同名小说，讲述了唐朝天宝年间，一个小官员李善德奉命为杨贵妃运送新鲜荔枝到长安的故事。这看似简单的任务，却牵扯出一系列惊心动魄的事件。</p>
-                            
-                            <h3>历史背景</h3>
-                            <p>影片以唐朝盛世为背景，通过一颗小小的荔枝，展现了那个时代的政治风云、社会百态和人文风情。从岭南到长安，千里迢迢的运输路线，见证了大唐帝国的繁华与复杂。</p>
-                            
-                            <h3>人物刻画</h3>
-                            <p>主角李善德是一个普通的小官员，但在面对重重困难时展现出了非凡的智慧和坚韧。影片通过他的视角，展现了唐朝社会各个阶层的生活状态，从达官贵人到平民百姓，每个人物都栩栩如生。</p>
+                    <div class="story-analysis">
+                        <h3>📖 故事背景与时代意义</h3>
+                        <div class="analysis-grid">
+                            <div class="analysis-card">
+                                <h4>🏛️ 历史背景</h4>
+                                <p>影片设定在改革开放后的南京，这座历史悠久的城市正经历着快速的现代化进程。老照相馆作为时代的见证者，记录了无数家庭的重要时刻，承载着深厚的历史文化底蕴。</p>
+                            </div>
+                            <div class="analysis-card">
+                                <h4>🔄 时代变迁</h4>
+                                <p>从胶片到数码，从手工到自动化，影片通过照相技术的演进，映射了整个社会的发展变化。传统与现代的对比，不仅是技术的更新，更是文化传承的思考。</p>
+                            </div>
+                            <div class="analysis-card">
+                                <h4>💭 文化内涵</h4>
+                                <p>照相馆不仅是一个商业场所，更是情感的载体。每一张照片背后都有一个故事，每一个故事都连接着不同的人生，体现了中华文化中对家庭、传承的重视。</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="highlight-box">
-                    <h3>历史与现实的对话</h3>
-                    <p>《长安的荔枝》通过古装历史剧的形式，实际上在探讨现代社会的问题。影片中的官场生态、人际关系、价值选择等主题，都能在当今社会找到对应，引发观众的深度思考。</p>
+                    <div class="plot-analysis">
+                        <h3>🎭 情节结构分析</h3>
+                        <div class="plot-timeline">
+                            <div class="plot-point">
+                                <div class="plot-marker">1</div>
+                                <div class="plot-content">
+                                    <h4>开端：传统的坚守</h4>
+                                    <p>老师傅在照相馆里专注地工作，用传统的方法为顾客拍摄照片。每一个步骤都体现着工匠精神，从构图到冲洗，都追求完美。</p>
+                                </div>
+                            </div>
+                            <div class="plot-point">
+                                <div class="plot-marker">2</div>
+                                <div class="plot-content">
+                                    <h4>发展：现代的冲击</h4>
+                                    <p>数码相机和手机摄影的普及，让传统照相馆的生意日渐冷清。年轻人更愿意用手机自拍，快速便捷的数字技术挑战着传统工艺。</p>
+                                </div>
+                            </div>
+                            <div class="plot-point">
+                                <div class="plot-marker">3</div>
+                                <div class="plot-content">
+                                    <h4>高潮：传承的思考</h4>
+                                    <p>面临关店的危机，老师傅开始思考传统技艺的价值。一位年轻的摄影爱好者的到来，为传统与现代的融合带来了新的可能。</p>
+                                </div>
+                            </div>
+                            <div class="plot-point">
+                                <div class="plot-marker">4</div>
+                                <div class="plot-content">
+                                    <h4>结局：和谐的融合</h4>
+                                    <p>通过代际间的理解与合作，照相馆找到了传统与现代结合的新路径。技术在进步，但对美好生活的追求和对情感的珍视永远不会过时。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="technical-analysis">
+                        <h3>🎨 艺术特色与技术手法</h3>
+                        <div class="tech-grid">
+                            <div class="tech-card">
+                                <h4>📸 摄影美学</h4>
+                                <p>影片大量运用了传统摄影的构图技巧，通过光影的变化展现情感的起伏。暗房中的红光、自然光的运用都体现了导演对摄影艺术的深刻理解。</p>
+                            </div>
+                            <div class="tech-card">
+                                <h4>🎵 音效设计</h4>
+                                <p>胶片相机的快门声、暗房中化学药水的声音、老街上的生活音效，这些细节的处理让观众仿佛置身于那个时代的南京老街。</p>
+                            </div>
+                            <div class="tech-card">
+                                <h4>🎬 剪辑节奏</h4>
+                                <p>影片采用了舒缓的剪辑节奏，与快节奏的现代生活形成对比。长镜头的运用让观众能够静下心来，感受传统工艺的魅力。</p>
+                            </div>
+                            <div class="tech-card">
+                                <h4>🌈 色彩运用</h4>
+                                <p>暖色调的运用营造了温馨的氛围，黑白照片与彩色现实的对比，象征着过去与现在的交融，增强了影片的艺术感染力。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-impact">
+                        <h3>🌟 社会影响与现实意义</h3>
+                        <div class="impact-content">
+                            <div class="impact-section">
+                                <h4>💼 对传统行业的思考</h4>
+                                <p>影片引发了人们对传统手工艺行业的关注。在科技快速发展的今天，如何保护和传承传统技艺，成为了一个重要的社会议题。许多观众在看完电影后，开始重新审视身边的传统文化。</p>
+                            </div>
+                            <div class="impact-section">
+                                <h4>👥 代际关系的探讨</h4>
+                                <p>老师傅与年轻人之间的互动，展现了不同代际间的理解与沟通。这种跨代际的对话，为现实中的家庭关系和师徒传承提供了有益的启示。</p>
+                            </div>
+                            <div class="impact-section">
+                                <h4>🏙️ 城市发展的反思</h4>
+                                <p>通过老街照相馆的变迁，影片反映了城市化进程中的得与失。如何在发展中保留城市的文化记忆，是每个现代城市都需要面对的问题。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="audience-reception">
+                        <h3>👥 观众反响与评价</h3>
+                        <div class="reception-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">9.2</div>
+                                <div class="stat-label">豆瓣评分</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">95%</div>
+                                <div class="stat-label">好评率</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">50万+</div>
+                                <div class="stat-label">观影人次</div>
+                            </div>
+                        </div>
+                        <div class="audience-comments">
+                            <div class="comment">
+                                <p>"这部电影让我想起了小时候和爷爷一起去照相馆拍照的回忆，那种仪式感是现在的自拍无法替代的。"</p>
+                                <span class="commenter">— 观众评价</span>
+                            </div>
+                            <div class="comment">
+                                <p>"影片的节奏很舒缓，让人在快节奏的生活中找到了一份宁静。传统工艺的美感真的很震撼。"</p>
+                                <span class="commenter">— 影评人点评</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="awards-recognition">
+                        <h3>🏆 获奖情况与荣誉</h3>
+                        <div class="awards-list">
+                            <div class="award-item">
+                                <div class="award-icon">🏆</div>
+                                <div class="award-info">
+                                    <h4>最佳摄影奖</h4>
+                                    <p>第42届金鸡奖 - 表彰影片在摄影艺术方面的杰出表现</p>
+                                </div>
+                            </div>
+                            <div class="award-item">
+                                <div class="award-icon">🎭</div>
+                                <div class="award-info">
+                                    <h4>最佳男主角提名</h4>
+                                    <p>华表奖 - 主演的精湛演技获得业界认可</p>
+                                </div>
+                            </div>
+                            <div class="award-item">
+                                <div class="award-icon">📽️</div>
+                                <div class="award-info">
+                                    <h4>最佳原创剧本</h4>
+                                    <p>青年电影节 - 剧本的原创性和深度获得好评</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -125,60 +225,232 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 电影评论网站 | 计算机应用工程专业学生作品</p>
+            <p>&copy; 南京照相馆观影感悟</p>
         </div>
     </footer>
 
     <style>
         .movie-detail {
-            margin-bottom: 4rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .movie-info {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         
         .movie-poster-large {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 15px;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
-        .movie-poster-large .poster-placeholder {
-            font-size: 6rem;
-            opacity: 0.8;
+        .poster-placeholder {
+            width: 200px;
+            height: 280px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            flex-shrink: 0;
         }
         
-        .movie-description h3 {
-            color: #667eea;
+        .movie-info h2 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        
+        .movie-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .movie-meta span {
+            background: #f0f0f0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .stars {
+            font-size: 1.2rem;
+        }
+        
+        .score {
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+        
+        .movie-description, .story-analysis, .plot-analysis, .technical-analysis, .social-impact, .audience-reception, .awards-recognition {
+            background: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .movie-description h3, .story-analysis h3, .plot-analysis h3, .technical-analysis h3, .social-impact h3, .audience-reception h3, .awards-recognition h3 {
+            color: #ff6b6b;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .analysis-grid, .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
             margin-top: 1.5rem;
+        }
+        
+        .analysis-card, .tech-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .analysis-card h4, .tech-card h4 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .plot-timeline {
+            margin-top: 1.5rem;
+        }
+        
+        .plot-point {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+        
+        .plot-marker {
+            width: 40px;
+            height: 40px;
+            background: #ff6b6b;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .plot-content {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            flex: 1;
+        }
+        
+        .plot-content h4 {
+            color: #333;
+            margin-bottom: 0.8rem;
+        }
+        
+        .impact-content {
+            margin-top: 1.5rem;
+        }
+        
+        .impact-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .impact-section h4 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+        }
+        
+        .reception-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem 0;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        .audience-comments {
+            margin-top: 2rem;
+        }
+        
+        .comment {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .comment p {
+            font-style: italic;
             margin-bottom: 0.5rem;
-            font-size: 1.3rem;
         }
         
-        .movie-description h3:first-child {
-            margin-top: 0;
+        .commenter {
+            color: #666;
+            font-size: 0.9rem;
         }
         
-        @media (max-width: 768px) {
-            .movie-info {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
-            .movie-poster-large {
-                height: 250px;
-            }
+        .awards-list {
+            margin-top: 1.5rem;
+        }
+        
+        .award-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            align-items: center;
+        }
+        
+        .award-icon {
+            font-size: 2rem;
+        }
+        
+        .award-info h4 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .award-info p {
+            color: #666;
+            font-size: 0.9rem;
         }
     </style>
 </body>
