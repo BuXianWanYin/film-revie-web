@@ -5,6 +5,221 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="${title}">覃照睿的观影感悟</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航栏样式已在全局CSS中定义 */
+
+        /* 博客头部 */
+        .blog-header {
+            margin-top: 0;
+            padding: 6rem 0 4rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .blog-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .blog-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .author-info {
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* 博客内容区域 */
+        .blog-content {
+            padding: 4rem 0;
+        }
+
+        .blog-post {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .post-meta {
+            padding: 2rem 2rem 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 2rem;
+        }
+
+        .post-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+
+        .post-content {
+            padding: 0 2rem 2rem;
+        }
+
+        .post-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+        }
+
+        .section-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            position: relative;
+            font-style: italic;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+
+        .highlight-text {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .blog-title {
+                font-size: 2rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .post-content {
+                padding: 0 1rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        .main-layout {
+            display: flex;
+            justify-content: center;
+            align-items: start;
+        }
+
+        .blog-post {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .active-review {
+            background-color: rgba(231, 76, 60, 0.1) !important;
+            color: #e74c3c !important;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -38,386 +253,115 @@
         </nav>
     </header>
 
-    <main>
-        <!-- 个人信息头部 -->
-        <div class="profile-header">
-            <div class="container">
-                <div class="profile-card">
-                    <div class="profile-avatar">
-                        <div class="avatar-circle">👩</div>
-                        <div class="avatar-decoration"></div>
-                    </div>
-                    <div class="profile-info">
-                        <h1>覃照睿</h1>
-                        <p class="profile-subtitle">农类职业本科学生</p>
-                        <div class="profile-meta">
-                            <div class="meta-item">
-                                <span>🎓</span>
-                                <span>计算机应用工程</span>
-                            </div>
-                            <div class="meta-item">
-                                <span>📅</span>
-                                <span>2024年观影</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- 博客头部 -->
+    <header class="blog-header">
+        <div class="container">
+            <h1 class="blog-title">覃照睿</h1>
+         
+            <div class="author-info">
+                <div class="author-avatar">覃</div>
+                <p>计算机应用工程 | 文字记录者</p>
+                   <p class="blog-subtitle">用文字记录电影带给我们的感动与思考</p>
             </div>
         </div>
+    </header>
 
-        <!-- 观影感悟内容 -->
-        <div class="review-content">
-            <div class="container">
-                <div class="analysis-grid">
-                    <div class="analysis-card">
-                        <div class="card-header">
-                            <span class="card-icon">💝</span>
-                            <h2>情感体验</h2>
-                        </div>
-                        <p>《南京照相馆》是一部让人心灵震撼的作品。影片中每一个细节都充满了温情，让我深深感受到了人与人之间最纯真的情感。特别是那些关于家庭、友情和爱情的描绘，都让我想起了自己生活中的美好时光。</p>
-                        <p>这种真挚的情感表达让我明白，最珍贵的不是物质财富，而是那些温暖的人际关系和美好的回忆。</p>
-                    </div>
-                    
-                    <div class="analysis-card">
-                        <div class="card-header">
-                            <span class="card-icon">🌸</span>
-                            <h2>女性视角</h2>
-                        </div>
-                        <p>作为女性观众，我特别关注影片中女性角色的塑造。她们既有传统女性的温柔贤淑，又展现出了独立自主的现代女性特质。这种平衡让我深受启发。</p>
-                        <p>影片告诉我们，女性可以在保持自己温柔本性的同时，也要有自己的追求和理想，这种内在的力量是最美丽的。</p>
-                    </div>
-                    
-                    <div class="analysis-card full-width">
-                        <div class="card-header">
-                            <span class="card-icon">🎨</span>
-                            <h2>艺术美感</h2>
-                        </div>
-                        <p>导演对色彩和构图的运用令人赞叹。每一帧画面都像是精心绘制的油画，温暖的色调营造出了怀旧而温馨的氛围。特别是那些关于照相馆内部的镜头，光影交错间透露出浓浓的生活气息。</p>
-                        <p>音乐的选择也恰到好处，轻柔的旋律与画面完美融合，让整部影片具有了诗一般的韵律美。这种艺术表现力让我对电影艺术有了更深的理解和欣赏。</p>
-                    </div>
-                </div>
-                
-                <div class="highlight-section">
-                    <h2>最触动心灵的瞬间</h2>
-                    <p>最让我感动的是一位母亲带着女儿来拍照的场景。母亲眼中的慈爱和女儿脸上的纯真笑容，那一刻仿佛时间静止了。这让我想起了自己和母亲的温馨时光，也让我更加珍惜与家人在一起的每一个瞬间。</p>
-                </div>
-                
-                <div class="personal-insights">
-                    <h2>🌟 人生感悟</h2>
-                    <div class="thinking-cards">
-                        <div class="thinking-card">
-                            <span class="thinking-icon">💕</span>
-                            <h3>爱的力量</h3>
-                            <p>真正的爱是无私的付出和默默的守护，它能够跨越时间和空间，温暖每一个人的心。</p>
-                        </div>
-                        <div class="thinking-card">
-                            <span class="thinking-icon">🌺</span>
-                            <h3>美的发现</h3>
-                            <p>生活中处处都有美，关键是要有一双善于发现美的眼睛和一颗感受美的心。</p>
-                        </div>
-                        <div class="thinking-card">
-                            <span class="thinking-icon">🤗</span>
-                            <h3>温暖传递</h3>
-                            <p>每个人都可以成为别人生命中的温暖，用自己的善良和真诚去感染身边的人。</p>
+    <!-- 主要内容区域 -->
+    <main class="blog-content">
+        <div class="container">
+            <div class="main-layout">
+                <!-- 博客文章 -->
+                <article class="blog-post">
+                    <div class="post-meta">
+                        <div class="post-date">发布于 2025</div>
+                        <div class="post-tags">
+                            <span class="tag">剧情片</span>
+                            <span class="tag">历史</span>
+                            <span class="tag">人文</span>
+                            <span class="tag">南京</span>
                         </div>
                     </div>
-                    
-                    <div class="personal-connection">
-                        <span class="connection-icon">🌈</span>
-                        <p>这部影片让我重新审视了自己的生活态度。我要学会更加珍惜身边的人和事，用更加温柔和包容的心去对待这个世界。同时，我也要保持自己的独立和追求，在温柔中展现坚强，在柔美中彰显力量。</p>
+
+                    <div class="post-content">
+                        <section class="post-section">
+                            <h2 class="section-title">初遇《南京照相馆》</h2>
+                            <div class="section-content">
+                                <p>在这个快节奏的时代，很少有电影能让我静下心来，细细品味每一个镜头的深意。《南京照相馆》就是这样一部作品，它没有华丽的特效，没有跌宕起伏的情节，却用最朴实的镜头语言，讲述了一个关于<span class="highlight-text">记忆、传承与人性温暖</span>的故事。</p>
+                                
+                                <p>选择这部电影，源于对历史题材的特殊情感。作为一名年轻人，我总是好奇那些被时光掩埋的故事，想要通过影像去触摸历史的温度。《南京照相馆》恰好满足了我的这种渴望。</p>
+                            </div>
+                        </section>
+
+                        <section class="post-section">
+                            <h2 class="section-title">镜头下的人生百态</h2>
+                            <div class="section-content">
+                                <p>电影通过一家照相馆的视角，展现了南京这座城市的变迁。每一张照片都是一个故事，每一个故事都承载着一段历史。导演用细腻的镜头语言，将<span class="highlight-text">个人命运与时代变迁</span>巧妙地交织在一起。</p>
+                                
+                                <div class="quote-box">
+                                    照片定格的不仅仅是瞬间，更是那个时代人们的希望、梦想和对美好生活的向往。
+                                </div>
+                                
+                                <p>影片中最打动我的是那些平凡人物的真实情感。无论是照相馆老板的坚守，还是顾客们对美好生活的憧憬，都让我感受到了人性中最珍贵的品质——<span class="highlight-text">坚韧与希望</span>。</p>
+                            </div>
+                        </section>
+
+                        <section class="post-section">
+                            <h2 class="section-title">最难忘的一幕</h2>
+                            <div class="section-content">
+                                <p>如果要选择影片中最触动我的一个场景，那一定是老照相师在战火中保护照片的那一幕。当炮火连天，所有人都在逃命的时候，他却冒着生命危险回到照相馆，小心翼翼地收拾那些珍贵的照片。</p>
+                                
+                                <p>那一刻，我突然明白了什么叫做<span class="highlight-text">"文化的传承"</span>。这些照片不仅仅是影像，更是历史的见证，是无数家庭的记忆载体。老照相师的行为，体现了一种对文化、对历史、对人性的深深敬畏。</p>
+                            </div>
+                        </section>
+
+                        <section class="post-section">
+                            <h2 class="section-title">专业视角的思考</h2>
+                            <div class="section-content">
+                                <p>从电影制作的角度来看，《南京照相馆》在以下几个方面表现出色：</p>
+                                
+                                <p><strong>视觉语言：</strong>导演运用了大量的静态镜头和长镜头，营造出一种沉静、深沉的氛围。这种拍摄手法与照相馆的主题形成了完美的呼应。</p>
+                                
+                                <p><strong>色彩运用：</strong>影片整体色调偏向暖黄色，给人一种怀旧、温暖的感觉。这种色彩选择不仅符合历史题材的特点，也增强了观众的情感共鸣。</p>
+                                
+                                <p><strong>音效设计：</strong>片中的音效设计非常细腻，从照相机的快门声到街道上的嘈杂声，每一个声音都恰到好处地烘托了氛围。</p>
+                            </div>
+                        </section>
+
+                        <section class="post-section">
+                            <h2 class="section-title">个人感悟与反思</h2>
+                            <div class="section-content">
+                                <p>看完《南京照相馆》，我陷入了深深的思考。在这个数字化的时代，我们拍照变得如此容易，随手一拍就是成百上千张照片。但是，我们是否还记得照片背后的故事？是否还珍惜那些定格的瞬间？</p>
+                                
+                                <div class="quote-box">
+                                    真正的艺术不在于技术的高超，而在于能否触动人心，能否让观众在观影后有所思考、有所感悟。
+                                </div>
+                                
+                                <p>这部电影让我重新审视了<span class="highlight-text">记忆与传承</span>的意义。每一张照片都是历史的片段，每一个故事都值得被记录和传承。作为年轻一代，我们有责任去了解历史，去珍惜当下，去为未来留下有意义的记录。</p>
+                                
+                                <p>同时，影片也让我思考了艺术创作的本质。真正优秀的作品不需要华丽的包装，只需要真诚的情感和深刻的内涵。《南京照相馆》正是这样一部作品，它用最朴实的方式，传达了最深刻的主题。</p>
+                            </div>
+                        </section>
+
+                        <section class="post-section">
+                            <h2 class="section-title">结语</h2>
+                            <div class="section-content">
+                                <p>《南京照相馆》是一部值得反复观看和思考的电影。它不仅仅是一部历史题材的作品，更是一面镜子，让我们看到了人性的光辉，看到了文化传承的重要性，也看到了艺术创作的真谛。</p>
+                                
+                                <p>在这个快速变化的时代，我们需要这样的作品来提醒我们：<span class="highlight-text">不要忘记历史，不要忽视平凡，不要失去对美好的向往</span>。</p>
+                                
+                                <p>愿每一个观看这部电影的人，都能在光影交错中找到属于自己的感动和思考。</p>
+                            </div>
+                        </section>
                     </div>
-                </div>
-                
-                <div class="final-quote">
-                    <p>"最美的不是风景，而是看风景的心情；最珍贵的不是照片，而是照片背后的故事和情感。《南京照相馆》教会了我如何用心去感受生活的美好。"</p>
-                </div>
+                </article>
             </div>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 南京照相馆观影感悟 - 覃照睿</p>
+            <p>&copy; 2025 南京照相馆观影感悟. </p>
         </div>
     </footer>
-
-    <style>
-        /* 个人信息头部样式 */
-        .profile-header {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 3rem 0;
-            border-bottom: 1px solid #dee2e6;
-        }
-        
-        .profile-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            border: 1px solid #e9ecef;
-        }
-        
-        .profile-avatar {
-            position: relative;
-        }
-        
-        .avatar-circle {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: white;
-            box-shadow: 0 4px 15px rgba(253, 121, 168, 0.3);
-        }
-        
-        .avatar-decoration {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            width: 30px;
-            height: 30px;
-            background: #a29bfe;
-            border-radius: 50%;
-            border: 3px solid white;
-        }
-        
-        .profile-info h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #2d3436;
-        }
-        
-        .profile-subtitle {
-            font-size: 1.1rem;
-            color: #636e72;
-            margin-bottom: 1rem;
-        }
-        
-        .profile-meta {
-            display: flex;
-            gap: 2rem;
-            font-size: 0.95rem;
-        }
-        
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #fd79a8;
-        }
-        
-        /* 观影感悟内容样式 */
-        .review-content {
-            background: #f8f9fa;
-            padding: 3rem 0;
-        }
-        
-        .analysis-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .analysis-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            border: 1px solid #e9ecef;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        
-        .analysis-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-        }
-        
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #f1f3f4;
-        }
-        
-        .card-icon {
-            font-size: 2.2rem;
-            color: #fd79a8;
-        }
-        
-        .card-header h2 {
-            color: #2d3436;
-            font-size: 1.4rem;
-            margin: 0;
-            font-weight: 600;
-        }
-        
-        .analysis-card p {
-            color: #636e72;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
-        }
-        
-        .full-width {
-            grid-column: 1 / -1;
-        }
-        
-        .highlight-section {
-            background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
-            color: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            text-align: center;
-            margin: 2rem 0;
-            box-shadow: 0 8px 30px rgba(253, 121, 168, 0.2);
-        }
-        
-        .highlight-section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        
-        .highlight-section p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            opacity: 0.95;
-        }
-        
-        .personal-insights {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 1px solid #e9ecef;
-        }
-        
-        .personal-insights h2 {
-            color: #2d3436;
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            font-weight: 600;
-        }
-        
-        .thinking-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .thinking-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid #e9ecef;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-        
-        .thinking-card:hover {
-            transform: translateY(-2px);
-        }
-        
-        .thinking-icon {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            display: block;
-            color: #a29bfe;
-        }
-        
-        .thinking-card h3 {
-            color: #2d3436;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-        
-        .thinking-card p {
-            color: #636e72;
-            line-height: 1.7;
-            font-size: 1.05rem;
-        }
-        
-        .personal-connection {
-            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            box-shadow: 0 6px 20px rgba(162, 155, 254, 0.2);
-        }
-        
-        .connection-icon {
-            font-size: 2rem;
-            flex-shrink: 0;
-            opacity: 0.9;
-        }
-        
-        .personal-connection p {
-            margin: 0;
-            line-height: 1.7;
-            font-size: 1.05rem;
-        }
-        
-        .final-quote {
-            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
-            color: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            text-align: center;
-            margin-top: 2rem;
-            box-shadow: 0 8px 30px rgba(0, 184, 148, 0.2);
-        }
-        
-        .final-quote p {
-            margin: 0;
-            font-size: 1.2rem;
-            line-height: 1.7;
-            font-style: italic;
-            opacity: 0.95;
-        }
-        
-        @media (max-width: 768px) {
-            .profile-card {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .profile-meta {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            .analysis-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .full-width {
-                grid-column: span 1;
-            }
-            
-            .thinking-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </body>
 </html>

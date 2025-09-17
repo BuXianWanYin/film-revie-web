@@ -30,7 +30,7 @@
                             <li><a th:href="@{/review/qinguijin}">覃桂锦</a></li>
                             <li><a th:href="@{/review/zhubinbo}" class="active-review">朱斌博</a></li>
                             <li><a th:href="@{/review/suzixiang}">苏子翔</a></li>
-                            <li><a th:href="@{/review/qinzhaorui}">秦昭睿</a></li>
+                            <li><a th:href="@{/review/qinzhaorui}">覃照睿</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -39,25 +39,29 @@
     </header>
 
     <main>
-        <!-- 个人信息头部 -->
-        <div class="profile-header">
+        <!-- 个人简介区域 -->
+        <div class="hero-section">
             <div class="container">
-                <div class="profile-card">
-                    <div class="profile-avatar">
-                        <div class="avatar-circle">👨</div>
-                        <div class="avatar-decoration"></div>
-                    </div>
-                    <div class="profile-info">
-                        <h1>朱斌博</h1>
-                        <p class="profile-subtitle">农类职业本科学生</p>
-                        <div class="profile-meta">
-                            <div class="meta-item">
-                                <span>🎓</span>
-                                <span>计算机应用工程</span>
+                <div class="hero-content">
+                    <div class="profile-intro">
+                        <div class="avatar-section">
+                            <div class="avatar-wrapper">
+                                <div class="avatar-image">👨‍💼</div>
+                                <div class="avatar-glow"></div>
                             </div>
-                            <div class="meta-item">
-                                <span>📅</span>
-                                <span>2024年观影</span>
+                            <div class="name-title">
+                                <h1 th:text="${studentName}">朱斌博</h1>
+                                <div class="specialty-tags">
+                                    <span class="tag">📚 计算机应用工程</span>
+                                    <span class="tag">🎭 文艺青年</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="intro-quote">
+                            <div class="quote-container">
+                                <div class="quote-mark">❝</div>
+                                <p class="quote-text">电影是时间的艺术，每一帧都承载着生命的重量</p>
+                                <div class="quote-author">— 我的观影理念</div>
                             </div>
                         </div>
                     </div>
@@ -65,71 +69,239 @@
             </div>
         </div>
 
-        <!-- 观影感悟内容 -->
-        <div class="review-content">
+        <!-- 时间轴主体内容 -->
+        <div class="timeline-section">
             <div class="container">
-                <div class="analysis-grid">
-                    <div class="analysis-card">
-                        <div class="card-header">
-                            <span class="card-icon">🎬</span>
-                            <h2>电影印象</h2>
-                        </div>
-                        <p>《南京照相馆》以其独特的视角和深刻的情感表达，让我深深震撼。影片通过一个小小的照相馆，展现了那个特殊年代下普通人的生活状态和精神追求。</p>
-                        <p>导演巧妙地运用了光影对比，将战争的残酷与人性的温暖形成鲜明对照，每一个镜头都充满了深意。</p>
-                    </div>
-                    
-                    <div class="analysis-card">
-                        <div class="card-header">
-                            <span class="card-icon">💭</span>
-                            <h2>深度思考</h2>
-                        </div>
-                        <p>影片让我思考的不仅仅是历史的沉重，更是人性在极端环境下的坚韧与光辉。照相馆老板的坚持，顾客们的信任，都体现了人与人之间最珍贵的情感纽带。</p>
-                        <p>这种情感的力量，超越了时代的局限，成为了永恒的主题。</p>
-                    </div>
-                    
-                    <div class="analysis-card full-width">
-                        <div class="card-header">
-                            <span class="card-icon">🌟</span>
-                            <h2>艺术价值</h2>
-                        </div>
-                        <p>从技术层面来看，影片的摄影技巧令人印象深刻。黑白与彩色的交替使用，不仅增强了视觉冲击力，更深化了主题表达。音乐的运用也恰到好处，既不喧宾夺主，又能很好地烘托情感氛围。</p>
-                        <p>演员们的表演自然真实，特别是主角的眼神戏，传达出了丰富的内心世界。这些艺术元素的完美结合，使得影片具有了很高的艺术价值。</p>
-                    </div>
+                <div class="section-title">
+                    <h2>🎬 《南京照相馆》观影时间轴</h2>
+                    <p class="section-subtitle">跟随我的观影历程，感受这部电影带来的心灵震撼</p>
                 </div>
                 
-                <div class="highlight-section">
-                    <h2>个人感悟</h2>
-                    <p>作为一名计算机专业的学生，我从这部影片中看到了技术与人文的完美结合。无论科技如何发展，人性的光辉和情感的力量始终是最珍贵的财富。我们在追求技术进步的同时，也要保持对人文精神的关注和传承。</p>
-                </div>
-                
-                <div class="personal-insights">
-                    <h2>🎯 专业思考</h2>
-                    <div class="thinking-cards">
-                        <div class="thinking-card">
-                            <span class="thinking-icon">💻</span>
-                            <h3>技术与艺术</h3>
-                            <p>影片制作中运用的各种技术手段，让我意识到技术服务于艺术表达的重要性。</p>
+                <div class="timeline">
+                    <!-- 时间轴项目1：初次接触 -->
+                    <div class="timeline-item left">
+                        <div class="timeline-marker">
+                            <div class="marker-icon">🎯</div>
                         </div>
-                        <div class="thinking-card">
-                            <span class="thinking-icon">🔍</span>
-                            <h3>细节把控</h3>
-                            <p>每一个镜头的精心设计，体现了对细节的极致追求，这与编程中的严谨态度不谋而合。</p>
-                        </div>
-                        <div class="thinking-card">
-                            <span class="thinking-icon">🌐</span>
-                            <h3>传承与创新</h3>
-                            <p>影片在传承历史文化的同时，也展现了创新的表达方式，给我很大启发。</p>
+                        <div class="timeline-content">
+                            <div class="timeline-card">
+                                <div class="card-header">
+                                    <h3>初次接触</h3>
+                                    <span class="timestamp">观影前</span>
+                                </div>
+                                <div class="card-body">
+                                    <p>当我第一次听到《南京照相馆》这个片名时，内心充满了好奇。作为一名农业专业的学生，我对传统手工艺有着天然的亲近感。</p>
+                                    <div class="highlight-box">
+                                        <span class="highlight-icon">💭</span>
+                                        <p>期待值：★★★★☆</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="personal-connection">
-                        <span class="connection-icon">💡</span>
-                        <p>这部影片让我深刻理解了技术与人文并重的重要性。在未来的学习和工作中，我将努力做到既精通技术，又不忘人文关怀，用技术的力量传递温暖和希望。</p>
+
+                    <!-- 时间轴项目2：开场印象 -->
+                    <div class="timeline-item right">
+                        <div class="timeline-marker">
+                            <div class="marker-icon">🎬</div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-card">
+                                <div class="card-header">
+                                    <h3>开场印象</h3>
+                                    <span class="timestamp">观影0-30分钟</span>
+                                </div>
+                                <div class="card-body">
+                                    <p>影片开场的镜头语言就深深吸引了我。那些泛黄的老照片，斑驳的墙面，还有老师傅专注的神情，仿佛带我穿越到了那个年代。</p>
+                                    <div class="emotion-meter">
+                                        <div class="emotion-item">
+                                            <span class="emotion-label">好奇</span>
+                                            <div class="emotion-bar">
+                                                <div class="emotion-fill" style="width: 85%;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="emotion-item">
+                                            <span class="emotion-label">怀旧</span>
+                                            <div class="emotion-bar">
+                                                <div class="emotion-fill" style="width: 70%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="final-quote">
-                    <p>"真正的艺术作品，不仅要有技术的支撑，更要有情感的灵魂。《南京照相馆》正是这样一部作品，它用技术讲述情感，用情感诠释历史。"</p>
+
+                    <!-- 时间轴项目3：情感转折 -->
+                    <div class="timeline-item left">
+                        <div class="timeline-marker">
+                            <div class="marker-icon">💔</div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-card">
+                                <div class="card-header">
+                                    <h3>情感转折</h3>
+                                    <span class="timestamp">观影30-60分钟</span>
+                                </div>
+                                <div class="card-body">
+                                    <p>当看到老照相馆面临拆迁，老师傅的无奈和坚持形成强烈对比时，我的心情变得沉重。这让我想到了家乡那些逐渐消失的传统农具和老手艺。</p>
+                                    <div class="reflection-box">
+                                        <h4>🌾 个人联想</h4>
+                                        <p>就像农业现代化进程中，很多传统的种植技艺正在消失，我们在追求效率的同时，是否也失去了什么珍贵的东西？</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 时间轴项目4：深度思考 -->
+                    <div class="timeline-item right">
+                        <div class="timeline-marker">
+                            <div class="marker-icon">🧠</div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-card">
+                                <div class="card-header">
+                                    <h3>深度思考</h3>
+                                    <span class="timestamp">观影60-90分钟</span>
+                                </div>
+                                <div class="card-body">
+                                    <p>影片中段，年轻摄影师与老师傅的对话让我陷入深思。两代人的价值观碰撞，不仅仅是技术新旧的问题，更是对生活态度的不同理解。</p>
+                                    <div class="insight-grid">
+                                        <div class="insight-item">
+                                            <div class="insight-icon">⚖️</div>
+                                            <h5>传统 vs 现代</h5>
+                                            <p>如何在保持传统精神的同时拥抱现代技术？</p>
+                                        </div>
+                                        <div class="insight-item">
+                                            <div class="insight-icon">🎯</div>
+                                            <h5>效率 vs 品质</h5>
+                                            <p>快节奏时代下，我们还需要慢工出细活的匠人精神吗？</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 时间轴项目5：情感高潮 -->
+                    <div class="timeline-item left">
+                        <div class="timeline-marker">
+                            <div class="marker-icon">💫</div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-card">
+                                <div class="card-header">
+                                    <h3>情感高潮</h3>
+                                    <span class="timestamp">观影90-110分钟</span>
+                                </div>
+                                <div class="card-body">
+                                    <p>最打动我的那一幕终于出现了：老师傅在最后一次冲洗照片时，那种仪式感和神圣感让我热泪盈眶。那不仅仅是在冲洗照片，更是在守护一种文化。</p>
+                                    <div class="emotional-peak">
+                                        <div class="peak-indicator">
+                                            <span class="peak-label">情感强度</span>
+                                            <div class="peak-bar">
+                                                <div class="peak-fill"></div>
+                                                <span class="peak-value">95%</span>
+                                            </div>
+                                        </div>
+                                        <div class="peak-description">
+                                            <p>"那一刻，我仿佛看到了所有即将消失的美好事物的最后挣扎"</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 时间轴项目6：结局感悟 -->
+                    <div class="timeline-item right">
+                        <div class="timeline-marker">
+                            <div class="marker-icon">🌅</div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-card">
+                                <div class="card-header">
+                                    <h3>结局感悟</h3>
+                                    <span class="timestamp">观影110-120分钟</span>
+                                </div>
+                                <div class="card-body">
+                                    <p>影片的结尾给了我希望。年轻人最终理解了传统的价值，而老师傅也接受了时代的变迁。这种和解让我看到了传承的可能性。</p>
+                                    <div class="resolution-box">
+                                        <h4>🤝 和解的智慧</h4>
+                                        <p>真正的传承不是原样复制，而是在理解精神内核的基础上，用新的形式延续传统的生命力。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 时间轴项目7：观后反思 -->
+                    <div class="timeline-item left">
+                        <div class="timeline-marker">
+                            <div class="marker-icon">🔮</div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-card">
+                                <div class="card-header">
+                                    <h3>观后反思</h3>
+                                    <span class="timestamp">观影后</span>
+                                </div>
+                                <div class="card-body">
+                                    <p>走出影院后，我对自己的专业有了新的认识。农业不仅仅是生产粮食，更是传承文化、保护环境、维系人与自然关系的重要载体。</p>
+                                    <div class="future-vision">
+                                        <h4>🚀 未来展望</h4>
+                                        <div class="vision-points">
+                                            <div class="vision-point">
+                                                <span class="point-icon">🌱</span>
+                                                <p>将传统农业智慧与现代科技相结合</p>
+                                            </div>
+                                            <div class="vision-point">
+                                                <span class="point-icon">📚</span>
+                                                <p>记录和传承农业文化遗产</p>
+                                            </div>
+                                            <div class="vision-point">
+                                                <span class="point-icon">🤝</span>
+                                                <p>成为传统与现代的桥梁</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 时间轴项目8：深度总结 -->
+                    <div class="timeline-item right">
+                        <div class="timeline-marker">
+                            <div class="marker-icon">💎</div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-card final-card">
+                                <div class="card-header">
+                                    <h3>深度总结</h3>
+                                    <span class="timestamp">长期思考</span>
+                                </div>
+                                <div class="card-body">
+                                    <p>《南京照相馆》不仅仅是一部电影，更是一面镜子，让我看清了自己的使命和责任。作为新时代的农业学子，我要做的不是简单地抛弃传统或盲目追求现代，而是要找到两者的平衡点。</p>
+                                    <div class="final-thoughts">
+                                        <div class="thought-item">
+                                            <h5>🎭 艺术价值</h5>
+                                            <p>电影用细腻的镜头语言展现了时代变迁中的人文关怀</p>
+                                        </div>
+                                        <div class="thought-item">
+                                            <h5>🌍 现实意义</h5>
+                                            <p>提醒我们在现代化进程中不要忘记文化传承的重要性</p>
+                                        </div>
+                                        <div class="thought-item">
+                                            <h5>💪 个人启发</h5>
+                                            <p>坚定了我在农业领域传承与创新并重的职业理想</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -137,284 +309,576 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 南京照相馆观影感悟 - 朱斌博</p>
+            <p>&copy; 2025 南京照相馆观影感悟. </p>
         </div>
     </footer>
 
     <style>
-        /* 个人信息头部样式 */
-        .profile-header {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 3rem 0;
-            border-bottom: 1px solid #dee2e6;
+        .active-review {
+            background-color: rgba(231, 76, 60, 0.1) !important;
+            color: #e74c3c !important;
         }
         
-        .profile-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        /* 英雄区域样式 */
+        .hero-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+            color: white;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .profile-intro {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .avatar-section {
             display: flex;
             align-items: center;
             gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            border: 1px solid #e9ecef;
         }
         
-        .profile-avatar {
+        .avatar-wrapper {
             position: relative;
         }
         
-        .avatar-circle {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+        .avatar-image {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            color: white;
-            box-shadow: 0 4px 15px rgba(116, 185, 255, 0.3);
+            font-size: 3rem;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
         
-        .avatar-decoration {
+        .avatar-glow {
             position: absolute;
-            top: -5px;
-            right: -5px;
-            width: 30px;
-            height: 30px;
-            background: #00b894;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: radial-gradient(circle, rgba(231, 76, 60, 0.3) 0%, transparent 70%);
             border-radius: 50%;
-            border: 3px solid white;
+            animation: pulse 3s ease-in-out infinite;
         }
         
-        .profile-info h1 {
-            font-size: 2.2rem;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+        
+        .name-title h1 {
+            font-size: 3rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #2d3436;
+            background: linear-gradient(135deg, #fff, #ecf0f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
-        .profile-subtitle {
-            font-size: 1.1rem;
-            color: #636e72;
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+        
+        .specialty-tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .intro-quote {
+            flex: 1;
+        }
+        
+        .quote-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+        
+        .quote-mark {
+            font-size: 4rem;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            opacity: 0.3;
+            color: #e74c3c;
+        }
+        
+        .quote-text {
+            font-size: 1.3rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+        
+        .quote-author {
+            text-align: right;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* 时间轴区域样式 */
+        .timeline-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
             margin-bottom: 1rem;
         }
         
-        .profile-meta {
-            display: flex;
-            gap: 2rem;
-            font-size: 0.95rem;
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
-        .meta-item {
+        /* 时间轴主体 */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #e74c3c, #c0392b, #e74c3c);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            width: 50%;
+        }
+        
+        .timeline-item.left {
+            left: 0;
+            padding-right: 3rem;
+        }
+        
+        .timeline-item.right {
+            left: 50%;
+            padding-left: 3rem;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            top: 20px;
+            width: 60px;
+            height: 60px;
+            background: white;
+            border: 4px solid #e74c3c;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            color: #74b9ff;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            z-index: 10;
         }
         
-        /* 观影感悟内容样式 */
-        .review-content {
-            background: #f8f9fa;
-            padding: 3rem 0;
+        .timeline-item.left .timeline-marker {
+            right: -33px;
         }
         
-        .analysis-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+        .timeline-item.right .timeline-marker {
+            left: -33px;
         }
         
-        .analysis-card {
+        .marker-icon {
+            font-size: 1.5rem;
+        }
+        
+        .timeline-content {
+            position: relative;
+        }
+        
+        .timeline-card {
             background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
         
-        .analysis-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        .timeline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
         
         .card-header {
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .card-header h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .timestamp {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+        
+        .card-body {
+            padding: 2rem;
+        }
+        
+        .card-body p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* 特殊内容样式 */
+        .highlight-box {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #f1f3f4;
+            border-left: 4px solid #f39c12;
         }
         
-        .card-icon {
-            font-size: 2.2rem;
-            color: #74b9ff;
+        .highlight-icon {
+            font-size: 1.2rem;
         }
         
-        .card-header h2 {
-            color: #2d3436;
-            font-size: 1.4rem;
+        .highlight-box p {
             margin: 0;
-            font-weight: 600;
+            color: #8b4513;
+            font-weight: 500;
         }
         
-        .analysis-card p {
-            color: #636e72;
-            line-height: 1.8;
+        .emotion-meter {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .emotion-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .emotion-label {
+            min-width: 60px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .emotion-bar {
+            flex: 1;
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .emotion-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e74c3c, #c0392b);
+            border-radius: 4px;
+            transition: width 0.8s ease;
+        }
+        
+        .reflection-box {
+            background: #e8f5e8;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .reflection-box h4 {
+            color: #27ae60;
             margin-bottom: 1rem;
-            font-size: 1.05rem;
-        }
-        
-        .full-width {
-            grid-column: 1 / -1;
-        }
-        
-        .highlight-section {
-            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
-            color: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            text-align: center;
-            margin: 2rem 0;
-            box-shadow: 0 8px 30px rgba(108, 92, 231, 0.2);
-        }
-        
-        .highlight-section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        
-        .highlight-section p {
             font-size: 1.1rem;
-            line-height: 1.7;
-            opacity: 0.95;
         }
         
-        .personal-insights {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 1px solid #e9ecef;
+        .reflection-box p {
+            margin: 0;
+            color: #2d5a2d;
+            font-style: italic;
         }
         
-        .personal-insights h2 {
-            color: #2d3436;
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .insight-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
             text-align: center;
+            border: 2px solid #e9ecef;
+        }
+        
+        .insight-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .insight-item h5 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .insight-item p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .emotional-peak {
+            background: linear-gradient(135deg, #ff7675, #e17055);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .peak-indicator {
+            margin-bottom: 1.5rem;
+        }
+        
+        .peak-label {
+            display: block;
+            margin-bottom: 1rem;
             font-weight: 600;
         }
         
-        .thinking-cards {
+        .peak-bar {
+            background: rgba(255, 255, 255, 0.3);
+            height: 12px;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .peak-fill {
+            height: 100%;
+            width: 95%;
+            background: linear-gradient(90deg, #fff, #ecf0f1);
+            border-radius: 6px;
+            animation: fillPeak 2s ease-out;
+        }
+        
+        @keyframes fillPeak {
+            from { width: 0; }
+            to { width: 95%; }
+        }
+        
+        .peak-value {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .peak-description p {
+            margin: 0;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        .resolution-box {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+        
+        .resolution-box h4 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .resolution-box p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .future-vision {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .future-vision h4 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .vision-points {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .vision-point {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .point-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .vision-point p {
+            margin: 0;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        .final-card {
+            border: 3px solid #e74c3c;
+        }
+        
+        .final-thoughts {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .thinking-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid #e9ecef;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-        
-        .thinking-card:hover {
-            transform: translateY(-2px);
-        }
-        
-        .thinking-icon {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            display: block;
-            color: #fd79a8;
-        }
-        
-        .thinking-card h3 {
-            color: #2d3436;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-        
-        .thinking-card p {
-            color: #636e72;
-            line-height: 1.7;
-            font-size: 1.05rem;
-        }
-        
-        .personal-connection {
-            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            box-shadow: 0 6px 20px rgba(0, 184, 148, 0.2);
-        }
-        
-        .connection-icon {
-            font-size: 2rem;
-            flex-shrink: 0;
-            opacity: 0.9;
-        }
-        
-        .personal-connection p {
-            margin: 0;
-            line-height: 1.7;
-            font-size: 1.05rem;
-        }
-        
-        .final-quote {
-            background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
-            color: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            text-align: center;
             margin-top: 2rem;
-            box-shadow: 0 8px 30px rgba(253, 121, 168, 0.2);
         }
         
-        .final-quote p {
+        .thought-item {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .thought-item h5 {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+        
+        .thought-item p {
             margin: 0;
-            font-size: 1.2rem;
-            line-height: 1.7;
-            font-style: italic;
-            opacity: 0.95;
+            color: #555;
+            font-size: 0.95rem;
         }
         
+        /* 响应式设计 */
         @media (max-width: 768px) {
-            .profile-card {
+            .profile-intro {
                 flex-direction: column;
                 text-align: center;
+                gap: 2rem;
             }
             
-            .profile-meta {
+            .avatar-section {
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 1rem;
             }
             
-            .analysis-grid {
+            .name-title h1 {
+                font-size: 2.5rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 80px !important;
+                padding-right: 0 !important;
+            }
+            
+            .timeline-marker {
+                left: 0 !important;
+                right: auto !important;
+            }
+            
+            .insight-grid {
                 grid-template-columns: 1fr;
             }
             
-            .full-width {
-                grid-column: span 1;
-            }
-            
-            .thinking-cards {
+            .final-thoughts {
                 grid-template-columns: 1fr;
             }
         }
