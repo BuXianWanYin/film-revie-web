@@ -75,13 +75,17 @@
             height: 80px;
             border-radius: 50%;
             margin: 0 auto 1rem;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            color: white;
-            font-weight: bold;
+            overflow: hidden;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none;
         }
 
         /* 博客内容区域 */
@@ -259,7 +263,9 @@
             <h1 class="blog-title">覃照睿</h1>
          
             <div class="author-info">
-                <div class="author-avatar">覃</div>
+                <div class="author-avatar">
+                    <img th:src="@{/images/qinzhaorui.png}" alt="覃照睿">
+                </div>
                 <p>计算机应用工程 | 文字记录者</p>
                    <p class="blog-subtitle">用文字记录电影带给我们的感动与思考</p>
             </div>

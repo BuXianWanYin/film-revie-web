@@ -45,7 +45,9 @@
                 <div class="profile-card-main">
                     <div class="profile-left">
                         <div class="avatar-container">
-                            <div class="avatar-main">👨‍🎓</div>
+                            <div class="avatar-main">
+                                <img th:src="@{/images/qinguijin.png}" alt="覃桂锦">
+                            </div> 
                             <div class="avatar-ring"></div>
                         </div>
                         <div class="profile-badges">
@@ -275,15 +277,21 @@
         .avatar-main {
             width: 120px;
             height: 120px;
-            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
             margin: 0 auto;
             position: relative;
             z-index: 2;
+            overflow: hidden;
+        }
+        
+        .avatar-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none;
         }
         
         .avatar-ring {
