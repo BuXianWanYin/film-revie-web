@@ -29,8 +29,8 @@
                         <ul class="dropdown-menu">
                             <li><a th:href="@{/review/qinguijin}">覃桂锦</a></li>
                             <li><a th:href="@{/review/zhubinbo}">朱斌博</a></li>
-                            <li><a th:href="@{/review/suzixiang}">苏子翔</a></li>
-                            <li><a th:href="@{/review/qinzhaorui}">覃照睿</a></li>
+                            <li><a th:href="@{/review/suzixiang}" class="active-review">苏子翔</a></li>
+                            <li><a th:href="@{/review/qinzhaorui}">秦昭睿</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -38,176 +38,385 @@
         </nav>
     </header>
 
-    <div class="review-header">
-        <div class="container">
-            <h1 th:text="${title}">苏子翔的观影感悟</h1>
-            <p>计算机应用工程专业学生的电影思考</p>
-        </div>
-    </div>
-
     <main>
-        <section class="content-section">
+        <!-- 个人信息头部 -->
+        <div class="profile-header">
             <div class="container">
-                <div class="student-info">
-                    <div class="student-avatar">👨</div>
-                    <h2 th:text="${studentName}">苏子翔</h2>
-                    <p>性别：<span th:text="${gender}">男</span> | 专业：计算机应用工程</p>
-                    <p>"技术与人文的完美融合"</p>
-                </div>
-
-                <div class="review-content">
-                    <h2>我选择的电影：《南京照相馆》</h2>
-                    
-                    <div class="review-section">
-                        <h3>🎯 为何钟情于这部温情电影</h3>
-                        <p>《南京照相馆》这部电影深深吸引我的原因，不仅在于它精彩的故事情节，更在于它通过一个看似简单的照相馆，展现了复杂的人性和深刻的社会问题。作为计算机应用工程专业的学生，我对影片中展现的传统技艺与现代科技的关系有着特殊的兴趣。</p>
-                        
-                        <p>这部电影让我看到了传统摄影技术的智慧。在没有数字相机的年代，如何通过胶片记录下最美好的瞬间，这本身就是一个巨大的技术挑战。影片中展现的各种摄影技巧和暗房工艺，让我对传统摄影技术有了新的认识。</p>
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <div class="avatar-circle">👨</div>
+                        <div class="avatar-decoration"></div>
                     </div>
-
-                    <div class="review-section">
-                        <h3>📖 故事情节的巧妙构思</h3>
-                        <p>影片的故事结构非常巧妙，以照相馆为主线，串联起了整个时代的变迁。从老师傅的坚守传统，到年轻人的创新思维，每个环节都充满了戏剧张力。</p>
-                        
-                        <p>最让我印象深刻的是，影片没有把传统与现代描绘成对立关系，而是展现了其背后复杂的传承与发展。老照相师傅在坚持传统的同时，也在思考如何适应时代的变化。这种平衡的态度让故事更加真实可信，也更有教育意义。</p>
-                        
-                        <p>影片的节奏把握得很好，温情的日常生活与深刻的人生思考相互交织，让观众在享受视觉盛宴的同时，也能深入思考其中的深层含义。特别是那些关于时光流逝的描写，让人真切感受到了岁月的珍贵。</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>🎭 人物塑造的层次丰富</h3>
-                        <p>老照相师傅是一个非常立体的角色。他不是传统意义上的固执老人，而是一个有智慧的长者。他有自己的坚持和原则，也有自己的温柔和理解。</p>
-                        
-                        <p>老师傅在面对技术变革时展现出的态度，让我想到了我们计算机专业经常面临的挑战。技术在不断更新换代，编程语言在不断演进，但核心的编程思想和解决问题的方法却是相通的。就像老师傅坚持的摄影理念一样，有些东西是永恒不变的。</p>
-                        
-                        <p>年轻助手虽然戏份不多，但每次出场都很有分量。他不仅仅是一个学徒，更是新时代思维的代表。他对新技术的好奇和对传统的尊重，体现了年轻一代的特点。</p>
-                        
-                        <p>每一个来照相馆的顾客都有自己的故事，他们的需求和期望构成了整个服务体系的核心。这种以用户为中心的思维，在软件开发中同样重要。</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>💭 深层内涵的多重解读</h3>
-                        <p>这部电影的内涵非常丰富，可以从多个角度来解读：</p>
-                        
-                        <p><strong>技术与人文的关系：</strong>一张小小的照片，承载了技术与情感的双重价值。这让我思考技术发展的意义，不仅仅是功能的实现，更是人文价值的体现。在软件开发中，我们也要考虑技术对用户情感的影响。</p>
-                        
-                        <p><strong>传承与创新的平衡：</strong>老师傅作为传统的守护者，如何在保持技艺精髓的同时拥抱变化？这个问题在任何技术领域都有现实意义。作为未来的程序员，我们也会面临类似的选择。</p>
-                        
-                        <p><strong>服务精神的价值：</strong>影片中展现的用心服务每一位顾客的态度，体现了工匠精神。这让我想到，在开发软件时，我们不能只关注技术实现，更要关注用户体验。</p>
-                    </div>
-
-                    <div class="quote-box">
-                        <h3>⚡ 最震撼我的一个场景</h3>
-                        <p>最令我震撼的是影片中的一个场景：老师傅在暗房里冲洗照片，那种专注和认真的神情深深打动了我。他小心翼翼地控制着每一个步骤，生怕出现任何差错。当照片在显影液中慢慢显现时，他脸上露出了满足的笑容。</p>
-                        
-                        <p>这个场景让我想起了我第一次成功运行程序的情景。那是一个简单的"Hello World"程序，但当屏幕上显示出那行文字时，我的心情和老师傅看到照片显现时一样激动。那种对技艺的热爱，对完美的追求，是相通的。</p>
-                        
-                        <p>这个场景的力量在于它展现了人在专注工作时的美好状态。无论是传统的照相技术，还是现代的编程技术，都需要这种专注和热爱的精神。</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>💻 与计算机专业的深度关联</h3>
-                        <p>作为计算机应用工程专业的学生，这部电影给了我很多专业层面的启发：</p>
-                        
-                        <p><strong>技术演进的规律：</strong>从胶片摄影到数字摄影的转变，让我深刻认识到技术演进的规律。计算机技术也在不断发展，我们要学会适应变化，在变化中寻找不变的核心原理。</p>
-                        
-                        <p><strong>用户体验的重要性：</strong>照相馆的服务不仅仅是技术操作，更是情感体验。现代软件开发中，用户体验同样重要，技术要为人服务，而不是让人适应技术。</p>
-                        
-                        <p><strong>工匠精神的体现：</strong>老师傅对每一张照片的精益求精，体现了工匠精神。在编程中，我们也需要这种精益求精的态度，对每一行代码都要认真负责。</p>
-                        
-                        <p><strong>传统与现代的融合：</strong>影片展现了传统技艺与现代思维的融合，这在计算机领域同样适用。我们要学习经典的算法和设计模式，同时也要掌握最新的技术和工具。</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>🎨 技术细节的精心呈现</h3>
-                        <p>这部电影在技术细节的呈现上非常用心。从相机的操作到暗房的工艺，从构图的技巧到光线的运用，都力求真实准确。这种对技术细节的重视，让观众能够更好地理解摄影这门艺术。</p>
-                        
-                        <p>特别是对传统摄影工艺的描绘，让我对那个时代的技术水平有了新的认识。虽然没有现代的数字技术，但通过精湛的手工技艺，同样能够创造出令人惊叹的作品。</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>🌟 个人成长的深刻感悟</h3>
-                        <p>看完《南京照相馆》，我对自己的人生和专业发展有了更深的思考。这部电影让我明白，无论在什么时代，无论面临什么技术变革，都要保持对技艺的热爱和对用户的关怀。</p>
-                        
-                        <p>老师傅的经历告诉我，一个人的价值不在于掌握了多少最新技术，而在于能否用心做好每一件事。作为计算机专业的学生，我们可能会追求最新的编程语言和框架，但更重要的是培养解决问题的能力和服务用户的意识。</p>
-                        
-                        <p>这部电影还让我认识到学习历史和传统的重要性。了解技术的发展历程，不仅能帮助我们更好地理解现在，也能为未来的发展提供启示。</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>💡 对未来的思考和规划</h3>
-                        <p>这部电影让我对自己的未来有了更清晰的规划。我要像老师傅一样，做一个有技艺、有情怀的技术人员。在未来的学习和工作中，我要：</p>
-                        
-                        <p><strong>保持学习的态度：</strong>技术在不断发展，我们要保持持续学习的能力，不断更新知识和技能，适应时代的变化。</p>
-                        
-                        <p><strong>重视用户体验：</strong>在开发软件时，要始终以用户需求为中心，用心设计每一个功能，让技术真正为人服务。</p>
-                        
-                        <p><strong>坚持工匠精神：</strong>对待每一个项目都要认真负责，追求代码的质量和系统的稳定性，不断提高自己的技术水平。</p>
-                        
-                        <p><strong>传承技术文化：</strong>学习前辈的经验和智慧，同时也要将自己的知识分享给后来者，形成良好的技术传承。</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>📚 给同学们的建议</h3>
-                        <p>我想对同专业的同学们说：《南京照相馆》这部电影值得我们深入思考。它不仅是一部娱乐作品，更是一堂生动的技术哲学课。</p>
-                        
-                        <p>通过这部电影，我们可以学到很多东西：如何在技术变革中保持初心，如何在创新中尊重传统，如何在工作中保持工匠精神。这些品质，对我们的专业学习和未来发展都非常重要。</p>
-                        
-                        <p>希望大家都能像老师傅一样，做一个有技艺、有情怀、有温度的技术人员。让我们一起为计算机技术的美好未来而努力！</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>🔧 技术与艺术的完美结合</h3>
-                        <p>这部电影让我深刻理解了技术与艺术结合的重要性。摄影不仅仅是技术操作，更是艺术创作。同样，编程也不仅仅是代码编写，更是逻辑思维和创造力的体现。</p>
-                        
-                        <p>老师傅在拍摄每一张照片时，都会考虑构图、光线、情感等多个因素。这种综合性的思考方式，在软件开发中同样适用。我们要考虑功能实现、用户体验、系统架构等多个方面。</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>🌈 对美好未来的憧憬</h3>
-                        <p>看完这部电影，我对未来充满了憧憬。我希望能够像老师傅一样，在自己的专业领域里发光发热，用技术为社会创造价值。</p>
-                        
-                        <p>我相信，只要我们保持对技术的热爱，对用户的关怀，对品质的追求，就一定能够在计算机技术的道路上走得更远，为这个数字化的世界贡献自己的力量。</p>
+                    <div class="profile-info">
+                        <h1>苏子翔</h1>
+                        <p class="profile-subtitle">农类职业本科学生</p>
+                        <div class="profile-meta">
+                            <div class="meta-item">
+                                <span>🎓</span>
+                                <span>计算机应用工程</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>📅</span>
+                                <span>2024年观影</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+
+        <!-- 观影感悟内容 -->
+        <div class="review-content">
+            <div class="container">
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <div class="card-header">
+                            <span class="card-icon">🎭</span>
+                            <h2>情感共鸣</h2>
+                        </div>
+                        <p>《南京照相馆》触动了我内心最柔软的地方。影片中那些平凡而真实的人物，他们的喜怒哀乐都让我感同身受。特别是照相馆老板对每一位顾客的用心服务，体现了人与人之间最纯真的情感交流。</p>
+                        <p>这种情感的真实性让我想起了自己的成长经历，那些被家人朋友关爱的温暖时光。</p>
+                    </div>
+                    
+                    <div class="analysis-card">
+                        <div class="card-header">
+                            <span class="card-icon">🏛️</span>
+                            <h2>历史思考</h2>
+                        </div>
+                        <p>影片巧妙地将个人命运与历史背景相结合，让我对那个特殊年代有了更深刻的理解。历史不再是冰冷的文字，而是鲜活的人物和故事。</p>
+                        <p>每一张照片都承载着一段历史，每一个微笑都诉说着生活的坚韧与希望。这让我更加珍惜当下的和平与幸福。</p>
+                    </div>
+                    
+                    <div class="analysis-card full-width">
+                        <div class="card-header">
+                            <span class="card-icon">🎨</span>
+                            <h2>艺术感悟</h2>
+                        </div>
+                        <p>导演的镜头语言极其细腻，每一个画面都经过精心构图。光影的运用不仅营造了氛围，更深化了主题表达。特别是那些静物镜头，看似平淡却蕴含着深刻的寓意。</p>
+                        <p>音乐与画面的完美融合，让整部影片具有了诗一般的美感。这种艺术表现力让我对电影这门艺术有了全新的认识和敬意。</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-section">
+                    <h2>最深刻的感悟</h2>
+                    <p>生活中的美好往往藏在最平凡的细节里。就像照相馆里的每一次快门声，都记录着生命中珍贵的瞬间。我们要学会发现生活中的美，珍惜身边的每一个人，每一份情感。</p>
+                </div>
+                
+                <div class="personal-insights">
+                    <h2>🌟 人生启发</h2>
+                    <div class="thinking-cards">
+                        <div class="thinking-card">
+                            <span class="thinking-icon">❤️</span>
+                            <h3>情感价值</h3>
+                            <p>真挚的情感是人生最宝贵的财富，比任何物质都更加珍贵和持久。</p>
+                        </div>
+                        <div class="thinking-card">
+                            <span class="thinking-icon">⏰</span>
+                            <h3>时间意义</h3>
+                            <p>每一个当下都值得被记录和珍惜，因为时光一去不复返。</p>
+                        </div>
+                        <div class="thinking-card">
+                            <span class="thinking-icon">🤝</span>
+                            <h3>人际关系</h3>
+                            <p>用心对待每一个人，真诚的关怀能够跨越时空，温暖人心。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="personal-connection">
+                        <span class="connection-icon">🌈</span>
+                        <p>这部影片让我明白，无论身处什么环境，都要保持对生活的热爱和对美好的向往。在未来的人生路上，我要像影片中的主人公一样，用温暖的心去拥抱世界，用真诚的情感去连接他人。</p>
+                    </div>
+                </div>
+                
+                <div class="final-quote">
+                    <p>"最美的风景不在远方，而在我们用心感受生活的每一个瞬间。《南京照相馆》教会了我如何用心去看世界，用情去感受生活。"</p>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 南京照相馆观影感悟</p>
+            <p>&copy; 南京照相馆观影感悟 - 苏子翔</p>
         </div>
     </footer>
 
     <style>
-        .review-content {
+        /* 个人信息头部样式 */
+        .profile-header {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 3rem 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .profile-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 2rem;
             max-width: 800px;
             margin: 0 auto;
+            border: 1px solid #e9ecef;
         }
         
-        .review-section {
+        .profile-avatar {
+            position: relative;
+        }
+        
+        .avatar-circle {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            box-shadow: 0 4px 15px rgba(116, 185, 255, 0.3);
+        }
+        
+        .avatar-decoration {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 30px;
+            height: 30px;
+            background: #00b894;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+        
+        .profile-info h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2d3436;
+        }
+        
+        .profile-subtitle {
+            font-size: 1.1rem;
+            color: #636e72;
+            margin-bottom: 1rem;
+        }
+        
+        .profile-meta {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.95rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #74b9ff;
+        }
+        
+        /* 观影感悟内容样式 */
+        .review-content {
+            background: #f8f9fa;
+            padding: 3rem 0;
+        }
+        
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .analysis-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid #e9ecef;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .analysis-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f1f3f4;
+        }
+        
+        .card-icon {
+            font-size: 2.2rem;
+            color: #74b9ff;
+        }
+        
+        .card-header h2 {
+            color: #2d3436;
+            font-size: 1.4rem;
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .analysis-card p {
+            color: #636e72;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .highlight-section {
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 2rem 0;
+            box-shadow: 0 8px 30px rgba(108, 92, 231, 0.2);
+        }
+        
+        .highlight-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .highlight-section p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+        
+        .personal-insights {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e9ecef;
+        }
+        
+        .personal-insights h2 {
+            color: #2d3436;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .thinking-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .thinking-card {
             background: white;
             padding: 2rem;
-            margin: 2rem 0;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
         }
         
-        .review-section h3 {
-            color: #ff6b6b;
+        .thinking-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .thinking-icon {
+            font-size: 2.2rem;
             margin-bottom: 1rem;
-            font-size: 1.4rem;
+            display: block;
+            color: #fd79a8;
         }
         
-        .review-section p {
-            line-height: 1.8;
-            color: #555;
+        .thinking-card h3 {
+            color: #2d3436;
             margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
         
-        .review-section strong {
-            color: #333;
+        .thinking-card p {
+            color: #636e72;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+        
+        .personal-connection {
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            box-shadow: 0 6px 20px rgba(0, 184, 148, 0.2);
+        }
+        
+        .connection-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+            opacity: 0.9;
+        }
+        
+        .personal-connection p {
+            margin: 0;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+        
+        .final-quote {
+            background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 2rem;
+            box-shadow: 0 8px 30px rgba(253, 121, 168, 0.2);
+        }
+        
+        .final-quote p {
+            margin: 0;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            font-style: italic;
+            opacity: 0.95;
+        }
+        
+        @media (max-width: 768px) {
+            .profile-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .full-width {
+                grid-column: span 1;
+            }
+            
+            .thinking-cards {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </body>

@@ -28,9 +28,9 @@
                         <a href="#" class="nav-link">观影感悟 ▼</a>
                         <ul class="dropdown-menu">
                             <li><a th:href="@{/review/qinguijin}">覃桂锦</a></li>
-                            <li><a th:href="@{/review/zhubinbo}">朱斌博</a></li>
                             <li><a th:href="@{/review/suzixiang}">苏子翔</a></li>
-                            <li><a th:href="@{/review/qinzhaorui}">覃照睿</a></li>
+                            <li><a th:href="@{/review/zhubinbo}">朱斌博</a></li>
+                            <li><a th:href="@{/review/qinzhaorui}">秦昭睿</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -38,343 +38,150 @@
         </nav>
     </header>
 
-    <div class="page-header">
-        <div class="container">
-            <h1>🎭 《南京照相馆》深度内涵解析</h1>
-            <p>从计算机应用工程专业视角探讨传统与现代的融合之美</p>
-        </div>
-    </div>
-
     <main>
-        <section class="content-section">
+        <div class="content-header">
             <div class="container">
-                <div class="theme-overview">
-                    <h2>🌟 核心主题概述</h2>
-                    <p>《南京照相馆》不仅仅是一部关于摄影的电影，更是一部深刻反映时代变迁、文化传承与人性温暖的作品。影片通过一个小小的照相馆，展现了传统手工艺在数字化时代的坚守与传承，体现了人与人之间最真挚的情感连接。</p>
-                    <div class="content-image">
-                        <img src="/images/history-background.svg" alt="南京照相馆历史背景" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px; margin-top: 1rem;">
-                    </div>
-                </div>
-
-                <div class="themes-grid">
-                    <div class="theme-card main-theme">
-                        <div class="theme-icon">🔄</div>
-                        <div class="theme-content">
-                            <h3>传统与现代的对话</h3>
-                            <div class="theme-details">
-                                <h4>🎯 主题内涵</h4>
-                                <p>影片最核心的主题是传统摄影工艺与数字化技术的对比与融合。王师傅代表着传统手工艺的坚守者，他对每一张照片的精益求精，体现了传统工匠精神的可贵。而年轻一代则代表着现代技术的便利与高效。</p>
-                                
-                                <h4>💻 计算机专业视角</h4>
-                                <p>从计算机应用工程的角度看，这种对话反映了技术发展的必然趋势。数字化摄影技术的普及，正如我们专业中软件替代传统工作流程的过程。但影片告诉我们，技术进步不应该完全取代传统，而应该在传承中创新。</p>
-                                
-                                <h4>🌈 现实意义</h4>
-                                <p>在当今AI和自动化快速发展的时代，我们计算机专业的学生更应该思考：如何在推动技术进步的同时，保留人文关怀和工匠精神？技术应该服务于人，而不是替代人的情感和创造力。</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="theme-card">
-                        <div class="theme-icon">❤️</div>
-                        <div class="theme-content">
-                            <h3>人情味与温暖</h3>
-                            <div class="theme-details">
-                                <h4>🎭 情感表达</h4>
-                                <p>照相馆不仅是一个商业场所，更是一个充满人情味的温暖空间。每一位顾客的故事，每一张照片背后的回忆，都体现了人与人之间最真挚的情感连接。</p>
-                                
-                                <h4>🤝 社会价值</h4>
-                                <p>在快节奏的现代社会中，这种慢下来的生活态度和对细节的关注，提醒我们在追求效率的同时，不要忽视生活中的美好瞬间和人际关系的珍贵。</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="theme-card">
-                        <div class="theme-icon">🏛️</div>
-                        <div class="theme-content">
-                            <h3>文化传承与记忆</h3>
-                            <div class="theme-details">
-                                <h4>📸 记忆载体</h4>
-                                <p>照片作为记忆的载体，承载着个人和集体的历史。影片通过展现不同年代的照片，展现了时代的变迁和文化的传承。</p>
-                                
-                                <h4>🎨 工艺价值</h4>
-                                <p>传统摄影工艺的价值不仅在于技术本身，更在于其承载的文化内涵和精神追求。这种对完美的追求和对细节的关注，是现代快餐文化中稀缺的品质。</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="theme-card">
-                        <div class="theme-icon">⏰</div>
-                        <div class="theme-content">
-                            <h3>时间与变迁</h3>
-                            <div class="theme-details">
-                                <h4>🔄 时代印记</h4>
-                                <p>影片通过照相馆的兴衰，反映了社会的变迁和时代的发展。从胶片到数码，从手工到自动化，每一次技术革新都带来了深刻的社会变化。</p>
-                                
-                                <h4>🌅 适应与坚守</h4>
-                                <p>面对时代的变迁，如何在适应中坚守，在变化中传承，是每个人都需要面对的问题。影片给出了一个温暖而智慧的答案。</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="theme-card">
-                        <div class="theme-icon">🎓</div>
-                        <div class="theme-content">
-                            <h3>学习与成长</h3>
-                            <div class="theme-details">
-                                <h4>👨‍🎓 代际传承</h4>
-                                <p>年轻人向老师傅学习传统技艺，老师傅也从年轻人那里了解新技术，这种双向的学习和交流，体现了知识传承的真正意义。</p>
-                                
-                                <h4>💡 创新思维</h4>
-                                <p>真正的创新不是简单的替代，而是在理解和尊重传统的基础上，融入现代元素，创造出更有价值的新事物。</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="theme-card">
-                        <div class="theme-icon">🌍</div>
-                        <div class="theme-content">
-                            <h3>社会责任与价值</h3>
-                            <div class="theme-details">
-                                <h4>🤲 社会担当</h4>
-                                <p>作为计算机应用工程专业的学生，我们有责任思考技术发展对社会的影响，如何让技术更好地服务于人类，而不是造成社会分化或文化断层。</p>
-                                
-                                <h4>🌱 可持续发展</h4>
-                                <p>传统与现代的融合，不仅是技术问题，更是可持续发展的问题。如何在发展中保护，在创新中传承，是我们这一代人的使命。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="analysis-section">
-                    <h2>🔍 深度分析与解读</h2>
-                    <div class="analysis-grid">
-                        <div class="analysis-card">
-                            <h3>🎨 艺术手法分析</h3>
-                            <div class="analysis-content">
-                                <h4>📽️ 镜头语言</h4>
-                                <p>导演运用大量的特写镜头展现传统摄影的细节，从调焦到冲洗，每一个步骤都被细致地记录下来。这种慢节奏的镜头语言，与现代快节奏的生活形成鲜明对比，强化了主题表达。</p>
-                                
-                                <h4>🎵 音效设计</h4>
-                                <p>影片中传统相机的快门声、暗房中水流声等自然音效，营造了一种宁静而专注的氛围。这些声音细节的处理，体现了对传统工艺的尊重和怀念。</p>
-                                
-                                <h4>🌈 色彩运用</h4>
-                                <p>影片在色彩运用上也颇具匠心，暖色调的照相馆内部与冷色调的现代街景形成对比，视觉上强化了传统与现代的主题对立。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="analysis-card">
-                            <h3>💭 哲学思考</h3>
-                            <div class="analysis-content">
-                                <h4>⚖️ 效率与品质</h4>
-                                <p>现代社会追求效率和速度，但影片提醒我们，有些东西是不能被加速的，比如情感的培养、技艺的传承、记忆的沉淀。真正的品质需要时间的积淀。</p>
-                                
-                                <h4>🔗 连接与孤独</h4>
-                                <p>在数字化时代，人们似乎更加连接，但也更加孤独。传统照相馆提供的面对面交流和情感连接，是现代社交媒体无法替代的。</p>
-                                
-                                <h4>🎯 意义与价值</h4>
-                                <p>什么是真正有价值的？是技术的先进性，还是人文的温度？影片通过对比给出了自己的答案：技术应该服务于人的情感需求。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="analysis-card">
-                            <h3>🌐 现代启示</h3>
-                            <div class="analysis-content">
-                                <h4>💻 技术伦理</h4>
-                                <p>作为计算机专业的学生，我们需要思考技术发展的伦理问题。AI可以模拟人类的创作，但能否替代人类的情感？自动化可以提高效率，但是否应该完全取代人工？</p>
-                                
-                                <h4>🏗️ 数字化转型</h4>
-                                <p>影片展现的不是简单的技术替代，而是智慧的融合。在推进数字化转型的过程中，如何保留传统的精华，是每个技术工作者都应该思考的问题。</p>
-                                
-                                <h4>🤝 人机协作</h4>
-                                <p>未来的发展方向不是人与机器的对立，而是人机协作。技术应该增强人的能力，而不是替代人的价值。这正是影片想要传达的核心理念。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="symbolism-section">
-                    <h2>🔮 象征意义解读</h2>
-                    <div class="content-image">
-                        <img src="/images/symbolic-meaning.svg" alt="南京照相馆象征意义" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px; margin-bottom: 2rem;">
-                    </div>
-                    <div class="symbol-grid">
-                        <div class="symbol-card">
-                            <div class="symbol-icon">📷</div>
-                            <div class="symbol-content">
-                                <h3>照相机 - 时间的见证者</h3>
-                                <p>老式照相机不仅是拍摄工具，更是时间的见证者和记忆的守护者。它象征着对历史的尊重和对传统的坚守。每一次快门的按下，都是对瞬间的永恒定格。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="symbol-card">
-                            <div class="symbol-icon">🏠</div>
-                            <div class="symbol-content">
-                                <h3>照相馆 - 情感的港湾</h3>
-                                <p>照相馆作为一个物理空间，象征着情感的港湾和文化的传承地。它不仅是商业场所，更是人们寄托情感、保存记忆的精神家园。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="symbol-card">
-                            <div class="symbol-icon">🖼️</div>
-                            <div class="symbol-content">
-                                <h3>照片 - 记忆的载体</h3>
-                                <p>每一张照片都承载着独特的故事和情感。它们是记忆的载体，连接着过去与现在，个人与集体，成为文化传承的重要媒介。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="symbol-card">
-                            <div class="symbol-icon">🌉</div>
-                            <div class="symbol-content">
-                                <h3>南京 - 历史与现代的交汇</h3>
-                                <p>南京作为历史文化名城，本身就象征着传统与现代的交汇。选择南京作为故事背景，强化了影片关于文化传承和时代变迁的主题。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="symbol-card">
-                            <div class="symbol-icon">👥</div>
-                            <div class="symbol-content">
-                                <h3>师徒关系 - 知识的传承</h3>
-                                <p>老师傅与年轻人之间的师徒关系，象征着知识和技艺的代际传承。这种传承不仅是技术的，更是精神和文化的。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="symbol-card">
-                            <div class="symbol-icon">⚖️</div>
-                            <div class="symbol-content">
-                                <h3>天平 - 传统与现代的平衡</h3>
-                                <p>影片中传统与现代的对比，象征着一个天平，需要在两者之间找到平衡点。既不能固步自封，也不能盲目追新，而要在传承中创新。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="reflection-section">
-                    <h2>💭 计算机专业学生的思考</h2>
-                    <div class="content-image">
-                        <img src="/images/deep-thinking.svg" alt="南京照相馆深度思考" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px; margin-bottom: 2rem;">
-                    </div>
-                    <div class="reflection-content">
-                        <div class="reflection-card">
-                            <h3>🔧 技术与人文的融合</h3>
-                            <p>作为计算机应用工程专业的学生，我们常常专注于技术的实现和效率的提升，但《南京照相馆》提醒我们，技术发展的最终目的是服务于人，增进人的福祉。在我们的专业学习和未来工作中，应该始终保持对人文价值的关注。</p>
-                        </div>
-                        
-                        <div class="reflection-card">
-                            <h3>🌱 创新与传承的平衡</h3>
-                            <p>在软件开发和系统设计中，我们经常面临新技术与旧系统的选择。影片告诉我们，真正的创新不是简单的替代，而是在理解和尊重现有系统的基础上，进行有机的融合和升级。</p>
-                        </div>
-                        
-                        <div class="reflection-card">
-                            <h3>🤝 用户体验的本质</h3>
-                            <p>现代软件开发强调用户体验，但什么是真正好的用户体验？不仅仅是界面的美观和操作的便捷，更重要的是能够满足用户的情感需求，提供有温度的服务。</p>
-                        </div>
-                        
-                        <div class="reflection-card">
-                            <h3>⚡ 效率与质量的权衡</h3>
-                            <p>在敏捷开发和快速迭代的时代，我们追求快速交付和高效开发。但影片提醒我们，有些东西是不能被加速的，比如代码的质量、系统的稳定性、用户的信任。</p>
-                        </div>
-                        
-                        <div class="reflection-card">
-                            <h3>🌍 技术的社会责任</h3>
-                            <p>作为未来的技术工作者，我们有责任思考技术对社会的影响。如何让技术更好地服务于社会，如何在推动技术进步的同时保护传统文化，这是我们这一代人的使命。</p>
-                        </div>
-                        
-                        <div class="reflection-card">
-                            <h3>🎯 专业发展的思考</h3>
-                            <p>在专业发展的道路上，我们不仅要掌握最新的技术，更要培养深度思考的能力，保持对人文关怀的敏感，在技术与人文之间找到平衡点，成为有温度的技术工作者。</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="conclusion-section">
-                    <h2>🎯 总结与启示</h2>
-                    <div class="conclusion-content">
-                        <div class="conclusion-main">
-                            <h3>🌟 核心价值观</h3>
-                            <p>《南京照相馆》通过一个简单而温暖的故事，传达了深刻的价值观念：技术进步应该服务于人的情感需求，传统文化应该在创新中得到传承，人与人之间的真诚连接是任何技术都无法替代的珍贵财富。</p>
-                        </div>
-                        
-                        <div class="conclusion-grid">
-                            <div class="conclusion-card">
-                                <h4>💡 对个人的启示</h4>
-                                <p>在快节奏的现代生活中，我们需要学会慢下来，关注生活中的美好细节，珍惜人与人之间的真诚交流，在追求效率的同时不忘记生活的温度。</p>
-                            </div>
-                            
-                            <div class="conclusion-card">
-                                <h4>🏢 对专业的启示</h4>
-                                <p>作为计算机专业的学生，我们要在技术学习中保持人文关怀，在系统设计中考虑用户的情感需求，在创新发展中尊重传统价值，成为有温度的技术工作者。</p>
-                            </div>
-                            
-                            <div class="conclusion-card">
-                                <h4>🌍 对社会的启示</h4>
-                                <p>社会的发展需要在传统与现代之间找到平衡，技术的进步应该增进人类的福祉，文化的传承需要每一代人的共同努力，这样才能建设一个更加美好的未来。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <h1>电影内涵解析</h1>
+                <p>深度解读《南京照相馆》的艺术价值与文化内涵</p>
             </div>
-        </section>
+        </div>
+
+        <div class="container">
+            <!-- 核心主题 -->
+            <section class="theme-section">
+                <h2>🎯 核心主题</h2>
+                <div class="theme-grid">
+                    <div class="theme-card main-theme">
+                        <div class="theme-content">
+                            <h3>传统与现代的碰撞</h3>
+                            <p>影片通过南京照相馆这一载体，展现了传统摄影艺术在数字化时代的坚守与传承。老式相机的咔嚓声与现代快节奏生活形成鲜明对比，引发观众对时代变迁的深度思考。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="theme-card">
+                        <div class="theme-content">
+                            <h3>情感记忆的珍藏</h3>
+                            <p>每一张照片都承载着独特的情感记忆，影片通过细腻的镜头语言，展现了摄影作为情感载体的深刻意义。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="theme-card">
+                        <div class="theme-content">
+                            <h3>文化传承的使命</h3>
+                        <p>照相馆不仅是商业场所，更是文化传承的重要载体，承载着一代人的集体记忆和文化认同。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 艺术手法 -->
+            <section class="analysis-section">
+                <h2>🎨 艺术表现手法</h2>
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <h3>📽️ 镜头语言</h3>
+                        <p>导演运用大量特写镜头展现传统摄影的细节，从调焦到冲洗，每个步骤都被细致记录，营造出专注而宁静的氛围。</p>
+                    </div>
+                    
+                    <div class="analysis-card">
+                        <h3>🎵 声音设计</h3>
+                        <p>传统相机的快门声、暗房中的水流声等自然音效，与现代城市的喧嚣形成对比，强化了主题表达。</p>
+                    </div>
+                    
+                    <div class="analysis-card">
+                        <h3>🌈 色彩运用</h3>
+                        <p>暖色调的照相馆内部与冷色调的现代街景形成视觉对比，巧妙地呈现了传统与现代的主题冲突。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 深层思考 -->
+            <section class="reflection-section">
+                <h2>💭 深层思考</h2>
+                <div class="reflection-content">
+                    <div class="reflection-card">
+                        <h3>⚖️ 效率与品质的平衡</h3>
+                        <p>在追求效率的现代社会，传统手工艺所代表的慢工出细活理念显得弥足珍贵。影片引发我们思考：在快节奏的生活中，我们是否还需要为品质而坚守？</p>
+                    </div>
+                    
+                    <div class="reflection-card">
+                        <h3>🔄 传承与创新的关系</h3>
+                        <p>传统技艺的传承不应是简单的复制，而应在保持精神内核的基础上，寻找与时代相适应的表达方式。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 现实意义 -->
+            <section class="significance-section">
+                <h2>🌟 现实意义</h2>
+                <div class="significance-content">
+                    <p>《南京照相馆》不仅是一部电影，更是对当代社会文化现象的深度观察。它提醒我们在追求现代化的同时，不要忘记传统文化的价值，要在传承中创新，在创新中传承。</p>
+                    
+                    <div class="quote-box">
+                        真正的艺术不在于技术的先进，而在于情感的真挚和文化的深度。
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 南京照相馆观影感悟</p>
+            <p>&copy; 2024 南京照相馆观影感悟. 版权所有.</p>
         </div>
     </footer>
 
     <style>
-        .theme-overview {
+        .active {
+            background-color: rgba(255,255,255,0.2) !important;
+        }
+        
+        .theme-section, .analysis-section, .reflection-section, .significance-section {
             background: white;
-            padding: 2rem;
+            padding: 2.5rem;
+            margin: 2rem 0;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-bottom: 3rem;
+        }
+        
+        .theme-section h2, .analysis-section h2, .reflection-section h2, .significance-section h2 {
+            color: #e67e22;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
             text-align: center;
+            border-bottom: 3px solid #e67e22;
+            padding-bottom: 0.5rem;
         }
         
-        .theme-overview h2 {
-            color: #ff6b6b;
-            margin-bottom: 1rem;
-            font-size: 2rem;
-        }
-        
-        .themes-grid {
+        .theme-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 1.5rem;
         }
         
         .theme-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background: #f8f9fa;
+            border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
         }
         
         .theme-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .main-theme {
-            grid-column: span 2;
+            transform: translateY(-3px);
         }
         
         .theme-icon {
-            width: 100%;
-            height: 120px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
+            background: linear-gradient(135deg, #16a085 0%, #27ae60 100%);
             color: white;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 2.5rem;
         }
         
         .main-theme .theme-icon {
-            height: 150px;
-            font-size: 4rem;
+            font-size: 3rem;
+            padding: 2rem;
         }
         
         .theme-content {
@@ -382,41 +189,19 @@
         }
         
         .theme-content h3 {
-            color: #333;
+            color: #2c3e50;
             margin-bottom: 1rem;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
         }
         
-        .theme-details h4 {
-            color: #667eea;
-            margin: 1rem 0 0.5rem 0;
-            font-size: 1rem;
-        }
-        
-        .theme-details p {
+        .theme-content p {
             color: #666;
             line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-        
-        .analysis-section, .symbolism-section, .reflection-section, .conclusion-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-bottom: 3rem;
-        }
-        
-        .analysis-section h2, .symbolism-section h2, .reflection-section h2, .conclusion-section h2 {
-            color: #ff6b6b;
-            margin-bottom: 2rem;
-            font-size: 1.8rem;
-            text-align: center;
         }
         
         .analysis-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
         }
         
@@ -424,63 +209,23 @@
             background: #f8f9fa;
             padding: 1.5rem;
             border-radius: 10px;
-            border-left: 4px solid #ff6b6b;
+            border-left: 4px solid #3498db;
         }
         
         .analysis-card h3 {
-            color: #333;
+            color: #2c3e50;
             margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-        
-        .analysis-content h4 {
-            color: #667eea;
-            margin: 1rem 0 0.5rem 0;
-            font-size: 1rem;
-        }
-        
-        .analysis-content p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-        
-        .symbol-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .symbol-card {
-            display: flex;
-            gap: 1rem;
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 10px;
-            align-items: flex-start;
-        }
-        
-        .symbol-icon {
-            font-size: 2.5rem;
-            flex-shrink: 0;
-            width: 60px;
-            text-align: center;
-        }
-        
-        .symbol-content h3 {
-            color: #333;
-            margin-bottom: 0.5rem;
             font-size: 1.1rem;
         }
         
-        .symbol-content p {
+        .analysis-card p {
             color: #666;
             line-height: 1.6;
         }
         
         .reflection-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 1.5rem;
         }
         
@@ -488,13 +233,13 @@
             background: #f8f9fa;
             padding: 1.5rem;
             border-radius: 10px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #e67e22;
         }
         
         .reflection-card h3 {
-            color: #333;
+            color: #2c3e50;
             margin-bottom: 1rem;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
         
         .reflection-card p {
@@ -502,75 +247,20 @@
             line-height: 1.6;
         }
         
-        .conclusion-content {
-            display: grid;
-            gap: 2rem;
-        }
-        
-        .conclusion-main {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            border: 2px solid #ff6b6b;
-        }
-        
-        .conclusion-main h3 {
-            color: #ff6b6b;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        
-        .conclusion-main p {
-            color: #333;
+        .significance-content p {
+            color: #555;
             line-height: 1.8;
             font-size: 1.1rem;
-        }
-        
-        .conclusion-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .conclusion-card {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-        }
-        
-        .conclusion-card h4 {
-            color: #333;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-        
-        .conclusion-card p {
-            color: #666;
-            line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
         
         @media (max-width: 768px) {
-            .themes-grid {
+            .theme-grid {
                 grid-template-columns: 1fr;
             }
             
-            .main-theme {
-                grid-column: span 1;
-            }
-            
-            .analysis-grid, .symbol-grid, .reflection-content, .conclusion-grid {
+            .analysis-grid, .reflection-content {
                 grid-template-columns: 1fr;
-            }
-            
-            .symbol-card {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .symbol-icon {
-                width: 100%;
             }
         }
     </style>

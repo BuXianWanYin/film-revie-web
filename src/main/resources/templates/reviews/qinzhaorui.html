@@ -30,7 +30,7 @@
                             <li><a th:href="@{/review/qinguijin}">覃桂锦</a></li>
                             <li><a th:href="@{/review/zhubinbo}">朱斌博</a></li>
                             <li><a th:href="@{/review/suzixiang}">苏子翔</a></li>
-                            <li><a th:href="@{/review/qinzhaorui}">覃照睿</a></li>
+                            <li><a th:href="@{/review/qinzhaorui}" class="active-review">覃照睿</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -38,197 +38,385 @@
         </nav>
     </header>
 
-    <div class="review-header">
-        <div class="container">
-            <h1 th:text="${title}">覃照睿的观影感悟</h1>
-            <p>农类职业本科学生的电影思考</p>
-        </div>
-    </div>
-
     <main>
-        <section class="content-section">
+        <!-- 个人信息头部 -->
+        <div class="profile-header">
             <div class="container">
-                <div class="student-info">
-                    <div class="student-avatar">👩</div>
-                    <h2 th:text="${studentName}">覃照睿</h2>
-                    <p>性别：<span th:text="${gender}">女</span> | 专业：计算机应用工程</p>
-                    <p>"技术改变世界，情怀温暖人心"</p>
-                </div>
-
-                <div class="review-content">
-                    <h2>我选择的电影：《南京照相馆》</h2>
-                    
-                    <div class="review-section">
-                        <h3>💝 为何被这部温情电影深深吸引</h3>
-                        <p>《南京照相馆》这部电影深深打动我的原因，在于它用最朴实的镜头语言，讲述了最真挚的人间情感。作为一名女性观众，我被影片中那种细腻的情感表达和对家庭温暖的描绘深深感动。</p>
-                        
-                        <p>作为农类职业本科的学生，我对影片中展现的那种朴实无华的生活方式特别有共鸣。农村生活虽然简单，但充满了真情实感，就像照相馆里的每一张照片，都记录着最珍贵的时光。这种对平凡生活的珍视，正是我们农业工作者应该具备的品质。</p>
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <div class="avatar-circle">👩</div>
+                        <div class="avatar-decoration"></div>
                     </div>
-
-                    <div class="review-section">
-                        <h3>📸 故事情节的温暖力量</h3>
-                        <p>影片的故事结构非常巧妙，以照相馆为载体，串联起了几代人的情感故事。每一张照片背后都有一个故事，每一个故事都充满了人生的酸甜苦辣。</p>
-                        
-                        <p>最让我感动的是，影片没有刻意制造戏剧冲突，而是通过日常生活中的点点滴滴，展现了人与人之间最真挚的情感。老照相师傅对技艺的执着，年轻人对梦想的追求，家人之间的相互理解和支持，这些都让我想起了自己的家庭和成长经历。</p>
-                        
-                        <p>影片的节奏很舒缓，就像慢慢翻阅一本老相册，每一页都值得细细品味。这种叙事方式让观众有足够的时间去感受和思考，而不是被快节奏的情节推着走。</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>🎭 人物塑造的真实感人</h3>
-                        <p>影片中的每个角色都非常真实，没有脸谱化的倾向。老照相师傅是一个有血有肉的人，他有自己的坚持和固执，也有自己的温柔和慈爱。他对摄影技艺的执着，让我想到了那些在农业领域默默耕耘的老师傅们。</p>
-                        
-                        <p>年轻的助手代表了新一代的思维方式，他们有自己的想法和追求，但也在与传统的碰撞中学会了尊重和理解。这种代际之间的传承与创新，在农业发展中同样存在。</p>
-                        
-                        <p>影片中的女性角色也很出彩，她们温柔而坚强，在家庭中发挥着重要的作用。作为女性，我特别能理解她们的处境和选择。她们用自己的方式支撑着家庭，传递着爱与温暖。</p>
-                        
-                        <p>每个来照相馆拍照的顾客都有自己的故事，他们的喜怒哀乐通过镜头得到了完美的呈现。这些普通人的故事，构成了整部电影最动人的部分。</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>💭 深层内涵的细腻表达</h3>
-                        <p>这部电影的内涵非常丰富，可以从多个维度来理解：</p>
-                        
-                        <p><strong>时间与记忆的哲学：</strong>照片是时间的凝固，是记忆的载体。影片通过照相馆这个特殊的空间，探讨了时间流逝与记忆保存的关系。每一张照片都是对美好时光的挽留，这让我思考如何珍惜当下的每一刻。</p>
-                        
-                        <p><strong>传统与现代的对话：</strong>老式照相馆在数字时代的坚守，体现了传统文化与现代科技的碰撞。这让我想到农业发展中的类似问题：如何在现代化进程中保持传统农业的精华？</p>
-                        
-                        <p><strong>家庭与情感的温暖：</strong>影片中浓浓的家庭情感让人动容。在快节奏的现代生活中，家庭的温暖显得尤为珍贵。作为农业工作者，我们更应该重视家庭和情感的力量。</p>
-                        
-                        <p><strong>平凡生活的诗意：</strong>影片让我们看到，平凡的生活中也有诗意和美好。这种对生活的热爱和珍视，正是我们需要学习的品质。</p>
-                    </div>
-
-                    <div class="quote-box">
-                        <h3>⚡ 最触动我心的温情时刻</h3>
-                        <p>最令我感动的是影片中的一个场景：一位老奶奶带着孙女来拍照，她说要给孙女留个纪念，因为自己可能看不到孙女长大了。那一刻，老照相师傅特别认真地为她们拍照，还主动提出要多拍几张。</p>
-                        
-                        <p>这个场景让我想起了我的奶奶。她总是说要给我们多拍些照片，说这样就能永远记住我们小时候的样子。那种对家人的深深眷恋，那种想要留住美好时光的愿望，是如此真实而感人。</p>
-                        
-                        <p>这个场景的力量在于它的真实性。没有煽情的音乐，没有夸张的表演，就是最朴实的生活片段，却能直击人心。它让我明白，最珍贵的不是什么惊天动地的大事，而是这些平凡而温暖的小时刻。</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>🌾 与农类专业的深度思考</h3>
-                        <p>作为农类职业本科的学生，这部电影给了我很多专业层面的启发：</p>
-                        
-                        <p><strong>传统技艺的传承：</strong>老照相师傅对摄影技艺的坚守，让我想到农业中的传统技艺传承。很多传统的农业技术虽然看似落后，但其中蕴含的智慧值得我们学习和传承。</p>
-                        
-                        <p><strong>工匠精神的价值：</strong>照相师傅对每一张照片的精益求精，体现了工匠精神。在农业生产中，我们也需要这种精益求精的态度，对每一个环节都要认真负责。</p>
-                        
-                        <p><strong>服务意识的重要性：</strong>照相馆不仅仅是拍照的地方，更是为人们保存美好记忆的地方。这种服务意识在农业中同样重要，我们要为农民提供更好的服务，帮助他们解决实际问题。</p>
-                        
-                        <p><strong>情感价值的认识：</strong>照片的价值不仅在于技术，更在于其承载的情感。农产品也是如此，它们不仅仅是商品，更承载着农民的辛勤劳动和对土地的热爱。</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>🎨 视觉呈现的细腻美感</h3>
-                        <p>这部电影在视觉呈现上非常用心。温暖的色调，柔和的光线，精心布置的场景，都营造出了一种温馨的氛围。特别是照相馆内部的布置，每一个细节都充满了生活的气息。</p>
-                        
-                        <p>影片中的服装和道具也很考究，既符合时代特色，又不失美感。这种对细节的重视，让观众能够更好地沉浸在故事中。</p>
-                        
-                        <p>最让我印象深刻的是那些照片本身。每一张照片都有自己的故事，都承载着特殊的意义。这些照片不仅是道具，更是情感的载体。</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>🌸 女性视角的独特感受</h3>
-                        <p>作为女性观众，我对这部电影有着特殊的感受。影片中的女性角色虽然不多，但每一个都很有特色。她们温柔而坚强，在各自的位置上发挥着重要作用。</p>
-                        
-                        <p>特别是那些来拍照的女性顾客，她们的故事让我看到了不同年龄段女性的生活状态和情感需求。从青春少女到年轻母亲，从中年女性到老年奶奶，每个阶段都有自己的美丽和价值。</p>
-                        
-                        <p>这让我思考作为女性在农业领域的作用和价值。女性的细腻和耐心，在农业生产和管理中都有独特的优势。我们要发挥自己的特长，为农业发展贡献女性的力量。</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>🌟 个人成长的深刻启发</h3>
-                        <p>看完《南京照相馆》，我对自己的人生有了更深的思考。这部电影让我明白，生活的美好不在于轰轰烈烈，而在于平平淡淡中的真情实感。</p>
-                        
-                        <p>老照相师傅的人生态度给了我很大启发。他没有什么惊天动地的成就，但他用自己的方式为别人带来了快乐和美好。这让我明白，每个人都可以在自己的位置上发光发热，为这个世界增添一份温暖。</p>
-                        
-                        <p>影片还让我认识到家庭和情感的重要性。在追求事业成功的同时，我们不能忽视身边最重要的人。家人的支持和理解，是我们前进路上最大的动力。</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>💡 对未来的美好憧憬</h3>
-                        <p>这部电影让我对自己的未来有了更清晰的规划。我要像照相师傅一样，做一个有温度、有情怀的人。在未来的农业工作中，我要：</p>
-                        
-                        <p><strong>保持初心和热情：</strong>无论遇到什么困难，都要保持对农业的热爱和对生活的热情。这种内在的动力，是支撑我们走下去的根本。</p>
-                        
-                        <p><strong>注重细节和品质：</strong>像照相师傅对待每一张照片一样，我要对待每一项工作都认真负责，追求品质和完美。</p>
-                        
-                        <p><strong>重视人际关系：</strong>农业工作离不开与人打交道，我要学会与不同的人建立良好的关系，用真诚和善良赢得别人的信任。</p>
-                        
-                        <p><strong>传承和创新并重：</strong>既要尊重和学习传统的农业智慧，也要勇于创新，用现代技术推动农业发展。</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>📚 给女同学们的温暖寄语</h3>
-                        <p>我想对同专业的女同学们说：《南京照相馆》这部电影让我们看到了女性的力量和价值。我们虽然温柔，但不柔弱；我们虽然细腻，但不脆弱。</p>
-                        
-                        <p>在农业这个传统上以男性为主的领域，我们女性有着独特的优势。我们的细心、耐心和责任心，都是农业发展所需要的品质。让我们用自己的方式，为农业的美好未来贡献力量。</p>
-                        
-                        <p>同时，我们也要像影片中的女性角色一样，在事业和家庭之间找到平衡，用爱和温暖照亮自己和他人的生活。</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>🎬 电影艺术的深度欣赏</h3>
-                        <p>从电影艺术的角度来看，《南京照相馆》是一部非常成功的作品。它没有依靠大场面和特效来吸引观众，而是用最朴实的方式讲述了最动人的故事。</p>
-                        
-                        <p>导演的镜头语言非常细腻，每一个镜头都经过精心设计。特别是那些静态的画面，往往比动态的情节更有感染力。这种克制而内敛的表达方式，正是这部电影的魅力所在。</p>
-                        
-                        <p>演员的表演也很自然，没有刻意的痕迹。他们用最真实的表演，诠释了最真挚的情感。这种真实感，是这部电影成功的重要因素。</p>
-                    </div>
-
-                    <div class="review-section">
-                        <h3>🌈 生活哲学的深刻领悟</h3>
-                        <p>这部电影让我对生活有了新的理解。生活不需要多么精彩，但一定要有温度。就像照相馆里的每一张照片，虽然只是定格的瞬间，但却承载着无限的温暖和美好。</p>
-                        
-                        <p>我们每个人都是生活的摄影师，用心去记录身边的美好，用爱去温暖周围的人。这样的人生，虽然平凡，但却充满意义。</p>
-                        
-                        <p>愿我们都能像《南京照相馆》中的人物一样，用最真挚的情感面对生活，用最温暖的心灵拥抱世界。</p>
+                    <div class="profile-info">
+                        <h1>覃照睿</h1>
+                        <p class="profile-subtitle">农类职业本科学生</p>
+                        <div class="profile-meta">
+                            <div class="meta-item">
+                                <span>🎓</span>
+                                <span>计算机应用工程</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>📅</span>
+                                <span>2024年观影</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+
+        <!-- 观影感悟内容 -->
+        <div class="review-content">
+            <div class="container">
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <div class="card-header">
+                            <span class="card-icon">💝</span>
+                            <h2>情感体验</h2>
+                        </div>
+                        <p>《南京照相馆》是一部让人心灵震撼的作品。影片中每一个细节都充满了温情，让我深深感受到了人与人之间最纯真的情感。特别是那些关于家庭、友情和爱情的描绘，都让我想起了自己生活中的美好时光。</p>
+                        <p>这种真挚的情感表达让我明白，最珍贵的不是物质财富，而是那些温暖的人际关系和美好的回忆。</p>
+                    </div>
+                    
+                    <div class="analysis-card">
+                        <div class="card-header">
+                            <span class="card-icon">🌸</span>
+                            <h2>女性视角</h2>
+                        </div>
+                        <p>作为女性观众，我特别关注影片中女性角色的塑造。她们既有传统女性的温柔贤淑，又展现出了独立自主的现代女性特质。这种平衡让我深受启发。</p>
+                        <p>影片告诉我们，女性可以在保持自己温柔本性的同时，也要有自己的追求和理想，这种内在的力量是最美丽的。</p>
+                    </div>
+                    
+                    <div class="analysis-card full-width">
+                        <div class="card-header">
+                            <span class="card-icon">🎨</span>
+                            <h2>艺术美感</h2>
+                        </div>
+                        <p>导演对色彩和构图的运用令人赞叹。每一帧画面都像是精心绘制的油画，温暖的色调营造出了怀旧而温馨的氛围。特别是那些关于照相馆内部的镜头，光影交错间透露出浓浓的生活气息。</p>
+                        <p>音乐的选择也恰到好处，轻柔的旋律与画面完美融合，让整部影片具有了诗一般的韵律美。这种艺术表现力让我对电影艺术有了更深的理解和欣赏。</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-section">
+                    <h2>最触动心灵的瞬间</h2>
+                    <p>最让我感动的是一位母亲带着女儿来拍照的场景。母亲眼中的慈爱和女儿脸上的纯真笑容，那一刻仿佛时间静止了。这让我想起了自己和母亲的温馨时光，也让我更加珍惜与家人在一起的每一个瞬间。</p>
+                </div>
+                
+                <div class="personal-insights">
+                    <h2>🌟 人生感悟</h2>
+                    <div class="thinking-cards">
+                        <div class="thinking-card">
+                            <span class="thinking-icon">💕</span>
+                            <h3>爱的力量</h3>
+                            <p>真正的爱是无私的付出和默默的守护，它能够跨越时间和空间，温暖每一个人的心。</p>
+                        </div>
+                        <div class="thinking-card">
+                            <span class="thinking-icon">🌺</span>
+                            <h3>美的发现</h3>
+                            <p>生活中处处都有美，关键是要有一双善于发现美的眼睛和一颗感受美的心。</p>
+                        </div>
+                        <div class="thinking-card">
+                            <span class="thinking-icon">🤗</span>
+                            <h3>温暖传递</h3>
+                            <p>每个人都可以成为别人生命中的温暖，用自己的善良和真诚去感染身边的人。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="personal-connection">
+                        <span class="connection-icon">🌈</span>
+                        <p>这部影片让我重新审视了自己的生活态度。我要学会更加珍惜身边的人和事，用更加温柔和包容的心去对待这个世界。同时，我也要保持自己的独立和追求，在温柔中展现坚强，在柔美中彰显力量。</p>
+                    </div>
+                </div>
+                
+                <div class="final-quote">
+                    <p>"最美的不是风景，而是看风景的心情；最珍贵的不是照片，而是照片背后的故事和情感。《南京照相馆》教会了我如何用心去感受生活的美好。"</p>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 南京照相馆观影感悟</p>
+            <p>&copy; 南京照相馆观影感悟 - 覃照睿</p>
         </div>
     </footer>
 
     <style>
-        .review-content {
+        /* 个人信息头部样式 */
+        .profile-header {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 3rem 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .profile-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 2rem;
             max-width: 800px;
             margin: 0 auto;
+            border: 1px solid #e9ecef;
         }
         
-        .review-section {
+        .profile-avatar {
+            position: relative;
+        }
+        
+        .avatar-circle {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            box-shadow: 0 4px 15px rgba(253, 121, 168, 0.3);
+        }
+        
+        .avatar-decoration {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 30px;
+            height: 30px;
+            background: #a29bfe;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+        
+        .profile-info h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2d3436;
+        }
+        
+        .profile-subtitle {
+            font-size: 1.1rem;
+            color: #636e72;
+            margin-bottom: 1rem;
+        }
+        
+        .profile-meta {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.95rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #fd79a8;
+        }
+        
+        /* 观影感悟内容样式 */
+        .review-content {
+            background: #f8f9fa;
+            padding: 3rem 0;
+        }
+        
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .analysis-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid #e9ecef;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .analysis-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f1f3f4;
+        }
+        
+        .card-icon {
+            font-size: 2.2rem;
+            color: #fd79a8;
+        }
+        
+        .card-header h2 {
+            color: #2d3436;
+            font-size: 1.4rem;
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .analysis-card p {
+            color: #636e72;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .highlight-section {
+            background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 2rem 0;
+            box-shadow: 0 8px 30px rgba(253, 121, 168, 0.2);
+        }
+        
+        .highlight-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .highlight-section p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+        
+        .personal-insights {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e9ecef;
+        }
+        
+        .personal-insights h2 {
+            color: #2d3436;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .thinking-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .thinking-card {
             background: white;
             padding: 2rem;
-            margin: 2rem 0;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
         }
         
-        .review-section h3 {
-            color: #ff6b6b;
+        .thinking-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .thinking-icon {
+            font-size: 2.2rem;
             margin-bottom: 1rem;
-            font-size: 1.4rem;
+            display: block;
+            color: #a29bfe;
         }
         
-        .review-section p {
-            line-height: 1.8;
-            color: #555;
+        .thinking-card h3 {
+            color: #2d3436;
             margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
         
-        .review-section strong {
-            color: #333;
+        .thinking-card p {
+            color: #636e72;
+            line-height: 1.7;
+            font-size: 1.05rem;
         }
         
-        .student-info {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        .personal-connection {
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            box-shadow: 0 6px 20px rgba(162, 155, 254, 0.2);
+        }
+        
+        .connection-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+            opacity: 0.9;
+        }
+        
+        .personal-connection p {
+            margin: 0;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+        
+        .final-quote {
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 2rem;
+            box-shadow: 0 8px 30px rgba(0, 184, 148, 0.2);
+        }
+        
+        .final-quote p {
+            margin: 0;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            font-style: italic;
+            opacity: 0.95;
+        }
+        
+        @media (max-width: 768px) {
+            .profile-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .full-width {
+                grid-column: span 1;
+            }
+            
+            .thinking-cards {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </body>
