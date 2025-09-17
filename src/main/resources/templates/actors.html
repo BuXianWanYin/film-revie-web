@@ -11,31 +11,37 @@
         <nav class="navbar">
             <div class="nav-container">
                 <h1 class="nav-logo">📷 南京照相馆观影感悟</h1>
-                <ul class="nav-menu">
+                <div class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
                     <li class="nav-item">
-                        <a th:href="@{/}" class="nav-link">首页</a>
+                        <a th:href="@{/}" class="nav-link" onclick="closeMobileMenu()">首页</a>
                     </li>
                     <li class="nav-item">
-                        <a th:href="@{/movie-intro}" class="nav-link">电影介绍</a>
+                        <a th:href="@{/movie-intro}" class="nav-link" onclick="closeMobileMenu()">电影介绍</a>
                     </li>
                     <li class="nav-item">
-                        <a th:href="@{/actors}" class="nav-link active">演员介绍</a>
+                        <a th:href="@{/actors}" class="nav-link active" onclick="closeMobileMenu()">演员介绍</a>
                     </li>
                     <li class="nav-item">
-                        <a th:href="@{/meaning}" class="nav-link">电影内涵</a>
+                        <a th:href="@{/meaning}" class="nav-link" onclick="closeMobileMenu()">电影内涵</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link">观影感悟 ▼</a>
                         <ul class="dropdown-menu">
-                            <li><a th:href="@{/review/qinguijin}">覃桂锦</a></li>
-                            <li><a th:href="@{/review/zhubinbo}">朱斌博</a></li>
-                            <li><a th:href="@{/review/suzixiang}">苏子翔</a></li>
-                            <li><a th:href="@{/review/qinzhaorui}">覃照睿</a></li>
+                            <li><a th:href="@{/review/qinguijin}" onclick="closeMobileMenu()">覃桂锦</a></li>
+                            <li><a th:href="@{/review/zhubinbo}" onclick="closeMobileMenu()">朱斌博</a></li>
+                            <li><a th:href="@{/review/suzixiang}" onclick="closeMobileMenu()">苏子翔</a></li>
+                            <li><a th:href="@{/review/qinzhaorui}" onclick="closeMobileMenu()">覃照睿</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
         </nav>
+        <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
     </header>
 
     <div class="page-header">
@@ -222,37 +228,7 @@
                     </div>
                 </div>
 
-                <div class="awards-section">
-                    <h2>🏆 《南京照相馆》获奖情况</h2>
-                    <div class="awards-grid">
-                        <div class="award-card">
-                            <div class="award-icon">🏆</div>
-                            <div class="award-content">
-                                <h3>最佳影片奖</h3>
-                                <p><strong>《南京照相馆》</strong> - 获奖影片</p>
-                                <p>由申奥执导，许渌洋、张珂、申奥联合编剧的《南京照相馆》斩获最佳影片奖，这是对整部影片艺术成就的最高认可。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="award-card">
-                            <div class="award-icon">🎬</div>
-                            <div class="award-content">
-                                <h3>最佳导演奖</h3>
-                                <p><strong>申奥</strong> - 《南京照相馆》</p>
-                                <p>申奥凭借《南京照相馆》获得最佳导演奖，其细腻的导演手法和独特的视觉呈现获得了评委会的一致认可。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="award-card">
-                            <div class="award-icon">✍️</div>
-                            <div class="award-content">
-                                <h3>最佳编剧奖</h3>
-                                <p><strong>许渌洋、张珂、申奥</strong> - 《南京照相馆》</p>
-                                <p>三位编剧凭借《南京照相馆》共同获得最佳编剧奖，剧本的深度和情感表达得到了业界的高度评价。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
                 <div class="audience-feedback">
                     <h2>👥 观众评价与反响</h2>
@@ -545,5 +521,6 @@
             }
         }
     </style>
+    <script th:src="@{/js/mobile-menu.js}"></script>
 </body>
 </html>

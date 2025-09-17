@@ -11,31 +11,37 @@
         <nav class="navbar">
             <div class="nav-container">
                 <h1 class="nav-logo">📷 南京照相馆观影感悟</h1>
-                <ul class="nav-menu">
+                <div class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
                     <li class="nav-item">
-                        <a th:href="@{/}" class="nav-link">首页</a>
+                        <a th:href="@{/}" class="nav-link" onclick="closeMobileMenu()">首页</a>
                     </li>
                     <li class="nav-item">
-                        <a th:href="@{/movie-intro}" class="nav-link">电影介绍</a>
+                        <a th:href="@{/movie-intro}" class="nav-link" onclick="closeMobileMenu()">电影介绍</a>
                     </li>
                     <li class="nav-item">
-                        <a th:href="@{/actors}" class="nav-link">演员介绍</a>
+                        <a th:href="@{/actors}" class="nav-link" onclick="closeMobileMenu()">演员介绍</a>
                     </li>
                     <li class="nav-item">
-                        <a th:href="@{/meaning}" class="nav-link">电影内涵</a>
+                        <a th:href="@{/meaning}" class="nav-link" onclick="closeMobileMenu()">电影内涵</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link">观影感悟 ▼</a>
                         <ul class="dropdown-menu">
-                            <li><a th:href="@{/review/qinguijin}" class="active-review">覃桂锦</a></li>
-                            <li><a th:href="@{/review/zhubinbo}">朱斌博</a></li>
-                            <li><a th:href="@{/review/suzixiang}">苏子翔</a></li>
-                            <li><a th:href="@{/review/qinzhaorui}">覃照睿</a></li>
+                            <li><a th:href="@{/review/qinguijin}" class="active-review" onclick="closeMobileMenu()">覃桂锦</a></li>
+                            <li><a th:href="@{/review/zhubinbo}" onclick="closeMobileMenu()">朱斌博</a></li>
+                            <li><a th:href="@{/review/suzixiang}" onclick="closeMobileMenu()">苏子翔</a></li>
+                            <li><a th:href="@{/review/qinzhaorui}" onclick="closeMobileMenu()">覃照睿</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
         </nav>
+        <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
     </header>
 
     <main>
@@ -746,5 +752,6 @@
             }
         }
     </style>
+    <script th:src="@{/js/mobile-menu.js}"></script>
 </body>
 </html>
