@@ -10,6 +10,7 @@ public class FilmReviewWebApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(FilmReviewWebApplication.class, args);
+
     }
 
 }
