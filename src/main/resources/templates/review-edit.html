@@ -864,7 +864,7 @@
                     // 设置初始内容（使用Quill的API）
                     if (initialContent && initialContent !== '' && initialContent !== '<p></p>') {
                         try {
-                            // 使用setContents API，这是最安全的方式
+                            // 使用setContents API，这是最安全的方式，'silent'模式不会触发事件
                             const delta = quill.clipboard.convert(initialContent);
                             quill.setContents(delta, 'silent');
                             textarea.value = quill.root.innerHTML;
@@ -882,7 +882,7 @@
                             }
                         }
                     }
-                }, 50); // 给Quill一点时间完全初始化内部状态
+                }, 100); // 给Quill足够时间完全初始化内部状态（包括MutationObserver和emitter）
                 
                 // 监听编辑器内容变化，同步到textarea
                 quill.on('text-change', function() {
