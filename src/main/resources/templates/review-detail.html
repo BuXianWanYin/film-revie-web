@@ -546,19 +546,43 @@
             const navMenu = document.getElementById('navMenu');
             const hamburger = document.querySelector('.hamburger');
             const mobileOverlay = document.getElementById('mobileOverlay');
-            navMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
-            mobileOverlay.classList.toggle('active');
+            const body = document.body;
+            
+            const isActive = navMenu.classList.contains('active');
+            
+            if (isActive) {
+                // 关闭菜单
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                body.classList.remove('menu-open');
+            } else {
+                // 打开菜单
+                navMenu.classList.add('active');
+                hamburger.classList.add('active');
+                mobileOverlay.classList.add('active');
+                body.classList.add('menu-open');
+            }
         }
         
         function closeMobileMenu() {
             const navMenu = document.getElementById('navMenu');
             const hamburger = document.querySelector('.hamburger');
             const mobileOverlay = document.getElementById('mobileOverlay');
+            const body = document.body;
+            
             navMenu.classList.remove('active');
             hamburger.classList.remove('active');
             mobileOverlay.classList.remove('active');
+            body.classList.remove('menu-open');
         }
+        
+        // 监听窗口大小变化，如果从移动端切换到PC端，自动关闭菜单
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
+            }
+        });
     </script>
 </body>
 </html>

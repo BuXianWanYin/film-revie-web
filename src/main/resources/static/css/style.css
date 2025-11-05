@@ -328,50 +328,140 @@ body {
     box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
 }
 
-/* 响应式设计 */
+/* ==================== PC端样式 ==================== */
+/* PC端菜单保持原样 */
+@media (min-width: 769px) {
+    .hamburger {
+        display: none;
+    }
+    
+    .mobile-overlay {
+        display: none !important;
+    }
+}
+
+/* ==================== 移动端独立样式 ==================== */
 @media (max-width: 768px) {
+    /* 移动端基础样式 */
+    body {
+        overflow-x: hidden;
+        position: relative;
+    }
+    
+    /* 移动端汉堡菜单 */
     .hamburger {
         display: flex;
+        z-index: 1002;
+        position: relative;
     }
 
+    /* 移动端菜单容器 - 完全独立样式 */
     .nav-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
+        position: fixed !important;
+        top: 0 !important;
+        right: 0 !important;
         width: 280px;
+        max-width: 85vw;
         height: 100vh;
-        background: white;
+        height: 100dvh; /* 支持动态视口高度 */
+        background: white !important;
         flex-direction: column;
         align-items: flex-start;
         padding: 80px 24px 24px;
-        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
-        transition: right 0.3s ease;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                    visibility 0.3s ease,
+                    width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                    opacity 0.3s ease;
         gap: 0;
-        z-index: 1001;
+        z-index: 1003 !important; /* 确保菜单在遮罩层之上 */
         overflow-y: auto;
+        overflow-x: hidden;
+        margin: 0;
+        list-style: none;
+        /* 创建一个新的层叠上下文 */
+        isolation: isolate;
+        /* 默认完全隐藏在屏幕外 */
+        transform: translateX(100%);
+        /* 隐藏时完全不可见且不可交互，不占据空间 */
+        visibility: hidden;
+        pointer-events: none;
+        opacity: 0;
+        /* 确保菜单完全在屏幕外，使用clip-path作为额外保障 */
+        clip-path: inset(0 0 0 100%);
+        /* 隐藏时不占据空间 */
+        width: 0;
+        padding: 0;
+        border: none;
     }
 
-    .nav-menu.active {
-        right: 0;
-    }
-
-    .nav-item {
-        width: 100%;
-        border-bottom: 1px solid var(--apple-border);
+    /* 确保菜单隐藏时完全在视口外，不占据任何空间 */
+    .nav-menu:not(.active) {
+        transform: translateX(100%);
+        visibility: hidden;
+        pointer-events: none;
+        clip-path: inset(0 0 0 100%);
+        opacity: 0;
+        width: 0 !important;
+        padding: 0 !important;
+        /* 确保菜单完全在屏幕外，不占据空间 */
+        display: block;
     }
     
-    .nav-item:last-child {
+    /* 移动端菜单激活状态 */
+    .nav-menu.active {
+        transform: translateX(0) !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        clip-path: inset(0 0 0 0) !important;
+        opacity: 1 !important;
+        width: 280px !important;
+        max-width: 85vw !important;
+        padding: 80px 24px 24px !important;
+        z-index: 1003 !important; /* 确保菜单在遮罩层之上 */
+        position: fixed !important;
+        /* 确保菜单有自己的层叠上下文 */
+        isolation: isolate !important;
+    }
+
+    /* 移动端菜单项 - 独立样式 */
+    .nav-menu .nav-item {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border-bottom: 1px solid var(--apple-border);
+        display: block;
+    }
+    
+    .nav-menu .nav-item:last-child {
         border-bottom: none;
     }
 
-    .nav-link {
+    /* 移动端菜单链接 - 独立样式 */
+    .nav-menu .nav-link {
         width: 100%;
-        padding: 12px 0;
+        padding: 16px 0;
         border-radius: 0;
         display: block;
+        font-size: 16px;
+        color: var(--apple-text);
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+        background: transparent;
+    }
+    
+    .nav-menu .nav-link:hover {
+        background-color: var(--apple-gray);
+        color: var(--apple-blue);
+    }
+    
+    .nav-menu .nav-link.active {
+        color: var(--apple-blue);
+        background-color: rgba(0, 122, 255, 0.1);
     }
 
-    .dropdown-menu {
+    /* 移动端下拉菜单 - 独立样式 */
+    .nav-menu .dropdown-menu {
         position: static;
         opacity: 1;
         visibility: visible;
@@ -379,24 +469,96 @@ body {
         box-shadow: none;
         border: none;
         margin: 0;
-        padding: 0 0 0 20px;
+        padding: 0;
+        padding-left: 20px;
         background: transparent;
+        min-width: auto;
+        width: 100%;
+        display: block;
+        top: auto;
+        left: auto;
     }
     
-    .dropdown-menu li {
+    .nav-menu .dropdown-menu li {
         border-bottom: 1px solid var(--apple-border);
+        margin: 0;
+        padding: 0;
     }
     
-    .dropdown-menu li:last-child {
+    .nav-menu .dropdown-menu li:last-child {
         border-bottom: none;
     }
     
-    .dropdown-menu a {
-        padding: 10px 0;
+    .nav-menu .dropdown-menu a {
+        padding: 12px 0;
+        font-size: 14px;
+        color: var(--apple-text-light);
+        display: block;
+    }
+    
+    .nav-menu .dropdown-menu a:hover {
+        background-color: var(--apple-gray);
+        color: var(--apple-blue);
     }
 
+    /* 移动端遮罩层 - 独立样式 */
+    .mobile-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        /* 遮罩层不覆盖菜单区域，菜单在右侧 */
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        background: rgba(0, 0, 0, 0.5) !important;
+        z-index: 1002 !important; /* 确保遮罩层在菜单下面 */
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        /* 确保遮罩层在菜单后面，只覆盖背景内容 */
+        display: block;
+        /* 遮罩层不应该覆盖菜单区域，菜单的z-index更高（1003） */
+        /* 不创建新的层叠上下文，保持在同一层 */
+        /* 使用clip-path确保不覆盖菜单区域 */
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .mobile-overlay.active {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        /* 遮罩层只覆盖背景，菜单在遮罩层之上（z-index: 1003） */
+        z-index: 1002 !important;
+        /* 遮罩层不覆盖菜单区域（菜单在右侧，宽度约280px或85vw） */
+        /* 使用inset方式，从右侧裁剪掉菜单宽度 */
+        clip-path: inset(0 calc(max(280px, 15vw)) 0 0);
+    }
+
+    /* 移动端容器 */
     .container {
         padding: 0 16px;
+    }
+    
+    /* 移动端导航栏容器 */
+    .nav-container {
+        padding: 0 16px;
+    }
+    
+    /* 移动端导航栏logo */
+    .nav-logo {
+        font-size: 16px;
+    }
+    
+    /* 防止body滚动当菜单打开时 */
+    body.menu-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
     }
 }
 

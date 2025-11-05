@@ -731,37 +731,55 @@
                 }
             }
             
-            // 检查元素是否已经被Quill初始化（如果已经有ql-editor类，说明已经被初始化）
-            if (editorElement.classList.contains('ql-editor') || editorElement.querySelector('.ql-editor')) {
+            // 检查元素是否已经被Quill初始化
+            if (editorElement.classList.contains('ql-container') || 
+                editorElement.classList.contains('ql-editor') || 
+                editorElement.querySelector('.ql-container') ||
+                editorElement.querySelector('.ql-editor')) {
                 console.warn('Editor already initialized for:', editorId);
                 return;
             }
             
-            // 如果有初始内容，先设置到editor元素中
-            if (initialContent && initialContent !== '' && initialContent !== '<p></p>') {
-                editorElement.innerHTML = initialContent;
-            }
+            // 清空编辑器元素，避免初始化冲突
+            editorElement.innerHTML = '';
             
-            // 创建Quill编辑器（如果editorElement已有内容，Quill会自动读取）
-            try {
-                const quill = new Quill('#' + editorId + '-editor', quillOptions);
-                
-                // 保存编辑器实例
-                editors[editorId] = quill;
-                
-                // 确保textarea有初始值
-                if (initialContent && initialContent !== '' && initialContent !== '<p></p>') {
-                    textarea.value = initialContent;
+            // 延迟初始化，确保DOM完全准备好
+            setTimeout(function() {
+                try {
+                    // 再次检查元素是否存在
+                    const editorEl = document.getElementById(editorId + '-editor');
+                    if (!editorEl) {
+                        console.warn('Editor element not found after timeout:', editorId);
+                        return;
+                    }
+                    
+                    // 如果已经被初始化，跳过
+                    if (editorEl.classList.contains('ql-container') || editors[editorId]) {
+                        return;
+                    }
+                    
+                    // 创建Quill编辑器
+                    const quill = new Quill('#' + editorId + '-editor', quillOptions);
+                    
+                    // 保存编辑器实例
+                    editors[editorId] = quill;
+                    
+                    // 设置初始内容
+                    if (initialContent && initialContent !== '' && initialContent !== '<p></p>') {
+                        // 使用Quill的API设置内容，而不是直接设置innerHTML
+                        quill.root.innerHTML = initialContent;
+                        textarea.value = initialContent;
+                    }
+                    
+                    // 监听编辑器内容变化，同步到textarea
+                    quill.on('text-change', function() {
+                        const html = quill.root.innerHTML;
+                        textarea.value = html;
+                    });
+                } catch (error) {
+                    console.error('Error initializing Quill editor for', editorId, ':', error);
                 }
-                
-                // 监听编辑器内容变化，同步到textarea
-                quill.on('text-change', function() {
-                    const html = quill.root.innerHTML;
-                    textarea.value = html;
-                });
-            } catch (error) {
-                console.error('Error initializing Quill editor for', editorId, ':', error);
-            }
+            }, 100); // 延迟100ms确保DOM准备就绪
         }
         
         // 初始化所有编辑器
@@ -852,19 +870,43 @@
             const navMenu = document.getElementById('navMenu');
             const hamburger = document.querySelector('.hamburger');
             const mobileOverlay = document.getElementById('mobileOverlay');
-            navMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
-            mobileOverlay.classList.toggle('active');
+            const body = document.body;
+            
+            const isActive = navMenu.classList.contains('active');
+            
+            if (isActive) {
+                // 关闭菜单
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                body.classList.remove('menu-open');
+            } else {
+                // 打开菜单
+                navMenu.classList.add('active');
+                hamburger.classList.add('active');
+                mobileOverlay.classList.add('active');
+                body.classList.add('menu-open');
+            }
         }
         
         function closeMobileMenu() {
             const navMenu = document.getElementById('navMenu');
             const hamburger = document.querySelector('.hamburger');
             const mobileOverlay = document.getElementById('mobileOverlay');
+            const body = document.body;
+            
             navMenu.classList.remove('active');
             hamburger.classList.remove('active');
             mobileOverlay.classList.remove('active');
+            body.classList.remove('menu-open');
         }
+        
+        // 监听窗口大小变化，如果从移动端切换到PC端，自动关闭菜单
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
+            }
+        });
     </script>
     
     <footer>
