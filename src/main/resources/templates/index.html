@@ -5,12 +5,187 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="${title}">南京照相馆观影感悟</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        /* 首页特定样式 */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: linear-gradient(180deg, #F5F5F7 0%, #FFFFFF 100%);
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -1px;
+            color: var(--apple-text);
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 32px;
+        }
+
+        .featured-movies,
+        .team-intro {
+            padding: 80px 0;
+        }
+
+        .featured-movies h2,
+        .team-intro h2 {
+            font-size: 40px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 48px;
+            color: var(--apple-text);
+            letter-spacing: -0.5px;
+        }
+
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .movie-card {
+            background: white;
+            border-radius: var(--apple-radius);
+            overflow: hidden;
+            box-shadow: var(--apple-shadow);
+            border: 1px solid var(--apple-border);
+            transition: all 0.3s ease;
+        }
+
+        .movie-card:hover {
+            box-shadow: var(--apple-shadow-hover);
+            transform: translateY(-4px);
+        }
+
+        .movie-poster {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+        }
+
+        .movie-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .movie-info {
+            padding: 24px;
+        }
+
+        .movie-info h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--apple-text);
+        }
+
+        .movie-info p {
+            font-size: 15px;
+            color: var(--apple-text-light);
+            line-height: 1.6;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 32px 24px;
+            background: white;
+            border-radius: var(--apple-radius);
+            box-shadow: var(--apple-shadow);
+            border: 1px solid var(--apple-border);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            box-shadow: var(--apple-shadow-hover);
+            transform: translateY(-4px);
+        }
+
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: var(--apple-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-member h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--apple-text);
+        }
+
+        .team-member p {
+            font-size: 14px;
+            color: var(--apple-text-light);
+            margin-bottom: 20px;
+        }
+
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--apple-border);
+            color: var(--apple-text-light);
+            font-size: 13px;
+        }
+
+        footer a {
+            color: var(--apple-text-light);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--apple-blue);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .movie-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="nav-container">
-                <h1 class="nav-logo">📷 南京照相馆观影感悟</h1>
+                <a href="/" class="nav-logo">南京照相馆观影感悟</a>
                 <div class="hamburger" onclick="toggleMobileMenu()">
                     <span></span>
                     <span></span>
@@ -18,7 +193,7 @@
                 </div>
                 <ul class="nav-menu" id="navMenu">
                     <li class="nav-item">
-                        <a th:href="@{/}" class="nav-link" onclick="closeMobileMenu()">首页</a>
+                        <a th:href="@{/}" class="nav-link active" onclick="closeMobileMenu()">首页</a>
                     </li>
                     <li class="nav-item">
                         <a th:href="@{/movie-intro}" class="nav-link" onclick="closeMobileMenu()">电影介绍</a>
@@ -29,23 +204,17 @@
                     <li class="nav-item">
                         <a th:href="@{/meaning}" class="nav-link" onclick="closeMobileMenu()">电影内涵</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link">观影感悟 ▼</a>
+                    <li class="nav-item">
+                        <a th:href="@{/review/qinguijin}" class="nav-link" onclick="closeMobileMenu()">观影感悟</a>
+                    </li>
+                    <li class="nav-item dropdown" th:if="${user != null}">
+                        <a href="#" class="nav-link">个人中心</a>
                         <ul class="dropdown-menu">
-                            <li><a th:href="@{/review/qinguijin}" onclick="closeMobileMenu()">覃桂锦</a></li>
-                            <li><a th:href="@{/review/zhubinbo}" onclick="closeMobileMenu()">朱斌博</a></li>
-                            <li><a th:href="@{/review/suzixiang}" onclick="closeMobileMenu()">苏子翔</a></li>
-                            <li><a th:href="@{/review/qinzhaorui}" onclick="closeMobileMenu()">覃照睿</a></li>
+                            <li><a th:href="@{/profile}" onclick="closeMobileMenu()">个人中心</a></li>
+                            <li><a th:href="@{/review/edit}" onclick="closeMobileMenu()">编辑观后感</a></li>
+                            <li><a th:href="@{/password/change}" onclick="closeMobileMenu()">修改密码</a></li>
+                            <li><a th:href="@{/logout}" onclick="closeMobileMenu()">退出</a></li>
                         </ul>
-                    </li>
-                    <li class="nav-item" th:if="${user != null}">
-                        <a th:href="@{/review/edit}" class="nav-link" onclick="closeMobileMenu()">编辑观后感</a>
-                    </li>
-                    <li class="nav-item" th:if="${user != null}">
-                        <a th:href="@{/password/change}" class="nav-link" onclick="closeMobileMenu()">修改密码</a>
-                    </li>
-                    <li class="nav-item" th:if="${user != null}">
-                        <a th:href="@{/logout}" class="nav-link" onclick="closeMobileMenu()">退出</a>
                     </li>
                     <li class="nav-item" th:if="${user == null}">
                         <a th:href="@{/login}" class="nav-link" onclick="closeMobileMenu()">登录</a>
@@ -73,7 +242,7 @@
                 <div class="movie-grid">
                     <div class="movie-card">
                         <div class="movie-poster">
-                            <img src="https://img2.baidu.com/it/u=2244160751,3334166478&fm=253&fmt=auto?w=1025&h=600" alt="南京照相馆海报" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                            <img src="https://img2.baidu.com/it/u=2244160751,3334166478&fm=253&fmt=auto?w=1025&h=600" alt="南京照相馆海报">
                         </div>
                         <div class="movie-info">
                             <h3>剧情深度解析</h3>
@@ -82,7 +251,7 @@
                     </div>
                     <div class="movie-card">
                         <div class="movie-poster">
-                            <img src="https://img0.baidu.com/it/u=3315621012,2823437906&fm=253&fmt=auto?w=607&h=446" alt="南京照相馆剧照" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                            <img src="https://img0.baidu.com/it/u=3315621012,2823437906&fm=253&fmt=auto?w=607&h=446" alt="南京照相馆剧照">
                         </div>
                         <div class="movie-info">
                             <h3>演员表现分析</h3>
@@ -91,7 +260,7 @@
                     </div>
                     <div class="movie-card">
                         <div class="movie-poster">
-                            <img src="https://img0.baidu.com/it/u=795693897,2376496487&fm=253&fmt=auto?w=1067&h=800" alt="南京照相馆场景" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                            <img src="https://img0.baidu.com/it/u=795693897,2376496487&fm=253&fmt=auto?w=1067&h=800" alt="南京照相馆场景">
                         </div>
                         <div class="movie-info">
                             <h3>主题内涵探讨</h3>
@@ -146,13 +315,31 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 南京照相馆观影感悟 |
-                <a href="https://beian.miit.gov.cn/" target="_blank" style="color: #666; text-decoration: none;">桂ICP备2025072115号</a> |
-                <a href="https://beian.mps.gov.cn/#/query/webSearch?code=45010002451112" rel="noreferrer" target="_blank" style="color: #666; text-decoration: none;">
+                <a href="https://beian.miit.gov.cn/" target="_blank">桂ICP备2025072115号</a> |
+                <a href="https://beian.mps.gov.cn/#/query/webSearch?code=45010002451112" rel="noreferrer" target="_blank">
                     <img th:src="@{/images/备案图标.png}" alt="公安备案" style="height: 18px; vertical-align: middle; margin-right: 4px;">桂公网安备45010002451112号
                 </a>
             </p>
         </div>
     </footer>
-    <script th:src="@{/js/mobile-menu.js}"></script>
+    <script>
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+        }
+    </script>
 </body>
 </html>

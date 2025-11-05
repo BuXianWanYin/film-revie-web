@@ -36,6 +36,8 @@ public class ReviewController {
             review.setUserId(user.getId());
         }
         model.addAttribute("review", review);
+        model.addAttribute("user", user);
+        model.addAttribute("activePage", "review-edit");
         return "review-edit";
     }
 

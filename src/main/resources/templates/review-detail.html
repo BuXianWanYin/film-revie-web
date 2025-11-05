@@ -5,12 +5,358 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="${title}">观影感悟</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        /* review-detail页面样式 - Apple简约风格 */
+        .profile-section {
+            background: linear-gradient(180deg, #F5F5F7 0%, #FFFFFF 100%);
+            padding: 80px 0 60px;
+        }
+        
+        .profile-card-main {
+            background: white;
+            border-radius: var(--apple-radius);
+            padding: 48px;
+            box-shadow: var(--apple-shadow);
+            border: 1px solid var(--apple-border);
+            display: flex;
+            gap: 48px;
+            align-items: center;
+        }
+        
+        .profile-left {
+            text-align: center;
+        }
+        
+        .avatar-container {
+            position: relative;
+            margin-bottom: 24px;
+        }
+        
+        .avatar-main {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto;
+            border: 3px solid var(--apple-border);
+        }
+        
+        .avatar-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .avatar-ring {
+            display: none;
+        }
+        
+        .profile-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            display: inline-block;
+        }
+        
+        .badge-primary {
+            background: var(--apple-gray);
+            color: var(--apple-text);
+            border: 1px solid var(--apple-border);
+        }
+        
+        .badge-secondary {
+            background: var(--apple-gray);
+            color: var(--apple-text);
+            border: 1px solid var(--apple-border);
+        }
+        
+        .profile-right {
+            flex: 1;
+        }
+        
+        .profile-name {
+            font-size: 48px;
+            font-weight: 600;
+            letter-spacing: -1px;
+            color: var(--apple-text);
+            margin-bottom: 16px;
+        }
+        
+        .profile-quote-card {
+            background: var(--apple-gray);
+            padding: 24px;
+            border-radius: var(--apple-radius-small);
+            margin-bottom: 32px;
+            position: relative;
+            border: 1px solid var(--apple-border);
+        }
+        
+        .quote-mark {
+            font-size: 48px;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            opacity: 0.2;
+            font-family: serif;
+            color: var(--apple-text);
+        }
+        
+        .quote-text {
+            font-style: italic;
+            font-size: 17px;
+            line-height: 1.6;
+            margin: 0;
+            padding-left: 20px;
+            color: var(--apple-text);
+        }
+        
+        .profile-stats {
+            display: flex;
+            gap: 32px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            display: block;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--apple-blue);
+            letter-spacing: -0.5px;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: var(--apple-text-light);
+            margin-top: 4px;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 24px;
+            padding: 48px 0;
+        }
+        
+        .movie-selection-card,
+        .reason-card,
+        .analysis-card,
+        .character-card,
+        .impression-card,
+        .professional-card,
+        .summary-card,
+        .no-review-card {
+            background: white;
+            border-radius: var(--apple-radius);
+            padding: 32px;
+            box-shadow: var(--apple-shadow);
+            border: 1px solid var(--apple-border);
+            transition: all 0.3s ease;
+        }
+        
+        .movie-selection-card:hover,
+        .reason-card:hover,
+        .analysis-card:hover,
+        .character-card:hover,
+        .impression-card:hover,
+        .professional-card:hover,
+        .summary-card:hover {
+            box-shadow: var(--apple-shadow-hover);
+            transform: translateY(-2px);
+        }
+        
+        .card-header {
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--apple-border);
+        }
+        
+        .card-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: var(--apple-text);
+            margin: 0;
+        }
+        
+        .movie-poster-section {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        
+        .movie-poster {
+            flex-shrink: 0;
+            width: 150px;
+            height: 200px;
+            border-radius: var(--apple-radius-small);
+            overflow: hidden;
+        }
+        
+        .movie-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .movie-info {
+            flex: 1;
+        }
+        
+        .movie-title {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: var(--apple-text);
+            margin-bottom: 12px;
+        }
+        
+        .movie-desc {
+            color: var(--apple-text-light);
+            margin-bottom: 16px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .movie-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            background: var(--apple-gray);
+            color: var(--apple-text);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid var(--apple-border);
+        }
+        
+        .reason-content,
+        .analysis-content,
+        .character-content,
+        .impression-content,
+        .professional-content,
+        .summary-content {
+            color: var(--apple-text);
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        
+        .summary-card {
+            grid-column: 1 / -1;
+            background: var(--apple-blue);
+            color: white;
+            border: none;
+        }
+        
+        .summary-card .card-header {
+            border-bottom-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .summary-card .card-header h2 {
+            color: white;
+        }
+        
+        .summary-content {
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .no-review-card {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 64px 32px;
+        }
+        
+        .no-review-content p {
+            color: var(--apple-text-light);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        
+        .btn-login-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--apple-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--apple-radius-small);
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-login-link:hover {
+            background-color: #0051D5;
+            transform: translateY(-1px);
+            box-shadow: var(--apple-shadow);
+        }
+        
+        footer {
+            padding: 48px 0;
+            text-align: center;
+            border-top: 1px solid var(--apple-border);
+            color: var(--apple-text-light);
+            font-size: 13px;
+        }
+        
+        footer a {
+            color: var(--apple-text-light);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            color: var(--apple-blue);
+        }
+        
+        @media (max-width: 768px) {
+            .profile-card-main {
+                flex-direction: column;
+                text-align: center;
+                padding: 32px 24px;
+            }
+            
+            .profile-stats {
+                justify-content: center;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                padding: 24px 0;
+            }
+            
+            .movie-poster-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .movie-poster {
+                width: 200px;
+                margin: 0 auto;
+            }
+            
+            .profile-name {
+                font-size: 36px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="nav-container">
-                <h1 class="nav-logo">📷 南京照相馆观影感悟</h1>
+                <a href="/" class="nav-logo">南京照相馆观影感悟</a>
                 <div class="hamburger" onclick="toggleMobileMenu()">
                     <span></span>
                     <span></span>
@@ -29,23 +375,17 @@
                     <li class="nav-item">
                         <a th:href="@{/meaning}" class="nav-link" onclick="closeMobileMenu()">电影内涵</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link">观影感悟 ▼</a>
+                    <li class="nav-item">
+                        <a th:href="@{/review/qinguijin}" class="nav-link active" onclick="closeMobileMenu()">观影感悟</a>
+                    </li>
+                    <li class="nav-item dropdown" th:if="${currentUser != null}">
+                        <a href="#" class="nav-link">个人中心</a>
                         <ul class="dropdown-menu">
-                            <li><a th:href="@{/review/qinguijin}" th:classappend="${user.username == 'qinguijin'} ? 'active-review'" onclick="closeMobileMenu()">覃桂锦</a></li>
-                            <li><a th:href="@{/review/zhubinbo}" th:classappend="${user.username == 'zhubinbo'} ? 'active-review'" onclick="closeMobileMenu()">朱斌博</a></li>
-                            <li><a th:href="@{/review/suzixiang}" th:classappend="${user.username == 'suzixiang'} ? 'active-review'" onclick="closeMobileMenu()">苏子翔</a></li>
-                            <li><a th:href="@{/review/qinzhaorui}" th:classappend="${user.username == 'qinzhaorui'} ? 'active-review'" onclick="closeMobileMenu()">覃照睿</a></li>
+                            <li><a th:href="@{/profile}" onclick="closeMobileMenu()">个人中心</a></li>
+                            <li><a th:href="@{/review/edit}" onclick="closeMobileMenu()">编辑观后感</a></li>
+                            <li><a th:href="@{/password/change}" onclick="closeMobileMenu()">修改密码</a></li>
+                            <li><a th:href="@{/logout}" onclick="closeMobileMenu()">退出</a></li>
                         </ul>
-                    </li>
-                    <li class="nav-item" th:if="${currentUser != null}">
-                        <a th:href="@{/review/edit}" class="nav-link" onclick="closeMobileMenu()">编辑观后感</a>
-                    </li>
-                    <li class="nav-item" th:if="${currentUser != null}">
-                        <a th:href="@{/password/change}" class="nav-link" onclick="closeMobileMenu()">修改密码</a>
-                    </li>
-                    <li class="nav-item" th:if="${currentUser != null}">
-                        <a th:href="@{/logout}" class="nav-link" onclick="closeMobileMenu()">退出</a>
                     </li>
                     <li class="nav-item" th:if="${currentUser == null}">
                         <a th:href="@{/login}" class="nav-link" onclick="closeMobileMenu()">登录</a>
@@ -65,12 +405,11 @@
                         <div class="avatar-container">
                             <div class="avatar-main">
                                 <img th:src="${user.avatar != null ? user.avatar : '/images/qinguijin.png'}" th:alt="${user.realName}">
-                            </div> 
-                            <div class="avatar-ring"></div>
+                            </div>
                         </div>
                         <div class="profile-badges">
-                            <span class="badge badge-primary">📚 计算机应用工程</span>
-                            <span class="badge badge-secondary">🎬 电影爱好者</span>
+                            <span class="badge badge-primary">计算机应用工程</span>
+                            <span class="badge badge-secondary">电影爱好者</span>
                         </div>
                     </div>
                     <div class="profile-right">
@@ -103,10 +442,10 @@
                     </div>
                     <div class="movie-poster-section">
                         <div class="movie-poster" th:if="${review.moviePoster != null and review.moviePoster != ''}">
-                            <img th:src="${review.moviePoster}" alt="电影海报" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px;">
+                            <img th:src="${review.moviePoster}" alt="电影海报">
                         </div>
                         <div class="movie-poster" th:if="${review.moviePoster == null or review.moviePoster == ''}">
-                            <img src="https://img2.baidu.com/it/u=2244160751,3334166478&fm=253&fmt=auto?w=1025&h=600" alt="南京照相馆" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px;">
+                            <img src="https://img2.baidu.com/it/u=2244160751,3334166478&fm=253&fmt=auto?w=1025&h=600" alt="南京照相馆">
                         </div>
                         <div class="movie-info">
                             <h3 class="movie-title" th:text="${review.movieTitle != null ? review.movieTitle : '《南京照相馆》'}">《南京照相馆》</h3>
@@ -168,7 +507,6 @@
                 <!-- 总结感悟卡片 -->
                 <div class="summary-card" th:if="${review != null and review.summary != null}">
                     <div class="card-header">
-                        <div class="header-icon">💎</div>
                         <h2>总结与感悟</h2>
                     </div>
                     <div class="summary-content" th:utext="${review.summary}">
@@ -192,389 +530,32 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 南京照相馆观影感悟 |
-                <a href="https://beian.miit.gov.cn/" target="_blank" style="color: #666; text-decoration: none;">桂ICP备2025072115号</a> |
-                <a href="https://beian.mps.gov.cn/#/query/webSearch?code=45010002451112" rel="noreferrer" target="_blank" style="color: #666; text-decoration: none;">
+                <a href="https://beian.miit.gov.cn/" target="_blank">桂ICP备2025072115号</a> |
+                <a href="https://beian.mps.gov.cn/#/query/webSearch?code=45010002451112" rel="noreferrer" target="_blank">
                     <img th:src="@{/images/备案图标.png}" alt="公安备案" style="height: 18px; vertical-align: middle; margin-right: 4px;">桂公网安备45010002451112号
                 </a>
             </p>
         </div>
     </footer>
 
-    <script th:src="@{/js/mobile-menu.js}"></script>
-    
-    <style>
-        .active-review {
-            background-color: rgba(231, 76, 60, 0.1) !important;
-            color: #e74c3c !important;
+    <script>
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
         }
         
-        /* 个人信息区域 */
-        .profile-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 4rem 0;
-            color: white;
+        function closeMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+            mobileOverlay.classList.remove('active');
         }
-        
-        .profile-card-main {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 3rem;
-            display: flex;
-            gap: 3rem;
-            align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .profile-left {
-            text-align: center;
-        }
-        
-        .avatar-container {
-            position: relative;
-            margin-bottom: 2rem;
-        }
-        
-        .avatar-main {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-            overflow: hidden;
-        }
-        
-        .avatar-main img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border: none;
-        }
-        
-        .avatar-ring {
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: rotate 10s linear infinite;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .profile-badges {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        
-        .badge {
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-        
-        .badge-primary {
-            background: rgba(52, 152, 219, 0.2);
-            border: 1px solid rgba(52, 152, 219, 0.5);
-        }
-        
-        .badge-secondary {
-            background: rgba(155, 89, 182, 0.2);
-            border: 1px solid rgba(155, 89, 182, 0.5);
-        }
-        
-        .profile-right {
-            flex: 1;
-        }
-        
-        .profile-name {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #fff, #f8f9fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .profile-quote-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-        
-        .quote-mark {
-            font-size: 4rem;
-            position: absolute;
-            top: -10px;
-            left: 15px;
-            opacity: 0.3;
-            font-family: serif;
-        }
-        
-        .quote-text {
-            font-style: italic;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin: 0;
-            padding-left: 2rem;
-        }
-        
-        .profile-stats {
-            display: flex;
-            gap: 2rem;
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-number {
-            display: block;
-            font-size: 2rem;
-            font-weight: 700;
-            color: #ffeaa7;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        /* 内容网格 */
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            padding: 3rem 0;
-        }
-        
-        /* 通用卡片样式 */
-        .movie-selection-card,
-        .reason-card,
-        .analysis-card,
-        .character-card,
-        .impression-card,
-        .professional-card,
-        .summary-card,
-        .no-review-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border: 1px solid #f1f3f4;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .movie-selection-card:hover,
-        .reason-card:hover,
-        .analysis-card:hover,
-        .character-card:hover,
-        .impression-card:hover,
-        .professional-card:hover,
-        .summary-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #f8f9fa;
-        }
-        
-        .header-icon {
-            font-size: 2rem;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #74b9ff, #0984e3);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .card-header h2 {
-            color: #2d3436;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin: 0;
-        }
-        
-        /* 电影选择卡片 */
-        .movie-poster-section {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-        
-        .movie-poster {
-            flex-shrink: 0;
-            width: 150px;
-        }
-        
-        .movie-info {
-            flex: 1;
-        }
-        
-        .movie-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #2d3436;
-            margin-bottom: 0.5rem;
-        }
-        
-        .movie-desc {
-            color: #636e72;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-        
-        .movie-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .tag {
-            background: #ddd6fe;
-            color: #7c3aed;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        
-        /* 选择理由卡片 */
-        .reason-content {
-            color: #555;
-            line-height: 1.7;
-            font-size: 1.1rem;
-        }
-        
-        /* 分析卡片 */
-        .analysis-content {
-            color: #555;
-            line-height: 1.7;
-            font-size: 1.1rem;
-        }
-        
-        /* 人物卡片 */
-        .character-content {
-            color: #555;
-            line-height: 1.7;
-            font-size: 1.1rem;
-        }
-        
-        /* 印象卡片 */
-        .impression-content {
-            color: #555;
-            line-height: 1.7;
-            font-size: 1.1rem;
-        }
-        
-        /* 专业思考卡片 */
-        .professional-content {
-            color: #555;
-            line-height: 1.7;
-            font-size: 1.1rem;
-        }
-        
-        /* 总结卡片 */
-        .summary-card {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        
-        .summary-card .header-icon {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .summary-card .card-header {
-            border-bottom-color: rgba(255, 255, 255, 0.2);
-        }
-        
-        .summary-card .card-header h2 {
-            color: white;
-        }
-        
-        .summary-content {
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.7;
-            font-size: 1.1rem;
-        }
-        
-        /* 无观后感卡片 */
-        .no-review-card {
-            grid-column: 1 / -1;
-            text-align: center;
-        }
-        
-        .no-review-content p {
-            color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .btn-login-link {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            transition: transform 0.2s;
-        }
-        
-        .btn-login-link:hover {
-            transform: translateY(-2px);
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .profile-card-main {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .profile-stats {
-                justify-content: center;
-            }
-            
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .movie-poster-section {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .movie-poster {
-                width: 200px;
-                margin: 0 auto;
-            }
-        }
-    </style>
+    </script>
 </body>
 </html>
-

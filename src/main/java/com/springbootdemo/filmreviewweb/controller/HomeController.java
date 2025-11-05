@@ -35,20 +35,26 @@ public class HomeController {
     }
 
     @GetMapping("/movie-intro")
-    public String movieIntro(Model model) {
+    public String movieIntro(Model model, HttpSession session) {
         model.addAttribute("title", "电影介绍");
+        User user = (User) session.getAttribute("user");
+        model.addAttribute("user", user);
         return "movie-intro";
     }
 
     @GetMapping("/actors")
-    public String actors(Model model) {
+    public String actors(Model model, HttpSession session) {
         model.addAttribute("title", "演员介绍");
+        User user = (User) session.getAttribute("user");
+        model.addAttribute("user", user);
         return "actors";
     }
 
     @GetMapping("/meaning")
-    public String meaning(Model model) {
+    public String meaning(Model model, HttpSession session) {
         model.addAttribute("title", "电影内涵");
+        User user = (User) session.getAttribute("user");
+        model.addAttribute("user", user);
         return "meaning";
     }
 

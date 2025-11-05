@@ -41,6 +41,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return false;
     }
 
+    @Override
+    public boolean resetPassword(String username, String newPassword) {
+        User user = findByUsername(username);
+        if (user != null) {
+            user.setPassword(md5Encrypt(newPassword));
+            return updateById(user);
+        }
+        return false;
+    }
+
     /**
      * MD5加密
      */

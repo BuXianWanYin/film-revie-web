@@ -22,5 +22,10 @@ public interface UserService extends IService<User> {
      * 修改密码
      */
     boolean changePassword(Long userId, String oldPassword, String newPassword);
+    
+    /**
+     * 重置密码（忘记密码时使用，不需要原密码）
+     */
+    boolean resetPassword(String username, String newPassword);
 }
 

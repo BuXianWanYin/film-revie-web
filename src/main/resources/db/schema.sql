@@ -3,6 +3,12 @@ CREATE DATABASE IF NOT EXISTS film_review_db DEFAULT CHARACTER SET utf8mb4 COLLA
 
 USE film_review_db;
 
+-- 清空现有数据（如果存在）
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE TABLE `review`;
+TRUNCATE TABLE `user`;
+SET FOREIGN_KEY_CHECKS = 1;
+
 -- 用户表（小组成员）
 CREATE TABLE IF NOT EXISTS `user` (
     `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
@@ -44,16 +50,16 @@ INSERT INTO `user` (`username`, `password`, `real_name`, `gender`, `avatar`) VAL
 ('suzixiang', 'e10adc3949ba59abbe56e057f20f883e', '苏子翔', '男', '/images/suzixiang.png'),
 ('qinzhaorui', 'e10adc3949ba59abbe56e057f20f883e', '覃照睿', '女', '/images/qinzhaorui.png');
 
--- 插入观后感数据（使用子查询确保user_id与用户名匹配）
+-- 插入观后感数据（使用子查询确保user_id与用户名匹配，移除所有emoji）
 -- 覃桂锦的观后感
 INSERT INTO `review` (`user_id`, `movie_title`, `movie_desc`, `movie_poster`, `reason`, `plot_analysis`, `character_analysis`, `impression`, `professional_thinking`, `summary`) 
 SELECT id, '《南京照相馆》', '一部关于传承与坚守的温情之作', 'https://img2.baidu.com/it/u=2244160751,3334166478&fm=253&fmt=auto?w=1025&h=600',
-'<p>作为计算机应用工程专业的学生，我被这部电影深深吸引。它不仅展现了传统照相技艺的魅力，更让我思考在数字化时代如何平衡技术进步与人文情怀。</p><div class="highlight-box"><span class="highlight-icon">✨</span><p>这部电影让我看到了技术与情感的完美融合</p></div>',
+'<p>作为计算机应用工程专业的学生，我被这部电影深深吸引。它不仅展现了传统照相技艺的魅力，更让我思考在数字化时代如何平衡技术进步与人文情怀。</p><div class="highlight-box"><p>这部电影让我看到了技术与情感的完美融合</p></div>',
 '<div class="analysis-point"><div class="point-marker">1</div><div class="point-content"><h4>开篇设置</h4><p>影片以一个即将消失的老照相馆为背景，巧妙地设置了传统与现代的冲突点，为后续的情感铺垫奠定了基础。</p></div></div><div class="analysis-point"><div class="point-marker">2</div><div class="point-content"><h4>情感递进</h4><p>通过一张张老照片的故事，影片层层递进地展现了人物内心的变化，从抗拒到理解，从冷漠到温情。</p></div></div><div class="analysis-point"><div class="point-marker">3</div><div class="point-content"><h4>主题升华</h4><p>结尾处的和解不仅是人物关系的修复，更是传统文化与现代生活的和谐统一，给人以深刻启发。</p></div></div>',
-'<div class="character-item"><div class="character-avatar">👴</div><h4>老照相师</h4><p>固执中带着温情，传统中蕴含智慧。他的每一个动作都透露着对手艺的敬畏和对时光的眷恋。</p></div><div class="character-item"><div class="character-avatar">👨</div><h4>年轻摄影师</h4><p>代表新时代的思维方式，在与传统的碰撞中逐渐成长，最终找到了技术与情感的平衡点。</p></div>',
-'<div class="scene-description"><p>最打动我的是影片中老师傅教年轻人冲洗照片的那一幕。在昏黄的灯光下，老师傅小心翼翼地操作着每一个步骤，那种专注和虔诚让我想到了我们学习编程时的状态。</p></div><div class="personal-reflection"><div class="reflection-icon">💡</div><div class="reflection-text"><h4>个人感悟</h4><p>无论是传统的照相技艺还是现代的编程技术，都需要这种工匠精神。技术可以更新换代，但对品质的追求和对细节的关注永远不会过时。</p></div></div>',
-'<div class="thinking-item"><div class="thinking-icon">⚡</div><div class="thinking-text"><h4>技术传承</h4><p>就像照相技术从胶片到数码的演进，计算机技术也在不断发展。我们要学会在创新中保持对基础知识的尊重。</p></div></div><div class="thinking-item"><div class="thinking-icon">🎯</div><div class="thinking-text"><h4>用户体验</h4><p>老照相师对每位顾客的用心服务提醒我，无论技术多么先进，最终都要服务于人，关注用户的真实需求。</p></div></div><div class="thinking-item"><div class="thinking-icon">🌱</div><div class="thinking-text"><h4>持续学习</h4><p>年轻摄影师的成长过程告诉我，在快速变化的技术领域，保持学习的心态和对传统的敬畏同样重要。</p></div></div>',
-'<div class="main-insight"><p>《南京照相馆》让我重新思考了技术与人文的关系。作为一名计算机专业的学生，我常常沉浸在代码和算法中，但这部电影提醒我，技术的最终目的是为了更好地服务人类，传递温情。</p></div><div class="future-outlook"><div class="outlook-header"><span class="outlook-icon">🚀</span><h4>未来展望</h4></div><p>我希望在未来的学习和工作中，能够像影片中的人物一样，在掌握先进技术的同时，不忘初心，用技术创造更多有温度的产品，让科技真正造福人类。</p></div>'
+'<div class="character-item"><h4>老照相师</h4><p>固执中带着温情，传统中蕴含智慧。他的每一个动作都透露着对手艺的敬畏和对时光的眷恋。</p></div><div class="character-item"><h4>年轻摄影师</h4><p>代表新时代的思维方式，在与传统的碰撞中逐渐成长，最终找到了技术与情感的平衡点。</p></div>',
+'<div class="scene-description"><p>最打动我的是影片中老师傅教年轻人冲洗照片的那一幕。在昏黄的灯光下，老师傅小心翼翼地操作着每一个步骤，那种专注和虔诚让我想到了我们学习编程时的状态。</p></div><div class="personal-reflection"><div class="reflection-text"><h4>个人感悟</h4><p>无论是传统的照相技艺还是现代的编程技术，都需要这种工匠精神。技术可以更新换代，但对品质的追求和对细节的关注永远不会过时。</p></div></div>',
+'<div class="thinking-item"><div class="thinking-text"><h4>技术传承</h4><p>就像照相技术从胶片到数码的演进，计算机技术也在不断发展。我们要学会在创新中保持对基础知识的尊重。</p></div></div><div class="thinking-item"><div class="thinking-text"><h4>用户体验</h4><p>老照相师对每位顾客的用心服务提醒我，无论技术多么先进，最终都要服务于人，关注用户的真实需求。</p></div></div><div class="thinking-item"><div class="thinking-text"><h4>持续学习</h4><p>年轻摄影师的成长过程告诉我，在快速变化的技术领域，保持学习的心态和对传统的敬畏同样重要。</p></div></div>',
+'<div class="main-insight"><p>《南京照相馆》让我重新思考了技术与人文的关系。作为一名计算机专业的学生，我常常沉浸在代码和算法中，但这部电影提醒我，技术的最终目的是为了更好地服务人类，传递温情。</p></div><div class="future-outlook"><div class="outlook-header"><h4>未来展望</h4></div><p>我希望在未来的学习和工作中，能够像影片中的人物一样，在掌握先进技术的同时，不忘初心，用技术创造更多有温度的产品，让科技真正造福人类。</p></div>'
 FROM `user` WHERE username = 'qinguijin';
 
 -- 朱斌博的观后感
@@ -88,4 +94,3 @@ SELECT id, '《南京照相馆》', '用文字记录电影带给我们的感动�
 '<p><strong>视觉语言：</strong>导演运用了大量的静态镜头和长镜头，营造出一种沉静、深沉的氛围。这种拍摄手法与照相馆的主题形成了完美的呼应。<br><strong>色彩运用：</strong>影片整体色调偏向暖黄色，给人一种怀旧、温暖的感觉。这种色彩选择不仅符合历史题材的特点，也增强了观众的情感共鸣。<br><strong>音效设计：</strong>片中的音效设计非常细腻，从照相机的快门声到街道上的嘈杂声，每一个声音都恰到好处地烘托了氛围。</p>',
 '<p>看完《南京照相馆》，我陷入了深深的思考。在这个数字化的时代，我们拍照变得如此容易，随手一拍就是成百上千张照片。但是，我们是否还记得照片背后的故事？是否还珍惜那些定格的瞬间？这部电影让我重新审视了记忆与传承的意义。每一张照片都是历史的片段，每一个故事都值得被记录和传承。作为年轻一代，我们有责任去了解历史，去珍惜当下，去为未来留下有意义的记录。同时，影片也让我思考了艺术创作的本质。真正优秀的作品不需要华丽的包装，只需要真诚的情感和深刻的内涵。《南京照相馆》正是这样一部作品，它用最朴实的方式，传达了最深刻的主题。在这个快速变化的时代，我们需要这样的作品来提醒我们：不要忘记历史，不要忽视平凡，不要失去对美好的向往。愿每一个观看这部电影的人，都能在光影交错中找到属于自己的感动和思考。</p>'
 FROM `user` WHERE username = 'qinzhaorui';
-

@@ -10,7 +10,7 @@
     <header>
         <nav class="navbar">
             <div class="nav-container">
-                <h1 class="nav-logo">📷 南京照相馆观影感悟</h1>
+                <a href="/" class="nav-logo">南京照相馆观影感悟</a>
                 <div class="hamburger" onclick="toggleMobileMenu()">
                     <span></span>
                     <span></span>
@@ -29,14 +29,20 @@
                     <li class="nav-item">
                         <a th:href="@{/meaning}" class="nav-link" onclick="closeMobileMenu()">电影内涵</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link">观影感悟 ▼</a>
+                    <li class="nav-item">
+                        <a th:href="@{/review/qinguijin}" class="nav-link" onclick="closeMobileMenu()">观影感悟</a>
+                    </li>
+                    <li class="nav-item dropdown" th:if="${user != null}">
+                        <a href="#" class="nav-link">个人中心 ▼</a>
                         <ul class="dropdown-menu">
-                            <li><a th:href="@{/review/qinguijin}" onclick="closeMobileMenu()">覃桂锦</a></li>
-                            <li><a th:href="@{/review/zhubinbo}" onclick="closeMobileMenu()">朱斌博</a></li>
-                            <li><a th:href="@{/review/suzixiang}" onclick="closeMobileMenu()">苏子翔</a></li>
-                            <li><a th:href="@{/review/qinzhaorui}" onclick="closeMobileMenu()">覃照睿</a></li>
+                            <li><a th:href="@{/profile}" onclick="closeMobileMenu()">个人中心</a></li>
+                            <li><a th:href="@{/review/edit}" onclick="closeMobileMenu()">编辑观后感</a></li>
+                            <li><a th:href="@{/password/change}" onclick="closeMobileMenu()">修改密码</a></li>
+                            <li><a th:href="@{/logout}" onclick="closeMobileMenu()">退出</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item" th:if="${user == null}">
+                        <a th:href="@{/login}" class="nav-link" onclick="closeMobileMenu()">登录</a>
                     </li>
                 </ul>
             </div>
@@ -61,7 +67,7 @@
                                         <span class="duration">120分钟</span>
                                     </div>
                                     <div class="rating">
-                                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                                        <span class="stars">★★★★★</span>
                                         <span class="score">9.2/10</span>
                                     </div>
                                 </div>
@@ -75,7 +81,7 @@
                         </div>
                         
                         <div class="movie-highlights">
-                            <h4>🌟 影片亮点</h4>
+                            <h4>影片亮点</h4>
                             <ul class="highlights-list">
                                 <li><strong>真实还原：</strong>实地取景南京老街，真实还原上世纪照相馆的工作场景</li>
                                 <li><strong>情感深度：</strong>通过三代人的故事，展现传统文化的传承与变迁</li>
@@ -85,7 +91,7 @@
                         </div>
                         
                         <div class="cast-intro">
-                            <h4>👥 主要演员</h4>
+                            <h4>主要演员</h4>
                             <div class="actors-grid">
                                 <div class="actor-card">
                                     <div class="actor-photo">
@@ -111,25 +117,25 @@
                     </div>
 
                     <div class="story-analysis">
-                        <h3>📖 故事背景与时代意义</h3>
+                        <h3>故事背景与时代意义</h3>
                         <div class="analysis-grid">
                             <div class="analysis-card">
-                                <h4>🏛️ 历史背景</h4>
+                                <h4>历史背景</h4>
                                 <p>影片设定在改革开放后的南京，这座历史悠久的城市正经历着快速的现代化进程。老照相馆作为时代的见证者，记录了无数家庭的重要时刻，承载着深厚的历史文化底蕴。</p>
                             </div>
                             <div class="analysis-card">
-                                <h4>🔄 时代变迁</h4>
+                                <h4>时代变迁</h4>
                                 <p>从胶片到数码，从手工到自动化，影片通过照相技术的演进，映射了整个社会的发展变化。传统与现代的对比，不仅是技术的更新，更是文化传承的思考。</p>
                             </div>
                             <div class="analysis-card">
-                                <h4>💭 文化内涵</h4>
+                                <h4>文化内涵</h4>
                                 <p>照相馆不仅是一个商业场所，更是情感的载体。每一张照片背后都有一个故事，每一个故事都连接着不同的人生，体现了中华文化中对家庭、传承的重视。</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="plot-analysis">
-                        <h3>🎭 情节结构分析</h3>
+                        <h3>情节结构分析</h3>
                         <div class="plot-timeline">
                             <div class="plot-point">
                                 <div class="plot-marker">1</div>
@@ -163,47 +169,47 @@
                     </div>
 
                     <div class="technical-analysis">
-                        <h3>🎨 艺术特色与技术手法</h3>
+                        <h3>艺术特色与技术手法</h3>
                         <div class="tech-grid">
                             <div class="tech-card">
-                                <h4>📸 摄影美学</h4>
+                                <h4>摄影美学</h4>
                                 <p>影片大量运用了传统摄影的构图技巧，通过光影的变化展现情感的起伏。暗房中的红光、自然光的运用都体现了导演对摄影艺术的深刻理解。</p>
                             </div>
                             <div class="tech-card">
-                                <h4>🎵 音效设计</h4>
+                                <h4>音效设计</h4>
                                 <p>胶片相机的快门声、暗房中化学药水的声音、老街上的生活音效，这些细节的处理让观众仿佛置身于那个时代的南京老街。</p>
                             </div>
                             <div class="tech-card">
-                                <h4>🎬 剪辑节奏</h4>
+                                <h4>剪辑节奏</h4>
                                 <p>影片采用了舒缓的剪辑节奏，与快节奏的现代生活形成对比。长镜头的运用让观众能够静下心来，感受传统工艺的魅力。</p>
                             </div>
                             <div class="tech-card">
-                                <h4>🌈 色彩运用</h4>
+                                <h4>色彩运用</h4>
                                 <p>暖色调的运用营造了温馨的氛围，黑白照片与彩色现实的对比，象征着过去与现在的交融，增强了影片的艺术感染力。</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="social-impact">
-                        <h3>🌟 社会影响与现实意义</h3>
+                        <h3>社会影响与现实意义</h3>
                         <div class="impact-content">
                             <div class="impact-section">
-                                <h4>💼 对传统行业的思考</h4>
+                                <h4>对传统行业的思考</h4>
                                 <p>影片引发了人们对传统手工艺行业的关注。在科技快速发展的今天，如何保护和传承传统技艺，成为了一个重要的社会议题。许多观众在看完电影后，开始重新审视身边的传统文化。</p>
                             </div>
                             <div class="impact-section">
-                                <h4>👥 代际关系的探讨</h4>
+                                <h4>代际关系的探讨</h4>
                                 <p>老师傅与年轻人之间的互动，展现了不同代际间的理解与沟通。这种跨代际的对话，为现实中的家庭关系和师徒传承提供了有益的启示。</p>
                             </div>
                             <div class="impact-section">
-                                <h4>🏙️ 城市发展的反思</h4>
+                                <h4>城市发展的反思</h4>
                                 <p>通过老街照相馆的变迁，影片反映了城市化进程中的得与失。如何在发展中保留城市的文化记忆，是每个现代城市都需要面对的问题。</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="audience-reception">
-                        <h3>👥 观众反响与评价</h3>
+                        <h3>观众反响与评价</h3>
                         <div class="reception-stats">
                             <div class="stat-item">
                                 <div class="stat-number">8.7</div>
@@ -231,7 +237,7 @@
                     </div>
 
                     <div class="awards-section">
-                    <h2>🏆 《南京照相馆》获奖情况</h2>
+                    <h2>《南京照相馆》获奖情况</h2>
                     <div class="awards-grid">
                         <div class="award-card">
                             <div class="award-content">
@@ -538,7 +544,7 @@
         }
         
         .highlights-list li::before {
-            content: "✨";
+            content: "•";
             position: absolute;
             left: 0;
             top: 0;

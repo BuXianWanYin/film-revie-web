@@ -10,7 +10,7 @@
     <header>
         <nav class="navbar">
             <div class="nav-container">
-                <h1 class="nav-logo">📷 南京照相馆观影感悟</h1>
+                <a href="/" class="nav-logo">南京照相馆观影感悟</a>
                 <div class="hamburger" onclick="toggleMobileMenu()">
                     <span></span>
                     <span></span>
@@ -29,14 +29,20 @@
                     <li class="nav-item">
                         <a th:href="@{/meaning}" class="nav-link active" onclick="closeMobileMenu()">电影内涵</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link">观影感悟 ▼</a>
+                    <li class="nav-item">
+                        <a th:href="@{/review/qinguijin}" class="nav-link" onclick="closeMobileMenu()">观影感悟</a>
+                    </li>
+                    <li class="nav-item dropdown" th:if="${user != null}">
+                        <a href="#" class="nav-link">个人中心 ▼</a>
                         <ul class="dropdown-menu">
-                            <li><a th:href="@{/review/qinguijin}" onclick="closeMobileMenu()">覃桂锦</a></li>
-                            <li><a th:href="@{/review/suzixiang}" onclick="closeMobileMenu()">苏子翔</a></li>
-                            <li><a th:href="@{/review/zhubinbo}" onclick="closeMobileMenu()">朱斌博</a></li>
-                            <li><a th:href="@{/review/qinzhaorui}" onclick="closeMobileMenu()">秦昭睿</a></li>
+                            <li><a th:href="@{/profile}" onclick="closeMobileMenu()">个人中心</a></li>
+                            <li><a th:href="@{/review/edit}" onclick="closeMobileMenu()">编辑观后感</a></li>
+                            <li><a th:href="@{/password/change}" onclick="closeMobileMenu()">修改密码</a></li>
+                            <li><a th:href="@{/logout}" onclick="closeMobileMenu()">退出</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item" th:if="${user == null}">
+                        <a th:href="@{/login}" class="nav-link" onclick="closeMobileMenu()">登录</a>
                     </li>
                 </ul>
             </div>
@@ -55,7 +61,7 @@
         <div class="container">
             <!-- 核心主题 -->
             <section class="theme-section">
-                <h2>🎯 核心主题</h2>
+                <h2>核心主题</h2>
                 <div class="theme-grid">
                     <div class="theme-card main-theme">
                         <div class="theme-content">
@@ -82,20 +88,20 @@
 
             <!-- 艺术手法 -->
             <section class="analysis-section">
-                <h2>🎨 艺术表现手法</h2>
+                <h2>艺术表现手法</h2>
                 <div class="analysis-grid">
                     <div class="analysis-card">
-                        <h3>📽️ 镜头语言</h3>
+                        <h3>镜头语言</h3>
                         <p>导演运用大量特写镜头展现传统摄影的细节，从调焦到冲洗，每个步骤都被细致记录，营造出专注而宁静的氛围。</p>
                     </div>
                     
                     <div class="analysis-card">
-                        <h3>🎵 声音设计</h3>
+                        <h3>声音设计</h3>
                         <p>传统相机的快门声、暗房中的水流声等自然音效，与现代城市的喧嚣形成对比，强化了主题表达。</p>
                     </div>
                     
                     <div class="analysis-card">
-                        <h3>🌈 色彩运用</h3>
+                        <h3>色彩运用</h3>
                         <p>暖色调的照相馆内部与冷色调的现代街景形成视觉对比，巧妙地呈现了传统与现代的主题冲突。</p>
                     </div>
                 </div>
@@ -103,15 +109,15 @@
 
             <!-- 深层思考 -->
             <section class="reflection-section">
-                <h2>💭 深层思考</h2>
+                <h2>深层思考</h2>
                 <div class="reflection-content">
                     <div class="reflection-card">
-                        <h3>⚖️ 效率与品质的平衡</h3>
+                        <h3>效率与品质的平衡</h3>
                         <p>在追求效率的现代社会，传统手工艺所代表的慢工出细活理念显得弥足珍贵。影片引发我们思考：在快节奏的生活中，我们是否还需要为品质而坚守？</p>
                     </div>
                     
                     <div class="reflection-card">
-                        <h3>🔄 传承与创新的关系</h3>
+                        <h3>传承与创新的关系</h3>
                         <p>传统技艺的传承不应是简单的复制，而应在保持精神内核的基础上，寻找与时代相适应的表达方式。</p>
                     </div>
                 </div>
@@ -119,7 +125,7 @@
 
             <!-- 现实意义 -->
             <section class="significance-section">
-                <h2>🌟 现实意义</h2>
+                <h2>现实意义</h2>
                 <div class="significance-content">
                     <p>《南京照相馆》不仅是一部电影，更是对当代社会文化现象的深度观察。它提醒我们在追求现代化的同时，不要忘记传统文化的价值，要在传承中创新，在创新中传承。</p>
                     

@@ -19,6 +19,10 @@ public class WebConfig implements WebMvcConfigurer {
                     "/login",              // 登录页面
                     "/login/submit",       // 登录提交
                     "/logout",             // 退出登录
+                    "/forgot-password",    // 忘记密码页面
+                    "/forgot-password/verify", // 忘记密码验证
+                    "/password/reset",     // 重置密码页面（忘记密码流程）
+                    "/password/reset",     // 重置密码提交（忘记密码流程）
                     "/static/**",          // 静态资源
                     "/css/**",             // CSS文件
                     "/js/**",              // JS文件

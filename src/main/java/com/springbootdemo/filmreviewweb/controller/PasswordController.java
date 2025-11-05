@@ -21,11 +21,22 @@ public class PasswordController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 修改密码页面（已登录用户）
+     */
     @GetMapping("/password/change")
-    public String changePasswordPage(Model model) {
+    public String changePasswordPage(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("user", user);
         return "password-change";
     }
 
+    /**
+     * 修改密码（已登录用户）
+     */
     @PostMapping("/password/change")
     public String changePassword(@RequestParam String oldPassword,
                                  @RequestParam String newPassword,
@@ -51,6 +62,54 @@ public class PasswordController {
         } else {
             redirectAttributes.addFlashAttribute("error", "原密码错误");
             return "redirect:/password/change";
+        }
+    }
+
+    /**
+     * 重置密码页面（忘记密码流程）
+     */
+    @GetMapping("/password/reset")
+    public String resetPasswordPage(Model model, HttpSession session, RedirectAttributes redirectAttributes) {
+        // 检查是否通过忘记密码验证
+        String username = (String) session.getAttribute("forgotPasswordUsername");
+        if (username == null) {
+            redirectAttributes.addFlashAttribute("error", "请先完成验证");
+            return "redirect:/forgot-password";
+        }
+        
+        model.addAttribute("username", username);
+        return "password-reset";
+    }
+
+    /**
+     * 重置密码（忘记密码流程）
+     */
+    @PostMapping("/password/reset")
+    public String resetPassword(@RequestParam String newPassword,
+                               @RequestParam String confirmPassword,
+                               HttpSession session,
+                               RedirectAttributes redirectAttributes) {
+        // 检查是否通过忘记密码验证
+        String username = (String) session.getAttribute("forgotPasswordUsername");
+        if (username == null) {
+            redirectAttributes.addFlashAttribute("error", "请先完成验证");
+            return "redirect:/forgot-password";
+        }
+        
+        if (!newPassword.equals(confirmPassword)) {
+            redirectAttributes.addFlashAttribute("error", "两次输入的密码不一致");
+            return "redirect:/password/reset";
+        }
+        
+        boolean success = userService.resetPassword(username, newPassword);
+        if (success) {
+            // 清除Session中的忘记密码信息
+            session.removeAttribute("forgotPasswordUsername");
+            redirectAttributes.addFlashAttribute("success", "密码重置成功，请使用新密码登录");
+            return "redirect:/login";
+        } else {
+            redirectAttributes.addFlashAttribute("error", "密码重置失败，请重试");
+            return "redirect:/password/reset";
         }
     }
 }
