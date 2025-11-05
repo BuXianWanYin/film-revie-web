@@ -146,6 +146,28 @@
             color: var(--apple-text-light);
             margin-bottom: 20px;
         }
+        
+        .btn-small {
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: var(--apple-radius-small);
+            background-color: var(--apple-blue);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        
+        .btn-small:hover {
+            background-color: #0051D5;
+            transform: translateY(-1px);
+            box-shadow: var(--apple-shadow);
+        }
+        
+        .team-member .btn-small {
+            margin-top: 8px;
+        }
 
         footer {
             padding: 40px 0;
@@ -208,11 +230,11 @@
                         <a th:href="@{/review/qinguijin}" class="nav-link" onclick="closeMobileMenu()">观影感悟</a>
                     </li>
                     <li class="nav-item dropdown" th:if="${user != null}">
-                        <a href="#" class="nav-link">个人中心</a>
+                        <a href="#" class="nav-link">个人中心 ▼</a>
                         <ul class="dropdown-menu">
-                            <li><a th:href="@{/profile}" onclick="closeMobileMenu()">个人中心</a></li>
                             <li><a th:href="@{/review/edit}" onclick="closeMobileMenu()">编辑观后感</a></li>
                             <li><a th:href="@{/password/change}" onclick="closeMobileMenu()">修改密码</a></li>
+                            <li><a th:href="@{/profile}" onclick="closeMobileMenu()">我的资料</a></li>
                             <li><a th:href="@{/logout}" onclick="closeMobileMenu()">退出</a></li>
                         </ul>
                     </li>
@@ -314,8 +336,11 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 南京照相馆观影感悟 |
-                <a href="https://beian.miit.gov.cn/" target="_blank">桂ICP备2025072115号</a> |
+            <p class="footer-content">
+                <span>&copy; 2025 南京照相馆观影感悟</span>
+                <span class="footer-separator">|</span>
+                <a href="https://beian.miit.gov.cn/" target="_blank">桂ICP备2025072115号</a>
+                <span class="footer-separator">|</span>
                 <a href="https://beian.mps.gov.cn/#/query/webSearch?code=45010002451112" rel="noreferrer" target="_blank">
                     <img th:src="@{/images/备案图标.png}" alt="公安备案" style="height: 18px; vertical-align: middle; margin-right: 4px;">桂公网安备45010002451112号
                 </a>

@@ -116,12 +116,44 @@ body {
     padding: 8px 0;
     margin-top: 8px;
     border: 1px solid var(--apple-border);
+    z-index: 1001;
 }
 
 .dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+}
+
+/* 下拉菜单遮罩 */
+.dropdown-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.dropdown-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* 当遮罩激活时，下拉菜单应该在最上层 */
+.dropdown:hover ~ .dropdown-overlay,
+.dropdown-overlay.active {
+    display: block;
+}
+
+.dropdown:hover .dropdown-menu {
+    z-index: 1002;
 }
 
 .dropdown-menu li {
@@ -315,6 +347,8 @@ body {
         box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
         transition: right 0.3s ease;
         gap: 0;
+        z-index: 1001;
+        overflow-y: auto;
     }
 
     .nav-menu.active {
@@ -323,12 +357,18 @@ body {
 
     .nav-item {
         width: 100%;
+        border-bottom: 1px solid var(--apple-border);
+    }
+    
+    .nav-item:last-child {
+        border-bottom: none;
     }
 
     .nav-link {
         width: 100%;
         padding: 12px 0;
         border-radius: 0;
+        display: block;
     }
 
     .dropdown-menu {
@@ -340,6 +380,19 @@ body {
         border: none;
         margin: 0;
         padding: 0 0 0 20px;
+        background: transparent;
+    }
+    
+    .dropdown-menu li {
+        border-bottom: 1px solid var(--apple-border);
+    }
+    
+    .dropdown-menu li:last-child {
+        border-bottom: none;
+    }
+    
+    .dropdown-menu a {
+        padding: 10px 0;
     }
 
     .container {
@@ -373,4 +426,84 @@ body {
 
 .fade-in {
     animation: fadeIn 0.5s ease;
+}
+
+/* 页脚样式 */
+footer {
+    background: white;
+    border-top: 1px solid var(--apple-border);
+    padding: 32px 0;
+    margin-top: 48px;
+    text-align: center;
+}
+
+footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+footer p {
+    color: var(--apple-text-light);
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+footer a {
+    color: var(--apple-text-light);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: var(--apple-blue);
+}
+
+footer img {
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+/* 页脚响应式 - 手机端每个内容一行一个 */
+@media (max-width: 768px) {
+    footer {
+        padding: 24px 0;
+        margin-top: 32px;
+    }
+    
+    footer p {
+        font-size: 13px;
+        line-height: 2;
+    }
+    
+    /* 在手机端，将分隔符和内容分开显示 */
+    footer p br {
+        display: block;
+    }
+    
+    /* 使用flexbox或display block让每个部分独立一行 */
+    footer .footer-content {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+    }
+    
+    /* 为分隔符添加样式 */
+    footer .footer-separator {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 20px 0;
+        margin-top: 24px;
+    }
+    
+    footer p {
+        font-size: 12px;
+        line-height: 2.2;
+    }
 }

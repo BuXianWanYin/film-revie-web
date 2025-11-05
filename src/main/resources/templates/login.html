@@ -10,8 +10,11 @@
             background: var(--apple-gray);
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            position: relative;
+            padding-bottom: 80px; /* 为页脚留出空间 */
         }
         
         .login-container {
@@ -22,6 +25,7 @@
             width: 100%;
             max-width: 420px;
             border: 1px solid var(--apple-border);
+            z-index: 1;
         }
         
         .login-header {
@@ -132,6 +136,94 @@
         .back-link a:hover {
             opacity: 0.7;
         }
+        
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 32px 24px;
+                margin: 20px;
+            }
+            
+            .login-header h1 {
+                font-size: 28px;
+            }
+            
+            .login-header p {
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 24px 20px;
+                margin: 15px;
+            }
+            
+            .login-header h1 {
+                font-size: 24px;
+            }
+        }
+        
+        /* 页脚样式 */
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid var(--apple-border);
+            padding: 20px 0;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        footer p {
+            color: var(--apple-text-light);
+            font-size: 13px;
+            line-height: 1.8;
+            margin: 0;
+        }
+        
+        footer a {
+            color: var(--apple-text-light);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        footer a:hover {
+            color: var(--apple-blue);
+        }
+        
+        footer img {
+            vertical-align: middle;
+            margin-right: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            footer {
+                padding: 16px 0;
+            }
+            
+            footer p {
+                font-size: 12px;
+            }
+            
+            footer .footer-content {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                align-items: center;
+            }
+            
+            footer .footer-separator {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -165,5 +257,19 @@
             <a th:href="@{/}">返回首页</a>
         </div>
     </div>
+    
+    <footer>
+        <div class="container">
+            <p class="footer-content">
+                <span>&copy; 2025 南京照相馆观影感悟</span>
+                <span class="footer-separator">|</span>
+                <a href="https://beian.miit.gov.cn/" target="_blank">桂ICP备2025072115号</a>
+                <span class="footer-separator">|</span>
+                <a href="https://beian.mps.gov.cn/#/query/webSearch?code=45010002451112" rel="noreferrer" target="_blank">
+                    <img th:src="@{/images/备案图标.png}" alt="公安备案" style="height: 18px; vertical-align: middle; margin-right: 4px;">桂公网安备45010002451112号
+                </a>
+            </p>
+        </div>
+    </footer>
 </body>
 </html>

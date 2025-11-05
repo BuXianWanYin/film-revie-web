@@ -35,9 +35,9 @@
                     <li class="nav-item dropdown" th:if="${user != null}">
                         <a href="#" class="nav-link">个人中心 ▼</a>
                         <ul class="dropdown-menu">
-                            <li><a th:href="@{/profile}" onclick="closeMobileMenu()">个人中心</a></li>
                             <li><a th:href="@{/review/edit}" onclick="closeMobileMenu()">编辑观后感</a></li>
                             <li><a th:href="@{/password/change}" onclick="closeMobileMenu()">修改密码</a></li>
+                            <li><a th:href="@{/profile}" onclick="closeMobileMenu()">我的资料</a></li>
                             <li><a th:href="@{/logout}" onclick="closeMobileMenu()">退出</a></li>
                         </ul>
                     </li>
@@ -271,9 +271,12 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 南京照相馆观影感悟 |
-                <a href="https://beian.miit.gov.cn/" target="_blank" style="color: #666; text-decoration: none;">桂ICP备2025072115号</a> |
-                <a href="https://beian.mps.gov.cn/#/query/webSearch?code=45010002451112" rel="noreferrer" target="_blank" style="color: #666; text-decoration: none;">
+            <p class="footer-content">
+                <span>&copy; 2025 南京照相馆观影感悟</span>
+                <span class="footer-separator">|</span>
+                <a href="https://beian.miit.gov.cn/" target="_blank">桂ICP备2025072115号</a>
+                <span class="footer-separator">|</span>
+                <a href="https://beian.mps.gov.cn/#/query/webSearch?code=45010002451112" rel="noreferrer" target="_blank">
                     <img th:src="@{/images/备案图标.png}" alt="公安备案" style="height: 18px; vertical-align: middle; margin-right: 4px;">桂公网安备45010002451112号
                 </a>
             </p>
@@ -445,6 +448,130 @@
         .commenter {
             color: #666;
             font-size: 0.9rem;
+        }
+        
+        .awards-section {
+            background: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .awards-section h2 {
+            color: #ff6b6b;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .awards-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b6b, #ff8787);
+            border-radius: 2px;
+        }
+        
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .award-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+        
+        .award-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #ff8787, #ffa8a8);
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .award-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.2);
+            border-color: #ff6b6b;
+        }
+        
+        .award-card::after {
+            content: '🏆';
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 2.5rem;
+            opacity: 0.1;
+            transition: opacity 0.3s ease;
+        }
+        
+        .award-card:hover::after {
+            opacity: 0.3;
+        }
+        
+        .award-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .award-content h3 {
+            color: #ff6b6b;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .award-content h3::before {
+            content: '⭐';
+            font-size: 1.2rem;
+        }
+        
+        .award-content p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+        
+        .award-content p:first-of-type {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px dashed #ffd6d6;
+        }
+        
+        .award-content p:last-of-type {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        .award-content strong {
+            color: #ff6b6b;
+            font-weight: 700;
         }
         
         .awards-list {
@@ -716,6 +843,35 @@
             .cast-avatar {
                 font-size: 4rem;
                 margin-bottom: 0.5rem;
+            }
+            
+            .awards-section {
+                padding: 1.5rem;
+                margin: 1.5rem 0;
+            }
+            
+            .awards-section h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .awards-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .award-card {
+                padding: 1.5rem;
+            }
+            
+            .award-card::after {
+                font-size: 2rem;
+                top: 1rem;
+                right: 1rem;
+            }
+            
+            .award-content h3 {
+                font-size: 1.3rem;
             }
             
             .award-item {

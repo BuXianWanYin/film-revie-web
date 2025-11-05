@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### 生产环境配置文件（包含敏感信息） ###
+**/application-prod.yml

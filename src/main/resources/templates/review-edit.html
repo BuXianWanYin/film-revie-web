@@ -16,7 +16,7 @@
         }
         
         .edit-review-container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 48px 24px;
         }
@@ -47,6 +47,121 @@
             font-size: 15px;
         }
         
+        /* 步骤条样式 */
+        .steps-container {
+            margin-bottom: 48px;
+        }
+        
+        .steps-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            margin-bottom: 32px;
+        }
+        
+        .steps-progress::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--apple-border);
+            z-index: 0;
+        }
+        
+        .steps-progress::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            height: 2px;
+            background: var(--apple-blue);
+            z-index: 1;
+            transition: width 0.3s ease;
+        }
+        
+        .step-item {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .step-item:hover .step-number {
+            border-color: var(--apple-blue);
+            transform: scale(1.1);
+        }
+        
+        .step-item:hover .step-title {
+            color: var(--apple-blue);
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--apple-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--apple-text-light);
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .step-item.active .step-number {
+            background: var(--apple-blue);
+            border-color: var(--apple-blue);
+            color: white;
+        }
+        
+        .step-item.completed .step-number {
+            background: var(--apple-blue);
+            border-color: var(--apple-blue);
+            color: white;
+        }
+        
+        .step-title {
+            font-size: 13px;
+            color: var(--apple-text-light);
+            text-align: center;
+            transition: color 0.3s ease;
+        }
+        
+        .step-item.active .step-title {
+            color: var(--apple-blue);
+            font-weight: 500;
+        }
+        
+        .step-content {
+            display: none;
+        }
+        
+        .step-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         .alert {
             padding: 16px 20px;
             border-radius: var(--apple-radius-small);
@@ -74,12 +189,54 @@
             margin-top: 8px;
         }
         
-        .btn-submit {
-            width: 100%;
-            padding: 16px;
-            margin-top: 32px;
-            font-size: 17px;
+        .step-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--apple-border);
+        }
+        
+        .btn-step {
+            padding: 12px 32px;
+            border-radius: var(--apple-radius-small);
+            font-size: 15px;
             font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+        
+        .btn-step-prev {
+            background: var(--apple-gray);
+            color: var(--apple-text);
+            border: 1px solid var(--apple-border);
+        }
+        
+        .btn-step-prev:hover {
+            background: #E5E5E7;
+        }
+        
+        .btn-step-next {
+            background: var(--apple-blue);
+            color: white;
+        }
+        
+        .btn-step-next:hover {
+            background: #0051D5;
+            transform: translateY(-1px);
+            box-shadow: var(--apple-shadow);
+        }
+        
+        .btn-step-submit {
+            background: var(--apple-blue);
+            color: white;
+        }
+        
+        .btn-step-submit:hover {
+            background: #0051D5;
+            transform: translateY(-1px);
+            box-shadow: var(--apple-shadow);
         }
         
         .btn-back {
@@ -114,6 +271,27 @@
             box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
         }
         
+        .step-info {
+            margin-bottom: 32px;
+            padding: 20px;
+            background: var(--apple-gray);
+            border-radius: var(--apple-radius-small);
+            border: 1px solid var(--apple-border);
+        }
+        
+        .step-info h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--apple-text);
+            margin-bottom: 8px;
+        }
+        
+        .step-info p {
+            font-size: 14px;
+            color: var(--apple-text-light);
+            margin: 0;
+        }
+        
         @media (max-width: 768px) {
             .edit-review-card {
                 padding: 32px 24px;
@@ -121,6 +299,16 @@
             
             .page-header h1 {
                 font-size: 32px;
+            }
+            
+            .step-title {
+                font-size: 11px;
+            }
+            
+            .step-number {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
             }
         }
     </style>
@@ -152,11 +340,11 @@
                         <a th:href="@{/review/qinguijin}" class="nav-link" onclick="closeMobileMenu()">观影感悟</a>
                     </li>
                     <li class="nav-item dropdown" th:if="${user != null}">
-                        <a href="#" class="nav-link active">个人中心</a>
+                        <a href="#" class="nav-link active">个人中心 ▼</a>
                         <ul class="dropdown-menu">
-                            <li><a th:href="@{/profile}" onclick="closeMobileMenu()">个人中心</a></li>
                             <li><a th:href="@{/review/edit}" onclick="closeMobileMenu()">编辑观后感</a></li>
                             <li><a th:href="@{/password/change}" onclick="closeMobileMenu()">修改密码</a></li>
+                            <li><a th:href="@{/profile}" onclick="closeMobileMenu()">我的资料</a></li>
                             <li><a th:href="@{/logout}" onclick="closeMobileMenu()">退出</a></li>
                         </ul>
                     </li>
@@ -173,72 +361,49 @@
         <div class="edit-review-card">
             <div class="page-header">
                 <h1>编辑观后感</h1>
-                <p>请填写您的观影感悟内容</p>
+                <p>请逐步填写您的观影感悟内容</p>
             </div>
             
             <div th:if="${error}" class="alert alert-error" th:text="${error}"></div>
             <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
             
-            <form th:action="@{/review/edit}" method="post">
+            <!-- 步骤条 -->
+            <div class="steps-container">
+                <div class="steps-progress" id="stepsProgress">
+                    <div class="step-item active" data-step="0" onclick="goToStep(0)">
+                        <div class="step-number">1</div>
+                        <div class="step-title">基本信息</div>
+                    </div>
+                    <div class="step-item" data-step="1" onclick="goToStep(1)">
+                        <div class="step-number">2</div>
+                        <div class="step-title">选择理由</div>
+                    </div>
+                    <div class="step-item" data-step="2" onclick="goToStep(2)">
+                        <div class="step-number">3</div>
+                        <div class="step-title">情节解析</div>
+                    </div>
+                    <div class="step-item" data-step="3" onclick="goToStep(3)">
+                        <div class="step-number">4</div>
+                        <div class="step-title">人物塑造</div>
+                    </div>
+                    <div class="step-item" data-step="4" onclick="goToStep(4)">
+                        <div class="step-number">5</div>
+                        <div class="step-title">深刻印象</div>
+                    </div>
+                    <div class="step-item" data-step="5" onclick="goToStep(5)">
+                        <div class="step-number">6</div>
+                        <div class="step-title">专业思考</div>
+                    </div>
+                    <div class="step-item" data-step="6" onclick="goToStep(6)">
+                        <div class="step-number">7</div>
+                        <div class="step-title">总结感悟</div>
+                    </div>
+                </div>
+            </div>
+            
+            <form th:action="@{/review/edit}" method="post" id="reviewForm">
                 <input type="hidden" name="id" th:value="${review?.id}">
                 <input type="hidden" name="userId" th:value="${review?.userId}">
-                
-                <div class="form-group">
-                    <label for="movieTitle">电影名称</label>
-                    <input type="text" id="movieTitle" name="movieTitle" th:value="${review?.movieTitle}" placeholder="例如：《南京照相馆》">
-                </div>
-                
-                <div class="form-group">
-                    <label for="movieDesc">电影描述</label>
-                    <input type="text" id="movieDesc" name="movieDesc" th:value="${review?.movieDesc}" placeholder="例如：一部关于传承与坚守的温情之作">
-                </div>
-                
-                <div class="form-group">
-                    <label for="moviePoster">电影海报URL（可选）</label>
-                    <input type="url" id="moviePoster" name="moviePoster" th:value="${review?.moviePoster}" placeholder="https://example.com/poster.jpg">
-                </div>
-                
-                <div class="form-group">
-                    <label for="reason">选择理由</label>
-                    <div id="reason-editor"></div>
-                    <textarea id="reason" name="reason" style="display:none;"></textarea>
-                    <div class="form-hint">使用富文本编辑器编辑内容，支持HTML格式</div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="plotAnalysis">情节深度解析</label>
-                    <div id="plotAnalysis-editor"></div>
-                    <textarea id="plotAnalysis" name="plotAnalysis" style="display:none;"></textarea>
-                    <div class="form-hint">使用富文本编辑器编辑内容，支持HTML格式</div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="characterAnalysis">人物塑造亮点</label>
-                    <div id="characterAnalysis-editor"></div>
-                    <textarea id="characterAnalysis" name="characterAnalysis" style="display:none;"></textarea>
-                    <div class="form-hint">使用富文本编辑器编辑内容，支持HTML格式</div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="impression">最深刻的印象</label>
-                    <div id="impression-editor"></div>
-                    <textarea id="impression" name="impression" style="display:none;"></textarea>
-                    <div class="form-hint">使用富文本编辑器编辑内容，支持HTML格式</div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="professionalThinking">专业角度思考</label>
-                    <div id="professionalThinking-editor"></div>
-                    <textarea id="professionalThinking" name="professionalThinking" style="display:none;"></textarea>
-                    <div class="form-hint">使用富文本编辑器编辑内容，支持HTML格式</div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="summary">总结与感悟</label>
-                    <div id="summary-editor"></div>
-                    <textarea id="summary" name="summary" style="display:none;"></textarea>
-                    <div class="form-hint">使用富文本编辑器编辑内容，支持HTML格式</div>
-                </div>
                 
                 <!-- 使用隐藏的div存储数据，供JavaScript读取 -->
                 <div id="review-data-container" style="display:none;">
@@ -250,7 +415,125 @@
                     <div id="review-summary-data" th:utext="${review?.summary}"></div>
                 </div>
                 
-                <button type="submit" class="btn btn-primary btn-submit">保存观后感</button>
+                <!-- 步骤1: 基本信息 -->
+                <div class="step-content active" data-step="0">
+                    <div class="step-info">
+                        <h3>基本信息</h3>
+                        <p>请填写电影的基本信息</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="movieTitle">电影名称</label>
+                        <input type="text" id="movieTitle" name="movieTitle" th:value="${review?.movieTitle}" placeholder="例如：《南京照相馆》">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="movieDesc">电影描述</label>
+                        <input type="text" id="movieDesc" name="movieDesc" th:value="${review?.movieDesc}" placeholder="例如：一部关于传承与坚守的温情之作">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="moviePoster">电影海报URL（可选）</label>
+                        <input type="url" id="moviePoster" name="moviePoster" th:value="${review?.moviePoster}" placeholder="https://example.com/poster.jpg">
+                    </div>
+                </div>
+                
+                <!-- 步骤2: 选择理由 -->
+                <div class="step-content" data-step="1">
+                    <div class="step-info">
+                        <h3>选择理由</h3>
+                        <p>请描述您选择这部电影的理由</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reason">选择理由</label>
+                        <div id="reason-editor"></div>
+                        <textarea id="reason" name="reason" style="display:none;"></textarea>
+                        <div class="form-hint">使用富文本编辑器编辑内容，支持HTML格式</div>
+                    </div>
+                </div>
+                
+                <!-- 步骤3: 情节深度解析 -->
+                <div class="step-content" data-step="2">
+                    <div class="step-info">
+                        <h3>情节深度解析</h3>
+                        <p>请对电影的情节进行深度分析</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="plotAnalysis">情节深度解析</label>
+                        <div id="plotAnalysis-editor"></div>
+                        <textarea id="plotAnalysis" name="plotAnalysis" style="display:none;"></textarea>
+                        <div class="form-hint">使用富文本编辑器编辑内容，支持HTML格式</div>
+                    </div>
+                </div>
+                
+                <!-- 步骤4: 人物塑造亮点 -->
+                <div class="step-content" data-step="3">
+                    <div class="step-info">
+                        <h3>人物塑造亮点</h3>
+                        <p>请分析电影中的人物塑造</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="characterAnalysis">人物塑造亮点</label>
+                        <div id="characterAnalysis-editor"></div>
+                        <textarea id="characterAnalysis" name="characterAnalysis" style="display:none;"></textarea>
+                        <div class="form-hint">使用富文本编辑器编辑内容，支持HTML格式</div>
+                    </div>
+                </div>
+                
+                <!-- 步骤5: 最深刻的印象 -->
+                <div class="step-content" data-step="4">
+                    <div class="step-info">
+                        <h3>最深刻的印象</h3>
+                        <p>请描述电影给您留下的最深刻的印象</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="impression">最深刻的印象</label>
+                        <div id="impression-editor"></div>
+                        <textarea id="impression" name="impression" style="display:none;"></textarea>
+                        <div class="form-hint">使用富文本编辑器编辑内容，支持HTML格式</div>
+                    </div>
+                </div>
+                
+                <!-- 步骤6: 专业角度思考 -->
+                <div class="step-content" data-step="5">
+                    <div class="step-info">
+                        <h3>专业角度思考</h3>
+                        <p>请从您的专业角度思考这部电影</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="professionalThinking">专业角度思考</label>
+                        <div id="professionalThinking-editor"></div>
+                        <textarea id="professionalThinking" name="professionalThinking" style="display:none;"></textarea>
+                        <div class="form-hint">使用富文本编辑器编辑内容，支持HTML格式</div>
+                    </div>
+                </div>
+                
+                <!-- 步骤7: 总结与感悟 -->
+                <div class="step-content" data-step="6">
+                    <div class="step-info">
+                        <h3>总结与感悟</h3>
+                        <p>请总结您的观影感悟</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="summary">总结与感悟</label>
+                        <div id="summary-editor"></div>
+                        <textarea id="summary" name="summary" style="display:none;"></textarea>
+                        <div class="form-hint">使用富文本编辑器编辑内容，支持HTML格式</div>
+                    </div>
+                </div>
+                
+                <!-- 步骤导航按钮 -->
+                <div class="step-navigation">
+                    <button type="button" class="btn-step btn-step-prev" id="prevStep" style="display:none;">上一步</button>
+                    <button type="button" class="btn-step btn-step-next" id="nextStep">下一步</button>
+                    <button type="submit" class="btn-step btn-step-submit" id="submitStep" style="display:none;">保存观后感</button>
+                </div>
             </form>
             
             <a th:href="@{/}" class="btn-back">返回首页</a>
@@ -284,64 +567,271 @@
             }
         };
         
-        // 等待页面加载完成
-        document.addEventListener('DOMContentLoaded', function() {
-            // 初始化所有编辑器
-            function initEditors() {
-                editorIds.forEach(function(id) {
-                    const editorElement = document.getElementById(id + '-editor');
-                    const textarea = document.getElementById(id);
-                    
-                    if (!editorElement || !textarea) {
-                        console.warn('Editor element or textarea not found for:', id);
-                        return;
-                    }
-                    
-                    // 从隐藏的div中获取初始内容（使用th:utext绑定的内容）
-                    let initialContent = '';
-                    const dataDiv = document.getElementById('review-' + id + '-data');
-                    if (dataDiv) {
-                        initialContent = dataDiv.innerHTML || '';
-                    }
-                    
-                    // 清理可能的空段落和多余的空白
-                    if (initialContent) {
-                        initialContent = initialContent.trim();
-                        // 移除Quill可能添加的空段落
-                        initialContent = initialContent.replace(/<p><br\s*\/?><\/p>/gi, '');
-                        initialContent = initialContent.replace(/<p>\s*<\/p>/gi, '');
-                        // 如果清理后为空，则设为空字符串
-                        if (initialContent === '<p></p>' || initialContent === '') {
-                            initialContent = '';
-                        }
-                    }
-                    
-                    // 如果有初始内容，先设置到editor元素中
-                    if (initialContent && initialContent !== '' && initialContent !== '<p></p>') {
-                        editorElement.innerHTML = initialContent;
-                    }
-                    
-                    // 创建Quill编辑器（如果editorElement已有内容，Quill会自动读取）
-                    const quill = new Quill('#' + id + '-editor', quillOptions);
-                    
-                    // 保存编辑器实例
-                    editors[id] = quill;
-                    
-                    // 确保textarea有初始值
-                    if (initialContent && initialContent !== '' && initialContent !== '<p></p>') {
-                        textarea.value = initialContent;
-                    }
-                    
-                    // 监听编辑器内容变化，同步到textarea
-                    quill.on('text-change', function() {
-                        const html = quill.root.innerHTML;
-                        textarea.value = html;
-                    });
-                });
+        // 步骤管理
+        let currentStep = 0;
+        const totalSteps = 7;
+        
+        // 初始化步骤
+        function initSteps() {
+            updateStepDisplay();
+            updateProgressBar();
+        }
+        
+        // 跳转到指定步骤（全局函数，供HTML调用）
+        window.goToStep = function(step) {
+            if (step >= 0 && step < totalSteps) {
+                currentStep = step;
+                updateStepDisplay();
+                updateProgressBar();
+                // 初始化当前步骤的编辑器（如果是富文本编辑器步骤）
+                setTimeout(function() {
+                    initEditorForStep(step);
+                }, 100);
+                // 滚动到顶部
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        };
+        
+        // 保持向后兼容
+        function goToStep(step) {
+            window.goToStep(step);
+        }
+        
+        // 更新步骤显示
+        function updateStepDisplay() {
+            // 更新步骤项状态
+            document.querySelectorAll('.step-item').forEach(function(item, index) {
+                if (index < currentStep) {
+                    item.classList.add('completed');
+                    item.classList.remove('active');
+                } else if (index === currentStep) {
+                    item.classList.add('active');
+                    item.classList.remove('completed');
+                } else {
+                    item.classList.remove('active', 'completed');
+                }
+            });
+            
+            // 显示/隐藏步骤内容
+            document.querySelectorAll('.step-content').forEach(function(content, index) {
+                if (index === currentStep) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+            
+            // 更新导航按钮
+            const prevBtn = document.getElementById('prevStep');
+            const nextBtn = document.getElementById('nextStep');
+            const submitBtn = document.getElementById('submitStep');
+            
+            if (currentStep === 0) {
+                prevBtn.style.display = 'none';
+            } else {
+                prevBtn.style.display = 'inline-block';
             }
             
+            if (currentStep === totalSteps - 1) {
+                nextBtn.style.display = 'none';
+                submitBtn.style.display = 'inline-block';
+            } else {
+                nextBtn.style.display = 'inline-block';
+                submitBtn.style.display = 'none';
+            }
+        }
+        
+        // 更新进度条
+        function updateProgressBar() {
+            const progress = (currentStep / (totalSteps - 1)) * 100;
+            const progressBar = document.querySelector('.steps-progress');
+            progressBar.style.setProperty('--progress-width', progress + '%');
+        }
+        
+        // 添加进度条样式
+        const style = document.createElement('style');
+        style.textContent = `
+            .steps-progress::after {
+                width: var(--progress-width, 0%) !important;
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // 下一步
+        document.getElementById('nextStep').addEventListener('click', function() {
+            if (currentStep < totalSteps - 1) {
+                goToStep(currentStep + 1);
+            }
+        });
+        
+        // 上一步
+        document.getElementById('prevStep').addEventListener('click', function() {
+            if (currentStep > 0) {
+                goToStep(currentStep - 1);
+            }
+        });
+        
+        // 初始化指定步骤的编辑器
+        function initEditorForStep(step) {
+            // 步骤映射到编辑器ID
+            const stepToEditorId = {
+                1: 'reason',
+                2: 'plotAnalysis',
+                3: 'characterAnalysis',
+                4: 'impression',
+                5: 'professionalThinking',
+                6: 'summary'
+            };
+            
+            const editorId = stepToEditorId[step];
+            if (!editorId) {
+                return; // 不是富文本编辑器步骤
+            }
+            
+            const editorElement = document.getElementById(editorId + '-editor');
+            const textarea = document.getElementById(editorId);
+            
+            if (!editorElement || !textarea) {
+                console.warn('Editor element or textarea not found for:', editorId);
+                return;
+            }
+            
+            // 如果编辑器已经初始化，检查是否需要更新内容
+            if (editors[editorId]) {
+                // 编辑器已存在，确保内容同步
+                const dataDiv = document.getElementById('review-' + editorId + '-data');
+                if (dataDiv && dataDiv.innerHTML) {
+                    const currentContent = editors[editorId].root.innerHTML;
+                    const dataContent = dataDiv.innerHTML.trim();
+                    // 如果内容不同，更新编辑器
+                    if (currentContent !== dataContent && dataContent !== '') {
+                        editors[editorId].root.innerHTML = dataContent;
+                        textarea.value = dataContent;
+                    }
+                }
+                return;
+            }
+            
+            // 从隐藏的div中获取初始内容（使用th:utext绑定的内容）
+            let initialContent = '';
+            const dataDiv = document.getElementById('review-' + editorId + '-data');
+            if (dataDiv) {
+                initialContent = dataDiv.innerHTML || '';
+            }
+            
+            // 清理可能的空段落和多余的空白
+            if (initialContent) {
+                initialContent = initialContent.trim();
+                // 移除Quill可能添加的空段落
+                initialContent = initialContent.replace(/<p><br\s*\/?><\/p>/gi, '');
+                initialContent = initialContent.replace(/<p>\s*<\/p>/gi, '');
+                // 如果清理后为空，则设为空字符串
+                if (initialContent === '<p></p>' || initialContent === '') {
+                    initialContent = '';
+                }
+            }
+            
+            // 检查元素是否已经被Quill初始化（如果已经有ql-editor类，说明已经被初始化）
+            if (editorElement.classList.contains('ql-editor') || editorElement.querySelector('.ql-editor')) {
+                console.warn('Editor already initialized for:', editorId);
+                return;
+            }
+            
+            // 如果有初始内容，先设置到editor元素中
+            if (initialContent && initialContent !== '' && initialContent !== '<p></p>') {
+                editorElement.innerHTML = initialContent;
+            }
+            
+            // 创建Quill编辑器（如果editorElement已有内容，Quill会自动读取）
+            try {
+                const quill = new Quill('#' + editorId + '-editor', quillOptions);
+                
+                // 保存编辑器实例
+                editors[editorId] = quill;
+                
+                // 确保textarea有初始值
+                if (initialContent && initialContent !== '' && initialContent !== '<p></p>') {
+                    textarea.value = initialContent;
+                }
+                
+                // 监听编辑器内容变化，同步到textarea
+                quill.on('text-change', function() {
+                    const html = quill.root.innerHTML;
+                    textarea.value = html;
+                });
+            } catch (error) {
+                console.error('Error initializing Quill editor for', editorId, ':', error);
+            }
+        }
+        
+        // 初始化所有编辑器
+        function initEditors() {
+            editorIds.forEach(function(id) {
+                const editorElement = document.getElementById(id + '-editor');
+                const textarea = document.getElementById(id);
+                
+                if (!editorElement || !textarea) {
+                    console.warn('Editor element or textarea not found for:', id);
+                    return;
+                }
+                
+                // 从隐藏的div中获取初始内容（使用th:utext绑定的内容）
+                let initialContent = '';
+                const dataDiv = document.getElementById('review-' + id + '-data');
+                if (dataDiv) {
+                    initialContent = dataDiv.innerHTML || '';
+                }
+                
+                // 清理可能的空段落和多余的空白
+                if (initialContent) {
+                    initialContent = initialContent.trim();
+                    // 移除Quill可能添加的空段落
+                    initialContent = initialContent.replace(/<p><br\s*\/?><\/p>/gi, '');
+                    initialContent = initialContent.replace(/<p>\s*<\/p>/gi, '');
+                    // 如果清理后为空，则设为空字符串
+                    if (initialContent === '<p></p>' || initialContent === '') {
+                        initialContent = '';
+                    }
+                }
+                
+                // 如果有初始内容，先设置到editor元素中
+                if (initialContent && initialContent !== '' && initialContent !== '<p></p>') {
+                    editorElement.innerHTML = initialContent;
+                }
+                
+                // 创建Quill编辑器（如果editorElement已有内容，Quill会自动读取）
+                const quill = new Quill('#' + id + '-editor', quillOptions);
+                
+                // 保存编辑器实例
+                editors[id] = quill;
+                
+                // 确保textarea有初始值
+                if (initialContent && initialContent !== '' && initialContent !== '<p></p>') {
+                    textarea.value = initialContent;
+                }
+                
+                // 监听编辑器内容变化，同步到textarea
+                quill.on('text-change', function() {
+                    const html = quill.root.innerHTML;
+                    textarea.value = html;
+                });
+            });
+        }
+        
+        // 等待页面加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化步骤
+            initSteps();
+            
             // 延迟初始化，确保Thymeleaf完全渲染
-            setTimeout(initEditors, 300);
+            setTimeout(function() {
+                // 初始化所有编辑器（包括隐藏的步骤）
+                initEditors();
+                // 额外确保当前步骤的编辑器正确初始化
+                if (currentStep > 0) {
+                    initEditorForStep(currentStep);
+                }
+            }, 500);
         });
         
         // 表单提交前确保编辑器内容同步到textarea
@@ -376,5 +866,19 @@
             mobileOverlay.classList.remove('active');
         }
     </script>
+    
+    <footer>
+        <div class="container">
+            <p class="footer-content">
+                <span>&copy; 2025 南京照相馆观影感悟</span>
+                <span class="footer-separator">|</span>
+                <a href="https://beian.miit.gov.cn/" target="_blank">桂ICP备2025072115号</a>
+                <span class="footer-separator">|</span>
+                <a href="https://beian.mps.gov.cn/#/query/webSearch?code=45010002451112" rel="noreferrer" target="_blank">
+                    <img th:src="@{/images/备案图标.png}" alt="公安备案" style="height: 18px; vertical-align: middle; margin-right: 4px;">桂公网安备45010002451112号
+                </a>
+            </p>
+        </div>
+    </footer>
 </body>
 </html>

@@ -2,6 +2,9 @@ server:
   port: 8081
 
 spring:
+  # 激活生产环境配置
+  profiles:
+    active: prod
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
@@ -9,7 +12,7 @@ spring:
     encoding: UTF-8
     cache: false
   
-  # 数据库配置
+  # 数据库配置（默认本地配置，生产环境配置在 application-prod.yml 中）
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/film_review_db?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true

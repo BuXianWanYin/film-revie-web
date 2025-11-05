@@ -35,9 +35,9 @@
                     <li class="nav-item dropdown" th:if="${user != null}">
                         <a href="#" class="nav-link">个人中心 ▼</a>
                         <ul class="dropdown-menu">
-                            <li><a th:href="@{/profile}" onclick="closeMobileMenu()">个人中心</a></li>
                             <li><a th:href="@{/review/edit}" onclick="closeMobileMenu()">编辑观后感</a></li>
                             <li><a th:href="@{/password/change}" onclick="closeMobileMenu()">修改密码</a></li>
+                            <li><a th:href="@{/profile}" onclick="closeMobileMenu()">我的资料</a></li>
                             <li><a th:href="@{/logout}" onclick="closeMobileMenu()">退出</a></li>
                         </ul>
                     </li>
@@ -149,10 +149,6 @@
     </footer>
 
     <style>
-        .active {
-            background-color: rgba(255,255,255,0.2) !important;
-        }
-        
         .theme-section, .analysis-section, .reflection-section, .significance-section {
             background: white;
             padding: 2.5rem;
@@ -282,5 +278,43 @@
         }
     </style>
     <script th:src="@{/js/mobile-menu.js}"></script>
+    <script>
+        function toggleMobileMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.getElementById('navMenu');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            
+            // 防止背景滚动
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+        
+        function closeMobileMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.getElementById('navMenu');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // 监听窗口大小变化，在桌面端自动关闭移动菜单
+        document.addEventListener('DOMContentLoaded', function() {
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    closeMobileMenu();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
