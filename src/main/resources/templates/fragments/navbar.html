@@ -25,7 +25,7 @@
                         <a th:href="@{/meaning}" class="nav-link" th:classappend="${activePage == 'meaning'} ? 'active'" onclick="closeMobileMenu()">电影内涵</a>
                     </li>
                     <li class="nav-item">
-                        <a th:href="@{/review/qinguijin}" class="nav-link" th:classappend="${activePage == 'review'} ? 'active'" onclick="closeMobileMenu()">观影感悟</a>
+                        <a th:href="${user != null ? '/review/' + user.username : '/review/qinguijin'}" class="nav-link" th:classappend="${activePage == 'review'} ? 'active'" onclick="closeMobileMenu()">观影感悟</a>
                     </li>
                     <li class="nav-item dropdown" th:if="${user != null}">
                         <a href="#" class="nav-link" th:classappend="${activePage == 'profile' || activePage == 'review-edit' || activePage == 'password-change'} ? 'active'">个人中心 ▼</a>

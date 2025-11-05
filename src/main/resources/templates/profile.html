@@ -216,7 +216,7 @@
                         <a th:href="@{/meaning}" class="nav-link" onclick="closeMobileMenu()">电影内涵</a>
                     </li>
                     <li class="nav-item">
-                        <a th:href="@{/review/qinguijin}" class="nav-link" onclick="closeMobileMenu()">观影感悟</a>
+                        <a th:href="${user != null ? '/review/' + user.username : '/review/qinguijin'}" class="nav-link" onclick="closeMobileMenu()">观影感悟</a>
                     </li>
                     <li class="nav-item dropdown" th:if="${user != null}">
                         <a href="#" class="nav-link active">个人中心 ▼</a>
