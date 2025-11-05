@@ -38,6 +38,18 @@
                             <li><a th:href="@{/review/qinzhaorui}" onclick="closeMobileMenu()">覃照睿</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item" th:if="${user != null}">
+                        <a th:href="@{/review/edit}" class="nav-link" onclick="closeMobileMenu()">编辑观后感</a>
+                    </li>
+                    <li class="nav-item" th:if="${user != null}">
+                        <a th:href="@{/password/change}" class="nav-link" onclick="closeMobileMenu()">修改密码</a>
+                    </li>
+                    <li class="nav-item" th:if="${user != null}">
+                        <a th:href="@{/logout}" class="nav-link" onclick="closeMobileMenu()">退出</a>
+                    </li>
+                    <li class="nav-item" th:if="${user == null}">
+                        <a th:href="@{/login}" class="nav-link" onclick="closeMobileMenu()">登录</a>
+                    </li>
                 </ul>
             </div>
         </nav>

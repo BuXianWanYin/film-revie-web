@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">观影感悟</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="nav-logo">📷 南京照相馆观影感悟</h1>
+                <div class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li class="nav-item">
+                        <a th:href="@{/}" class="nav-link" onclick="closeMobileMenu()">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/movie-intro}" class="nav-link" onclick="closeMobileMenu()">电影介绍</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/actors}" class="nav-link" onclick="closeMobileMenu()">演员介绍</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/meaning}" class="nav-link" onclick="closeMobileMenu()">电影内涵</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">观影感悟 ▼</a>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="@{/review/qinguijin}" th:classappend="${user.username == 'qinguijin'} ? 'active-review'" onclick="closeMobileMenu()">覃桂锦</a></li>
+                            <li><a th:href="@{/review/zhubinbo}" th:classappend="${user.username == 'zhubinbo'} ? 'active-review'" onclick="closeMobileMenu()">朱斌博</a></li>
+                            <li><a th:href="@{/review/suzixiang}" th:classappend="${user.username == 'suzixiang'} ? 'active-review'" onclick="closeMobileMenu()">苏子翔</a></li>
+                            <li><a th:href="@{/review/qinzhaorui}" th:classappend="${user.username == 'qinzhaorui'} ? 'active-review'" onclick="closeMobileMenu()">覃照睿</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" th:if="${currentUser != null}">
+                        <a th:href="@{/review/edit}" class="nav-link" onclick="closeMobileMenu()">编辑观后感</a>
+                    </li>
+                    <li class="nav-item" th:if="${currentUser != null}">
+                        <a th:href="@{/password/change}" class="nav-link" onclick="closeMobileMenu()">修改密码</a>
+                    </li>
+                    <li class="nav-item" th:if="${currentUser != null}">
+                        <a th:href="@{/logout}" class="nav-link" onclick="closeMobileMenu()">退出</a>
+                    </li>
+                    <li class="nav-item" th:if="${currentUser == null}">
+                        <a th:href="@{/login}" class="nav-link" onclick="closeMobileMenu()">登录</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+    </header>
+
+    <main>
+        <!-- 个人信息卡片 -->
+        <div class="profile-section">
+            <div class="container">
+                <div class="profile-card-main">
+                    <div class="profile-left">
+                        <div class="avatar-container">
+                            <div class="avatar-main">
+                                <img th:src="${user.avatar != null ? user.avatar : '/images/qinguijin.png'}" th:alt="${user.realName}">
+                            </div> 
+                            <div class="avatar-ring"></div>
+                        </div>
+                        <div class="profile-badges">
+                            <span class="badge badge-primary">📚 计算机应用工程</span>
+                            <span class="badge badge-secondary">🎬 电影爱好者</span>
+                        </div>
+                    </div>
+                    <div class="profile-right">
+                        <h1 class="profile-name" th:text="${user.realName}">姓名</h1>
+                        <div class="profile-quote-card">
+                            <div class="quote-mark">"</div>
+                            <p class="quote-text">电影如镜，映照人生百态；技术如桥，连接传统与未来</p>
+                        </div>
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">2025</span>
+                                <span class="stat-label">观影年份</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">1</span>
+                                <span class="stat-label">深度分析</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 电影选择卡片 -->
+        <div class="container">
+            <div class="content-grid">
+                <div class="movie-selection-card" th:if="${review != null}">
+                    <div class="card-header">
+                        <h2>我的电影选择</h2>
+                    </div>
+                    <div class="movie-poster-section">
+                        <div class="movie-poster" th:if="${review.moviePoster != null and review.moviePoster != ''}">
+                            <img th:src="${review.moviePoster}" alt="电影海报" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px;">
+                        </div>
+                        <div class="movie-poster" th:if="${review.moviePoster == null or review.moviePoster == ''}">
+                            <img src="https://img2.baidu.com/it/u=2244160751,3334166478&fm=253&fmt=auto?w=1025&h=600" alt="南京照相馆" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px;">
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title" th:text="${review.movieTitle != null ? review.movieTitle : '《南京照相馆》'}">《南京照相馆》</h3>
+                            <p class="movie-desc" th:text="${review.movieDesc != null ? review.movieDesc : '一部关于传承与坚守的温情之作'}">一部关于传承与坚守的温情之作</p>
+                            <div class="movie-tags">
+                                <span class="tag">剧情片</span>
+                                <span class="tag">历史题材</span>
+                                <span class="tag">人文关怀</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 选择理由卡片 -->
+                <div class="reason-card" th:if="${review != null and review.reason != null}">
+                    <div class="card-header">
+                        <h2>选择理由</h2>
+                    </div>
+                    <div class="reason-content" th:utext="${review.reason}">
+                    </div>
+                </div>
+
+                <!-- 情节分析卡片 -->
+                <div class="analysis-card" th:if="${review != null and review.plotAnalysis != null}">
+                    <div class="card-header">
+                        <h2>情节深度解析</h2>
+                    </div>
+                    <div class="analysis-content" th:utext="${review.plotAnalysis}">
+                    </div>
+                </div>
+
+                <!-- 人物塑造卡片 -->
+                <div class="character-card" th:if="${review != null and review.characterAnalysis != null}">
+                    <div class="card-header">
+                        <h2>人物塑造亮点</h2>
+                    </div>
+                    <div class="character-content" th:utext="${review.characterAnalysis}">
+                    </div>
+                </div>
+
+                <!-- 最深感触卡片 -->
+                <div class="impression-card" th:if="${review != null and review.impression != null}">
+                    <div class="card-header">
+                        <h2>最深刻的印象</h2>
+                    </div>
+                    <div class="impression-content" th:utext="${review.impression}">
+                    </div>
+                </div>
+
+                <!-- 专业思考卡片 -->
+                <div class="professional-card" th:if="${review != null and review.professionalThinking != null}">
+                    <div class="card-header">
+                        <h2>专业角度思考</h2>
+                    </div>
+                    <div class="professional-content" th:utext="${review.professionalThinking}">
+                    </div>
+                </div>
+
+                <!-- 总结感悟卡片 -->
+                <div class="summary-card" th:if="${review != null and review.summary != null}">
+                    <div class="card-header">
+                        <div class="header-icon">💎</div>
+                        <h2>总结与感悟</h2>
+                    </div>
+                    <div class="summary-content" th:utext="${review.summary}">
+                    </div>
+                </div>
+
+                <!-- 如果没有观后感数据，显示提示 -->
+                <div class="no-review-card" th:if="${review == null}">
+                    <div class="card-header">
+                        <h2>暂无观后感</h2>
+                    </div>
+                    <div class="no-review-content">
+                        <p>该用户还没有发布观后感，请登录后编辑观后感。</p>
+                        <a th:href="@{/login}" class="btn-login-link" th:if="${currentUser == null}">去登录</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 南京照相馆观影感悟 |
+                <a href="https://beian.miit.gov.cn/" target="_blank" style="color: #666; text-decoration: none;">桂ICP备2025072115号</a> |
+                <a href="https://beian.mps.gov.cn/#/query/webSearch?code=45010002451112" rel="noreferrer" target="_blank" style="color: #666; text-decoration: none;">
+                    <img th:src="@{/images/备案图标.png}" alt="公安备案" style="height: 18px; vertical-align: middle; margin-right: 4px;">桂公网安备45010002451112号
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script th:src="@{/js/mobile-menu.js}"></script>
+    
+    <style>
+        .active-review {
+            background-color: rgba(231, 76, 60, 0.1) !important;
+            color: #e74c3c !important;
+        }
+        
+        /* 个人信息区域 */
+        .profile-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 4rem 0;
+            color: white;
+        }
+        
+        .profile-card-main {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 3rem;
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-left {
+            text-align: center;
+        }
+        
+        .avatar-container {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .avatar-main {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+        
+        .avatar-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none;
+        }
+        
+        .avatar-ring {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .profile-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .badge-primary {
+            background: rgba(52, 152, 219, 0.2);
+            border: 1px solid rgba(52, 152, 219, 0.5);
+        }
+        
+        .badge-secondary {
+            background: rgba(155, 89, 182, 0.2);
+            border: 1px solid rgba(155, 89, 182, 0.5);
+        }
+        
+        .profile-right {
+            flex: 1;
+        }
+        
+        .profile-name {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff, #f8f9fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .profile-quote-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .quote-mark {
+            font-size: 4rem;
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            opacity: 0.3;
+            font-family: serif;
+        }
+        
+        .quote-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 0;
+            padding-left: 2rem;
+        }
+        
+        .profile-stats {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffeaa7;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* 内容网格 */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            padding: 3rem 0;
+        }
+        
+        /* 通用卡片样式 */
+        .movie-selection-card,
+        .reason-card,
+        .analysis-card,
+        .character-card,
+        .impression-card,
+        .professional-card,
+        .summary-card,
+        .no-review-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #f1f3f4;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .movie-selection-card:hover,
+        .reason-card:hover,
+        .analysis-card:hover,
+        .character-card:hover,
+        .impression-card:hover,
+        .professional-card:hover,
+        .summary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f8f9fa;
+        }
+        
+        .header-icon {
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-header h2 {
+            color: #2d3436;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        /* 电影选择卡片 */
+        .movie-poster-section {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .movie-poster {
+            flex-shrink: 0;
+            width: 150px;
+        }
+        
+        .movie-info {
+            flex: 1;
+        }
+        
+        .movie-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2d3436;
+            margin-bottom: 0.5rem;
+        }
+        
+        .movie-desc {
+            color: #636e72;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .movie-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            background: #ddd6fe;
+            color: #7c3aed;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        /* 选择理由卡片 */
+        .reason-content {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        /* 分析卡片 */
+        .analysis-content {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        /* 人物卡片 */
+        .character-content {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        /* 印象卡片 */
+        .impression-content {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        /* 专业思考卡片 */
+        .professional-content {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        /* 总结卡片 */
+        .summary-card {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .summary-card .header-icon {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .summary-card .card-header {
+            border-bottom-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .summary-card .card-header h2 {
+            color: white;
+        }
+        
+        .summary-content {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        /* 无观后感卡片 */
+        .no-review-card {
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+        
+        .no-review-content p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-login-link {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        
+        .btn-login-link:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .profile-card-main {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-stats {
+                justify-content: center;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .movie-poster-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .movie-poster {
+                width: 200px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</body>
+</html>
+

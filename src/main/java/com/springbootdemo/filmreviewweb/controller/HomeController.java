@@ -1,15 +1,36 @@
 package com.springbootdemo.filmreviewweb.controller;
 
+import com.springbootdemo.filmreviewweb.entity.Review;
+import com.springbootdemo.filmreviewweb.entity.User;
+import com.springbootdemo.filmreviewweb.service.ReviewService;
+import com.springbootdemo.filmreviewweb.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
 
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private ReviewService reviewService;
+
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(Model model, HttpSession session) {
+        // 检查是否已登录，未登录则重定向到登录页面
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            return "redirect:/login";
+        }
+        
         model.addAttribute("title", "南京照相馆观影感悟");
+        model.addAttribute("user", user);
         return "index";
     }
 
@@ -31,36 +52,24 @@ public class HomeController {
         return "meaning";
     }
 
-    // 学生个人观影感悟页面
-    @GetMapping("/review/qinguijin")
-    public String qinGuiJinReview(Model model) {
-        model.addAttribute("title", "覃桂锦的观影感悟");
-        model.addAttribute("studentName", "覃桂锦");
-        model.addAttribute("gender", "男");
-        return "reviews/qinguijin";
-    }
-
-    @GetMapping("/review/zhubinbo")
-    public String zhuBinBoReview(Model model) {
-        model.addAttribute("title", "朱斌博的观影感悟");
-        model.addAttribute("studentName", "朱斌博");
-        model.addAttribute("gender", "男");
-        return "reviews/zhubinbo";
-    }
-
-    @GetMapping("/review/suzixiang")
-    public String suZiXiangReview(Model model) {
-        model.addAttribute("title", "苏子翔的观影感悟");
-        model.addAttribute("studentName", "苏子翔");
-        model.addAttribute("gender", "男");
-        return "reviews/suzixiang";
-    }
-
-    @GetMapping("/review/qinzhaorui")
-    public String qinZhaoRuiReview(Model model) {
-        model.addAttribute("title", "覃照睿的观影感悟");
-        model.addAttribute("studentName", "覃照睿");
-        model.addAttribute("gender", "女");
-        return "reviews/qinzhaorui";
+    // 通用的观后感页面，根据用户名动态加载
+    @GetMapping("/review/{username}")
+    public String review(@PathVariable String username, Model model, HttpSession session) {
+        User user = userService.findByUsername(username);
+        if (user == null) {
+            return "redirect:/";
+        }
+        
+        Review review = reviewService.findByUserId(user.getId());
+        
+        model.addAttribute("title", user.getRealName() + "的观影感悟");
+        model.addAttribute("user", user);
+        model.addAttribute("review", review);
+        
+        // 当前登录用户
+        User currentUser = (User) session.getAttribute("user");
+        model.addAttribute("currentUser", currentUser);
+        
+        return "review-detail";
     }
 }
