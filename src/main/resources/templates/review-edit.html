@@ -6,8 +6,8 @@
     <title>编辑观后感 - 南京照相馆观影感悟</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <!-- Quill.js富文本编辑器 -->
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <link th:href="@{/lib/quill/quill.snow.css}" rel="stylesheet">
+    <script th:src="@{/lib/quill/quill.js}" defer></script>
     <style>
         body {
             background: var(--apple-gray);
@@ -703,10 +703,19 @@
                 if (dataDiv && dataDiv.innerHTML) {
                     const currentContent = editors[editorId].root.innerHTML;
                     const dataContent = dataDiv.innerHTML.trim();
-                    // 如果内容不同，更新编辑器
-                    if (currentContent !== dataContent && dataContent !== '') {
-                        editors[editorId].root.innerHTML = dataContent;
-                        textarea.value = dataContent;
+                    // 如果内容不同，更新编辑器（使用Quill API）
+                    if (currentContent !== dataContent && dataContent !== '' && dataContent !== '<p></p>') {
+                        try {
+                            const quill = editors[editorId];
+                            const delta = quill.clipboard.convert(dataContent);
+                            quill.setContents(delta, 'silent');
+                            textarea.value = quill.root.innerHTML;
+                        } catch (e) {
+                            console.warn('Error updating editor content:', e);
+                            // 后备方案：直接设置innerHTML（不推荐，但作为最后手段）
+                            editors[editorId].root.innerHTML = dataContent;
+                            textarea.value = dataContent;
+                        }
                     }
                 }
                 return;
@@ -744,8 +753,15 @@
             editorElement.innerHTML = '';
             
             // 延迟初始化，确保DOM完全准备好
-            setTimeout(function() {
+            function initEditorWithRetry() {
                 try {
+                    // 检查Quill是否已加载
+                    if (typeof Quill === 'undefined' || !Quill) {
+                        console.warn('Quill is not loaded yet, retrying...', editorId);
+                        setTimeout(initEditorWithRetry, 100);
+                        return;
+                    }
+                    
                     // 再次检查元素是否存在
                     const editorEl = document.getElementById(editorId + '-editor');
                     if (!editorEl) {
@@ -764,12 +780,30 @@
                     // 保存编辑器实例
                     editors[editorId] = quill;
                     
-                    // 设置初始内容
-                    if (initialContent && initialContent !== '' && initialContent !== '<p></p>') {
-                        // 使用Quill的API设置内容，而不是直接设置innerHTML
-                        quill.root.innerHTML = initialContent;
-                        textarea.value = initialContent;
-                    }
+                    // 等待Quill完全初始化后再设置内容（避免MutationObserver触发时emitter未就绪）
+                    setTimeout(function() {
+                        // 设置初始内容
+                        if (initialContent && initialContent !== '' && initialContent !== '<p></p>') {
+                            try {
+                                // 使用setContents API，这是最安全的方式，'silent'模式不会触发事件
+                                const delta = quill.clipboard.convert(initialContent);
+                                quill.setContents(delta, 'silent');
+                                textarea.value = quill.root.innerHTML;
+                            } catch (e) {
+                                console.warn('Error setting initial content with setContents, trying clipboard:', e);
+                                try {
+                                    // 如果setContents失败，使用clipboard API
+                                    quill.clipboard.dangerouslyPasteHTML(initialContent);
+                                    textarea.value = quill.root.innerHTML;
+                                } catch (e2) {
+                                    console.warn('Error setting initial content with clipboard, using root.innerHTML:', e2);
+                                    // 最后的后备方案
+                                    quill.root.innerHTML = initialContent;
+                                    textarea.value = initialContent;
+                                }
+                            }
+                        }
+                    }, 100); // 给Quill足够时间完全初始化内部状态（包括MutationObserver和emitter）
                     
                     // 监听编辑器内容变化，同步到textarea
                     quill.on('text-change', function() {
@@ -779,11 +813,18 @@
                 } catch (error) {
                     console.error('Error initializing Quill editor for', editorId, ':', error);
                 }
-            }, 100); // 延迟100ms确保DOM准备就绪
+            }
+            setTimeout(initEditorWithRetry, 100); // 延迟100ms确保DOM准备就绪
         }
         
         // 初始化所有编辑器
         function initEditors() {
+            // 确保Quill已加载
+            if (typeof Quill === 'undefined' || !Quill) {
+                console.error('Quill is not loaded, cannot initialize editors');
+                return;
+            }
+            
             editorIds.forEach(function(id) {
                 const editorElement = document.getElementById(id + '-editor');
                 const textarea = document.getElementById(id);
@@ -812,21 +853,36 @@
                     }
                 }
                 
-                // 如果有初始内容，先设置到editor元素中
-                if (initialContent && initialContent !== '' && initialContent !== '<p></p>') {
-                    editorElement.innerHTML = initialContent;
-                }
-                
-                // 创建Quill编辑器（如果editorElement已有内容，Quill会自动读取）
+                // 创建Quill编辑器（先创建空编辑器，然后用API设置内容）
                 const quill = new Quill('#' + id + '-editor', quillOptions);
                 
                 // 保存编辑器实例
                 editors[id] = quill;
                 
-                // 确保textarea有初始值
-                if (initialContent && initialContent !== '' && initialContent !== '<p></p>') {
-                    textarea.value = initialContent;
-                }
+                // 等待Quill完全初始化后再设置内容（避免MutationObserver触发时emitter未就绪）
+                setTimeout(function() {
+                    // 设置初始内容（使用Quill的API）
+                    if (initialContent && initialContent !== '' && initialContent !== '<p></p>') {
+                        try {
+                            // 使用setContents API，这是最安全的方式
+                            const delta = quill.clipboard.convert(initialContent);
+                            quill.setContents(delta, 'silent');
+                            textarea.value = quill.root.innerHTML;
+                        } catch (e) {
+                            console.warn('Error setting initial content with setContents, trying clipboard:', e);
+                            try {
+                                // 如果setContents失败，使用clipboard API
+                                quill.clipboard.dangerouslyPasteHTML(initialContent);
+                                textarea.value = quill.root.innerHTML;
+                            } catch (e2) {
+                                console.warn('Error setting initial content with clipboard, using root.innerHTML:', e2);
+                                // 最后的后备方案
+                                quill.root.innerHTML = initialContent;
+                                textarea.value = initialContent;
+                            }
+                        }
+                    }
+                }, 50); // 给Quill一点时间完全初始化内部状态
                 
                 // 监听编辑器内容变化，同步到textarea
                 quill.on('text-change', function() {
@@ -836,20 +892,39 @@
             });
         }
         
-        // 等待页面加载完成
-        document.addEventListener('DOMContentLoaded', function() {
-            // 初始化步骤
-            initSteps();
-            
-            // 延迟初始化，确保Thymeleaf完全渲染
-            setTimeout(function() {
-                // 初始化所有编辑器（包括隐藏的步骤）
-                initEditors();
-                // 额外确保当前步骤的编辑器正确初始化
-                if (currentStep > 0) {
-                    initEditorForStep(currentStep);
+        // 等待页面加载完成和Quill加载完成
+        function waitForQuill(callback, maxAttempts) {
+            maxAttempts = maxAttempts || 50;
+            var attempts = 0;
+            function checkQuill() {
+                if (typeof Quill !== 'undefined' && Quill) {
+                    callback();
+                } else if (attempts < maxAttempts) {
+                    attempts++;
+                    setTimeout(checkQuill, 100);
+                } else {
+                    console.error('Quill.js failed to load after ' + maxAttempts + ' attempts');
                 }
-            }, 500);
+            }
+            checkQuill();
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // 等待Quill加载完成后再初始化
+            waitForQuill(function() {
+                // 初始化步骤
+                initSteps();
+                
+                // 延迟初始化，确保Thymeleaf完全渲染
+                setTimeout(function() {
+                    // 初始化所有编辑器（包括隐藏的步骤）
+                    initEditors();
+                    // 额外确保当前步骤的编辑器正确初始化
+                    if (currentStep > 0) {
+                        initEditorForStep(currentStep);
+                    }
+                }, 500);
+            });
         });
         
         // 表单提交前确保编辑器内容同步到textarea

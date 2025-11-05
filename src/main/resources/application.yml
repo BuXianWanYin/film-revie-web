@@ -3,8 +3,8 @@ server:
 
 spring:
   # 激活生产环境配置
-#  profiles:
-#    active: prod
+  profiles:
+    active: prod
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
