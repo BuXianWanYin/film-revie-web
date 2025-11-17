@@ -1,0 +1,99 @@
+第1组
+提交时间：2025-01-XX
+
+一、小组成员分工
+
+成员编号：覃桂锦
+职责：后端开发
+具体任务：负责HomeController.java、ReviewController.java、LoginController.java等控制器的编写，包括用户登录认证、观后感管理、页面路由等核心业务逻辑的实现。
+
+成员编号：朱斌博
+职责：前端开发
+具体任务：负责index.html、review-detail.html、review-edit.html等页面的编写，包括页面布局、响应式设计、用户交互、表单验证、弹窗提示等前端功能的实现。
+
+成员编号：苏子翔
+职责：数据层开发
+具体任务：负责User.java、Review.java等实体类的设计，以及UserMapper.java、ReviewMapper.java等数据访问层的编写，包括数据库表结构设计、MyBatis-Plus配置、数据持久化逻辑等。
+
+成员编号：覃照睿
+职责：配置与测试
+具体任务：负责pom.xml和application.yml的配置，确保Spring Boot项目依赖（spring-boot-starter-web、spring-boot-starter-thymeleaf、mybatis-plus等）和环境正确；编写测试用例，测试后端接口和前端功能，确保系统稳定运行。
+
+二、设计思路
+
+1. 后端设计
+
+控制器层（Controller）：
+- HomeController.java：提供首页、电影介绍、演员介绍、电影内涵等页面的路由，以及根据用户名动态加载观后感页面的功能。
+- ReviewController.java：提供观后感的编辑和保存功能，支持用户登录状态验证，实现观后感的增删改查操作。
+- LoginController.java：提供用户登录、登出功能，使用Session管理用户登录状态。
+- ProfileController.java：提供用户个人资料管理功能。
+- PasswordController.java：提供密码修改和重置功能。
+- ForgotPasswordController.java：提供忘记密码功能。
+
+服务层（Service）：
+- UserService：处理用户相关的业务逻辑，包括用户登录验证、用户信息查询等。
+- ReviewService：处理观后感相关的业务逻辑，包括观后感的保存、更新、查询等。
+
+数据层（Mapper）：
+- UserMapper：定义用户数据访问接口，使用MyBatis-Plus进行数据库操作。
+- ReviewMapper：定义观后感数据访问接口，支持根据用户ID查询观后感。
+
+实体类（Entity）：
+- User：定义用户实体类，包含用户名、密码、真实姓名等字段。
+- Review：定义观后感实体类，包含电影标题、剧情分析、角色分析、个人感悟、专业思考等字段。
+
+拦截器（Interceptor）：
+- LoginInterceptor：实现登录拦截功能，保护需要登录才能访问的页面。
+
+配置类（Config）：
+- MyBatisPlusConfig：配置MyBatis-Plus的分页插件、逻辑删除等功能。
+- WebConfig：配置拦截器、静态资源映射等。
+- TransactionConfig：配置事务管理。
+
+2. 前端设计
+
+页面（Templates）：
+- index.html：首页，使用Thymeleaf模板引擎动态渲染数据，展示电影深度解析卡片、团队成员介绍等，提供响应式布局和移动端适配。
+- login.html：登录页面，提供用户名密码登录表单，支持错误提示。
+- review-detail.html：观后感详情页面，展示用户的观影感悟，包括剧情分析、角色分析、个人感悟等内容。
+- review-edit.html：观后感编辑页面，使用Quill富文本编辑器，支持用户编辑和保存观后感。
+- movie-intro.html、actors.html、meaning.html：电影介绍、演员介绍、电影内涵等静态内容页面。
+- profile.html：个人资料页面，支持用户查看和修改个人信息。
+- password-change.html、password-reset.html、forgot-password.html：密码管理相关页面。
+
+页面片段（Fragments）：
+- navbar.html：导航栏组件，提供统一的导航菜单，支持登录状态显示、下拉菜单等功能。
+
+静态资源（Static）：
+- css/style.css：统一样式文件，实现Apple风格的设计，包括响应式布局、卡片样式、按钮样式等。
+- js/mobile-menu.js：移动端菜单交互脚本。
+- lib/quill/：Quill富文本编辑器相关文件。
+
+技术特点：
+- 使用Thymeleaf模板引擎实现前后端数据绑定。
+- 使用Bootstrap或自定义CSS实现现代化的UI设计。
+- 使用Quill实现富文本编辑功能。
+- 实现响应式设计，支持PC端和移动端访问。
+- 使用Session管理用户登录状态。
+
+3. 配置与测试
+
+配置（Configuration）：
+- pom.xml：配置Spring Boot项目依赖，包括spring-boot-starter-web（Web开发）、spring-boot-starter-thymeleaf（模板引擎）、mybatis-plus-boot-starter（数据持久化）、mysql-connector-java（MySQL驱动）、spring-boot-starter-jdbc（JDBC支持）、spring-session-core（会话管理）等。
+- application.yml：配置服务器端口、Thymeleaf模板路径、数据库连接信息、MyBatis-Plus配置、Session超时时间等。
+- application-prod.yml：生产环境配置文件，包含生产环境的数据库连接等配置。
+
+数据库设计：
+- 使用MySQL数据库存储用户信息和观后感数据。
+- 通过schema.sql定义数据库表结构。
+- 使用MyBatis-Plus实现ORM映射，支持逻辑删除、自动填充等功能。
+
+测试（Testing）：
+- 进行手动功能测试，验证用户登录、观后感编辑、个人资料管理等核心功能的正常运行。
+- 进行前端功能测试，确保页面交互正常，表单提交、数据展示等功能正确。
+- 进行跨浏览器兼容性测试，确保在主流浏览器（Chrome、Firefox、Edge等）中正常显示和运行。
+- 进行响应式设计测试，确保在不同设备（PC、平板、手机）上正常显示和交互。
+- 进行数据库操作测试，验证数据的增删改查功能正确。
+- 进行Session管理测试，确保用户登录状态正确维护。
+
