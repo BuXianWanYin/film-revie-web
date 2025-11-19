@@ -1,0 +1,50 @@
+【第一段：自我介绍】
+
+大家好，我是覃桂锦，负责本项目的后端开发工作。
+
+我主要负责编写三个核心控制器，实现系统的业务逻辑和页面路由功能。
+
+
+
+【LoginController - 登录控制器】
+
+首先是LoginController，即登录控制器。我实现了用户登录和登出功能，通过UserService进行用户名和密码验证，登录成功后使用HttpSession存储用户信息，实现会话管理。
+如果登录失败，会通过RedirectAttributes返回错误提示信息。
+
+
+
+【第三段：视图解析机制详解】
+
+这里我想特别讲解一下视图解析机制。当我在控制器方法中返回字符串"login"时，Spring MVC会自动通过视图解析器将其转换为实际的HTML页面。
+
+具体过程是：首先，由于我们使用了Thymeleaf模板引擎，Spring Boot会自动配置ThymeleafViewResolver。这个视图解析器会根据application.yml中的配置，将视图名称"login"与配置的前缀和后缀组合起来。配置中设置了prefix为classpath:/templates/，suffix为.html，所以"login"会被解析为classpath:/templates/login.html，也就是项目resources目录下的templates文件夹中的login.html文件。
+
+这样，当用户访问登录页面时，控制器返回"login"，Spring MVC就会自动找到并渲染对应的HTML模板文件，实现了简洁的视图映射机制。
+
+
+
+【HomeController - 首页控制器】
+
+其次是HomeController，即首页控制器。我实现了首页、电影介绍、演员介绍、电影内涵等页面的路由功能。
+
+特别重要的是，我实现了一个通用的观后感查看功能，通过路径变量动态加载不同用户的观后感页面，使用@PathVariable注解获取用户名，然后通过UserService和ReviewService查询对应的用户和观后感数据，实现了灵活的页面展示。
+
+
+
+【ReviewController - 观后感管理控制器】
+
+最后是ReviewController，即观后感管理控制器。我实现了观后感的编辑和保存功能。
+
+在编辑页面，系统会先检查用户是否已存在观后感，如果存在则加载现有数据，如果不存在则创建新的观后感对象。保存时，我实现了新增和更新两种逻辑，通过判断观后感ID是否存在来决定是保存新记录还是更新现有记录。同时，所有操作都进行了登录状态验证，确保只有登录用户才能编辑自己的观后感。
+
+
+【第六段：技术总结】
+
+在技术实现上，我使用了@Controller注解、@GetMapping和@PostMapping处理HTTP请求，使用Model对象向视图传递数据，使用HttpSession管理用户登录状态，使用RedirectAttributes实现重定向时的消息传递。通过这些技术，我完成了用户认证、观后感管理和页面路由等核心业务逻辑的实现。
+
+
+
+【结尾】
+
+谢谢大家！
+
